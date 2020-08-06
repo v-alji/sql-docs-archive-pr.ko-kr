@@ -1,0 +1,49 @@
+---
+title: SQL 문 생성 (ODBC) | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: native-client
+ms.topic: reference
+helpviewer_keywords:
+- SQL Server Native Client ODBC driver, statements
+- statements [ODBC], constructing
+- ODBC applications, statements
+ms.assetid: 0acc71e2-8004-4dd8-8592-05c022bdd692
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 1c454f936c49335555ca09b190e4d604c9fbad64
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87646415"
+---
+# <a name="constructing-an-sql-statement-odbc"></a><span data-ttu-id="d502b-102">SQL 문 생성(ODBC)</span><span class="sxs-lookup"><span data-stu-id="d502b-102">Constructing an SQL Statement (ODBC)</span></span>
+  <span data-ttu-id="d502b-103">ODBC 애플리케이션에서는 거의 모든 데이터베이스 액세스를 [!INCLUDE[tsql](../../includes/tsql-md.md)] 문을 실행하여 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-103">ODBC applications perform almost all of their database access by executing [!INCLUDE[tsql](../../includes/tsql-md.md)] statements.</span></span> <span data-ttu-id="d502b-104">이러한 문의 형식은 애플리케이션의 요구 사항에 따라 달라집니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-104">The form of these statements depends on the application requirements.</span></span> <span data-ttu-id="d502b-105">SQL 문은 다음과 같은 방법으로 생성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-105">SQL statements can be constructed in the following ways:</span></span>  
+  
+-   <span data-ttu-id="d502b-106">하드 코딩</span><span class="sxs-lookup"><span data-stu-id="d502b-106">Hard-coded</span></span>  
+  
+     <span data-ttu-id="d502b-107">애플리케이션에서 고정 태스크로 수행한 정적 문</span><span class="sxs-lookup"><span data-stu-id="d502b-107">Static statements performed by an application as a fixed task.</span></span>  
+  
+-   <span data-ttu-id="d502b-108">런타임에 생성</span><span class="sxs-lookup"><span data-stu-id="d502b-108">Constructed at run time</span></span>  
+  
+     <span data-ttu-id="d502b-109">사용자가 SELECT, WHERE 및 ORDER BY와 같은 일반적인 절을 사용하여 문을 알맞게 조정할 수 있도록 런타임에 생성한 SQL 문.</span><span class="sxs-lookup"><span data-stu-id="d502b-109">SQL statements constructed at run time that enable the user to tailor the statement by using common clauses, such as SELECT, WHERE, and ORDER BY.</span></span> <span data-ttu-id="d502b-110">여기에는 사용자가 입력한 임시 쿼리도 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-110">This includes ad hoc queries entered by users.</span></span>  
+  
+ <span data-ttu-id="d502b-111">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]CLIENT odbc 드라이버는에서 직접 지원 하지 않는 odbc 및 ISO 구문에 대해서만 SQL 문을 구문 분석 하며,이는 [!INCLUDE[ssDE](../../includes/ssde-md.md)] 드라이버가로 변환 [!INCLUDE[tsql](../../includes/tsql-md.md)] 됩니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-111">The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Client ODBC driver parses SQL statements only for ODBC and ISO syntax not directly supported by the [!INCLUDE[ssDE](../../includes/ssde-md.md)], which the driver transforms into [!INCLUDE[tsql](../../includes/tsql-md.md)].</span></span> <span data-ttu-id="d502b-112">다른 모든 SQL 구문은 변경되지 않고 [!INCLUDE[ssDE](../../includes/ssde-md.md)]으로 전달되며, 그곳에서 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]가 해당 구문이 유효한 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]인지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-112">All other SQL syntax is passed to the [!INCLUDE[ssDE](../../includes/ssde-md.md)] unchanged, where [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] will determine if it is valid [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].</span></span> <span data-ttu-id="d502b-113">이 방법은 다음 두 가지 이점을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-113">This approach yields two benefits:</span></span>  
+  
+-   <span data-ttu-id="d502b-114">오버헤드 감소</span><span class="sxs-lookup"><span data-stu-id="d502b-114">Reduced overhead</span></span>  
+  
+     <span data-ttu-id="d502b-115">드라이버에서 ODBC 및 ISO 절의 일부 집합만 스캔하면 되므로 드라이버의 처리 오버헤드가 최소화됩니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-115">Processing overhead for the driver is minimized because it only has to scan for a small set of ODBC and ISO clauses.</span></span>  
+  
+-   <span data-ttu-id="d502b-116">유연성</span><span class="sxs-lookup"><span data-stu-id="d502b-116">Flexibility</span></span>  
+  
+     <span data-ttu-id="d502b-117">프로그래머가 애플리케이션의 이식성이 알맞게 조정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-117">Programmers can tailor the portability of their applications.</span></span> <span data-ttu-id="d502b-118">여러 데이터베이스에 대한 이식성을 향상하려면 주로 ODBC 및 ISO 구문을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-118">To enhance portability against multiple databases, use primarily ODBC and ISO syntax.</span></span> <span data-ttu-id="d502b-119">특정 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]의 향상된 기능을 사용하려면 적절한 [!INCLUDE[tsql](../../includes/tsql-md.md)] 구문을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-119">To use enhancements specific to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], use the appropriate [!INCLUDE[tsql](../../includes/tsql-md.md)] syntax.</span></span> <span data-ttu-id="d502b-120">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]Native CLIENT odbc 드라이버는 [!INCLUDE[tsql](../../includes/tsql-md.md)] odbc 기반 응용 프로그램이의 모든 기능을 활용할 수 있도록 전체 구문을 지원 합니다 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="d502b-120">The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client ODBC driver supports the complete [!INCLUDE[tsql](../../includes/tsql-md.md)] syntax so ODBC-based applications can take advantage of all the features in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].</span></span>  
+  
+ <span data-ttu-id="d502b-121">SELECT 문의 열 목록에는 현재 태스크를 수행하는 데 필요한 열만 포함되어 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-121">The column list in a SELECT statement should contain only the columns required to perform the current task.</span></span> <span data-ttu-id="d502b-122">그래야만 네트워크를 통해 보내는 데이터의 양이 줄 뿐 아니라 데이터베이스 변경이 애플리케이션에 미치는 영향도 줄어듭니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-122">Not only does this reduce the amount of data sent across the network, but also it reduces the effect of database changes on the application.</span></span> <span data-ttu-id="d502b-123">애플리케이션에서 테이블의 열을 참조하지 않는 경우 해당 열이 변경되어도 애플리케이션에는 영향을 주지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="d502b-123">If an application does not reference a column from a table, then the application is not affected by any changes made to that column.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="d502b-124">참고 항목</span><span class="sxs-lookup"><span data-stu-id="d502b-124">See Also</span></span>  
+ [<span data-ttu-id="d502b-125">ODBC&#41;&#40;쿼리 실행</span><span class="sxs-lookup"><span data-stu-id="d502b-125">Executing Queries &#40;ODBC&#41;</span></span>](executing-queries-odbc.md)  
+  
+  

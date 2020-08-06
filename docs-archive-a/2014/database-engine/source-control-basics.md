@@ -1,0 +1,58 @@
+---
+title: 소스 제어 기본 사항 | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: ''
+ms.topic: conceptual
+helpviewer_keywords:
+- source controls [SQL Server Management Studio], providers
+- source controls [SQL Server Management Studio]
+- source controls [SQL Server Management Studio], about source controls
+- source controls [SQL Server Management Studio], clients
+ms.assetid: ca35b67a-104a-41fb-ac58-a61be06fe114
+author: mashamsft
+ms.author: mathoma
+ms.openlocfilehash: 1112dcd8cfdec429b27b22ea3853de859553af0b
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87646614"
+---
+# <a name="source-control-basics"></a><span data-ttu-id="a8656-102">원본 제어 기본 사항</span><span class="sxs-lookup"><span data-stu-id="a8656-102">Source Control Basics</span></span>
+  <span data-ttu-id="a8656-103">소스 제어란 서버 소프트웨어의 중심부에서 파일 버전을 저장 및 추적하고 파일에 대한 액세스를 제어하는 시스템을 말합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-103">Source control refers to a system in which a central piece of server software stores and tracks file versions, and also controls access to files.</span></span> <span data-ttu-id="a8656-104">일반 원본 제어 시스템에는 원본 제어 공급자 및 둘 이상의 원본 제어 클라이언트가 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-104">A typical source control system includes a source control provider and two or more source control clients.</span></span>  
+  
+## <a name="source-control-benefits"></a><span data-ttu-id="a8656-105">원본 제어의 이점</span><span class="sxs-lookup"><span data-stu-id="a8656-105">Source Control Benefits</span></span>  
+ <span data-ttu-id="a8656-106">파일이 원본 제어에서 사용 중일 경우 다음 작업을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-106">Placing your files under source control makes it possible to</span></span>  
+  
+-   <span data-ttu-id="a8656-107">항목 제어가 특정 사용자에서 다른 사용자에게 전달되는 프로세스를 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-107">Manage the process by which the control of items passes from one person to another.</span></span> <span data-ttu-id="a8656-108">원본 제어 공급자는 공유 및 배타 파일 액세스를 모두 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-108">Source control providers support both shared and exclusive file access.</span></span> <span data-ttu-id="a8656-109">프로젝트 파일에 대한 액세스가 배타적이면 원본 제어 공급자는 한 번에 한 명의 사용자만 파일을 체크 아웃하고 수정하도록 허용합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-109">If access to project files is exclusive, the source control provider allows only one user at a time to check files out and modify them.</span></span> <span data-ttu-id="a8656-110">액세스가 공유될 경우 둘 이상의 사용자가 스크립트 파일을 체크 아웃할 수 있으며 원본 제어 공급자는 체크 인되는 버전을 병합하기 위한 메커니즘을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-110">If access is shared, more than one user can check out the script file, and the source control provider provides a mechanism for merging the versions as they are checked in.</span></span>  
+  
+-   <span data-ttu-id="a8656-111">연속된 버전의 원본 제어 항목을 보관합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-111">Archive successive versions of source-controlled items.</span></span> <span data-ttu-id="a8656-112">원본 제어 공급자는 특정 버전의 원본 제어 항목을 다른 버전의 항목과 구별하는 데이터를 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-112">A source control provider stores the data that distinguishes one version of a source-controlled item from another.</span></span> <span data-ttu-id="a8656-113">소스 제어 공급자는 버전 간의 차이점뿐만 아니라 버전에 대한 중대한 정보, 즉 버전을 작성 및 수정한 시점과 버전을 작성 및 수정한 사람에 대한 정보를 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-113">The provider stores the differences between versions, as well as crucial information about the version: when it was created, when it was modified, and by whom.</span></span> <span data-ttu-id="a8656-114">동일한 파일에서 여러 사람이 작업하는 중이면 동일한 코드 페이지를 사용해야만 버전을 정확하게 비교할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-114">When several people are working on the same file, they must use the same code page, so that versions can be accurately compared.</span></span> <span data-ttu-id="a8656-115">결과적으로 모든 버전의 원본 제어 항목을 검색할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-115">Consequently, you can retrieve any version of a source-controlled item.</span></span> <span data-ttu-id="a8656-116">또한 임의의 버전을 해당 항목의 최신 버전으로 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-116">You can also designate any version to be the latest version of that item.</span></span>  
+  
+-   <span data-ttu-id="a8656-117">원본 제어 항목에 대한 자세한 기록 및 버전 정보를 유지 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-117">Maintain detailed historical and version information on source-controlled items.</span></span> <span data-ttu-id="a8656-118">원본 제어는 항목을 만든 날짜와 시간, 체크 아웃 및 체크 인된 시기, 동작을 수행한 사용자에 대한 정보를 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-118">Source control stores the date and time on which the item was created, when it was checked out or checked in, and the user who performed the action.</span></span>  
+  
+-   <span data-ttu-id="a8656-119">여러 프로젝트에서 공동 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-119">Collaborate across projects.</span></span> <span data-ttu-id="a8656-120">파일 공유를 사용하면 여러 프로젝트에서 원본 제어 항목을 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-120">File sharing makes it possible for multiple projects to share source-controlled items.</span></span> <span data-ttu-id="a8656-121">공유 항목을 변경하면 해당 항목을 공유하는 모든 프로젝트에 변경 내용이 반영됩니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-121">Changes to a shared item are reflected in all the projects that share the item.</span></span>  
+  
+-   <span data-ttu-id="a8656-122">자주 반복되는 원본 제어 작업을 자동화합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-122">Automate frequently repeated source control operations.</span></span> <span data-ttu-id="a8656-123">원본 제어 공급자는 원본 제어의 주요 기능을 지원하는 명령 프롬프트에서 인터페이스를 정의할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-123">A source control provider may define an interface from the command prompt that supports the key features of source control.</span></span> <span data-ttu-id="a8656-124">배치 파일에서 이 인터페이스를 사용하여 정기적으로 수행하는 원본 제어 태스크를 자동화할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-124">You can use this interface in batch files to automate the source control tasks that you perform regularly.</span></span>  
+  
+-   <span data-ttu-id="a8656-125">실수로 삭제한 내용을 복원합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-125">Recover from accidental deletions.</span></span> <span data-ttu-id="a8656-126">원본 제어에 체크 인된 최신 파일 버전을 복원할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-126">You can restore the latest file version checked into source control.</span></span>  
+  
+-   <span data-ttu-id="a8656-127">원본 제어 클라이언트 및 서버 모두에서 디스크 공간을 절약합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-127">Conserve disk space on both the source control client and server.</span></span> <span data-ttu-id="a8656-128">[!INCLUDE[msCoName](../includes/msconame-md.md)] Visual SourceSafe와 같은 일부 원본 제어 공급자는 파일의 최신 버전과 각 버전 및 이전 또는 이후 버전의 차이를 저장하여 서버에서 디스크 공간을 절약할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-128">Some source control providers, such as [!INCLUDE[msCoName](../includes/msconame-md.md)] Visual SourceSafe, support disk space conservation on the server by storing the latest version of a file and the differences between each version and the version that precedes or follows it.</span></span> <span data-ttu-id="a8656-129">클라이언트에서도 Visual SourceSafe는 디스크 공간 절약을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-129">On the client, Visual SourceSafe supports disk space conservation.</span></span> <span data-ttu-id="a8656-130">로컬 디스크로 다운로드되지 않도록 폴더와 파일을 숨길 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-130">You can cloak folders and files so that they are not downloaded to your local disk.</span></span>  
+  
+ <span data-ttu-id="a8656-131">파일 체크 아웃, 체크 인 및 기타 원본 제어 작업은 실제로 [!INCLUDE[ssManStudioFull](../includes/ssmanstudiofull-md.md)] 같은 원본 제어 클라이언트를 통해 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-131">File check outs, check ins, and other source control operations are actually accomplished through a source control client, such as [!INCLUDE[ssManStudioFull](../includes/ssmanstudiofull-md.md)].</span></span> <span data-ttu-id="a8656-132">원본 제어 클라이언트는 대상 사용자 그룹에서 공급자의 기능을 사용할 수 있도록 공급자와 상호 작용하도록 설계되었습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-132">The client is designed to interact with the provider to make the provider's capabilities available to a distributed group of users.</span></span> <span data-ttu-id="a8656-133">원본 제어 클라이언트를 사용하면 사용자는 공급자에 의해 저장된 파일을 탐색하거나 파일을 추가 및 삭제하거나 파일을 체크 인 및 체크 아웃하거나 로컬 파일의 복사본을 검색할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-133">Using a source control client, users can browse the files stored by the provider; add and delete files; check files in and out; and retrieve copies of local files.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="a8656-134">이 설명서에서는 [!INCLUDE[msCoName](../includes/msconame-md.md)] Visual SourceSafe를 원본 제어 공급자로 사용한다고 가정합니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-134">This documentation assumes that you are using [!INCLUDE[msCoName](../includes/msconame-md.md)] Visual SourceSafe as your source control provider.</span></span> <span data-ttu-id="a8656-135">다른 원본 제어 공급자를 사용하는 경우 이 설명서와 실행 중인 소프트웨어 간에 차이점이 발견될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a8656-135">If you are using a different source control provider, you might see differences between this documentation and the software you are running.</span></span> <span data-ttu-id="a8656-136">이러한 차이점이 있을 경우에는 해당 원본 제어 공급자의 설명서를 참조하십시오.</span><span class="sxs-lookup"><span data-stu-id="a8656-136">If you see differences, consult the documentation for your source control provider.</span></span>  
+  
+## <a name="related-tasks"></a><span data-ttu-id="a8656-137">관련 작업</span><span class="sxs-lookup"><span data-stu-id="a8656-137">Related Tasks</span></span>  
+  
+|||  
+|-|-|  
+|<span data-ttu-id="a8656-138">**Task**</span><span class="sxs-lookup"><span data-stu-id="a8656-138">**Task**</span></span>|<span data-ttu-id="a8656-139">**항목**</span><span class="sxs-lookup"><span data-stu-id="a8656-139">**Topic**</span></span>|  
+|<span data-ttu-id="a8656-140">원본 제어 옵션 설정</span><span class="sxs-lookup"><span data-stu-id="a8656-140">Set Source Control options</span></span>|[<span data-ttu-id="a8656-141">원본 제어 옵션 설정</span><span class="sxs-lookup"><span data-stu-id="a8656-141">Set Source Control Options</span></span>](../../2014/database-engine/set-source-control-options.md)|  
+|<span data-ttu-id="a8656-142">원본 제어 연결 변경</span><span class="sxs-lookup"><span data-stu-id="a8656-142">Change source control Connections</span></span>|[<span data-ttu-id="a8656-143">원본 제어 연결 변경</span><span class="sxs-lookup"><span data-stu-id="a8656-143">Change Source Control Connections</span></span>](../../2014/database-engine/change-source-control-connections.md)|  
+|<span data-ttu-id="a8656-144">원본 제어에서 파일 제외</span><span class="sxs-lookup"><span data-stu-id="a8656-144">Exclude files from source control</span></span>|[<span data-ttu-id="a8656-145">소스 제어에서 파일 제외</span><span class="sxs-lookup"><span data-stu-id="a8656-145">Exclude Files from Source Control</span></span>](../../2014/database-engine/exclude-files-from-source-control.md)|  
+  
+  

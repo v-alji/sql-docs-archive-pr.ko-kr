@@ -1,0 +1,33 @@
+---
+title: 데이터 원본 찾아보기 대화 상자 (Analysis Services 다차원 데이터) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+f1_keywords:
+- sql12.asvs.cubeeditor.datasourcebrowse.f1
+helpviewer_keywords:
+- Browse Data Source dialog box
+ms.assetid: 134355cb-69a7-4b16-8076-82ede43ce940
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: 5f13ce76e79c3bb67de50bc1fbd37c7d91d36899
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87648145"
+---
+# <a name="browse-data-source-dialog-box-analysis-services---multidimensional-data"></a><span data-ttu-id="41cf9-102">데이터 원본 찾아보기 대화 상자(Analysis Services - 다차원 데이터)</span><span class="sxs-lookup"><span data-stu-id="41cf9-102">Browse Data Source Dialog Box (Analysis Services - Multidimensional Data)</span></span>
+  <span data-ttu-id="41cf9-103">**의** 데이터 원본 찾아보기 [!INCLUDE[ssBIDevStudioFull](../includes/ssbidevstudiofull-md.md)] 대화 상자를 사용하여 선택한 테이블의 처음 1,000개의 레코드를 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="41cf9-103">Use the **Browse Data Source** dialog box in [!INCLUDE[ssBIDevStudioFull](../includes/ssbidevstudiofull-md.md)] to view the first 1,000 records of the selected table.</span></span>  
+  
+## <a name="options"></a><span data-ttu-id="41cf9-104">옵션</span><span class="sxs-lookup"><span data-stu-id="41cf9-104">Options</span></span>  
+ <span data-ttu-id="41cf9-105">**데이터 원본 테이블**</span><span class="sxs-lookup"><span data-stu-id="41cf9-105">**Data Source Table**</span></span>  
+ <span data-ttu-id="41cf9-106">선택한 테이블의 처음 1,000개의 레코드를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="41cf9-106">Displays the first 1,000 records of the selected table.</span></span> <span data-ttu-id="41cf9-107">모든 데이터는 읽기 전용입니다.</span><span class="sxs-lookup"><span data-stu-id="41cf9-107">All data is read-only.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="41cf9-108">참고 항목</span><span class="sxs-lookup"><span data-stu-id="41cf9-108">See Also</span></span>  
+ [<span data-ttu-id="41cf9-109">Analysis Services 디자이너 및 대화 상자 &#40;다차원 데이터&#41;</span><span class="sxs-lookup"><span data-stu-id="41cf9-109">Analysis Services Designers and Dialog Boxes &#40;Multidimensional Data&#41;</span></span>](analysis-services-designers-and-dialog-boxes-multidimensional-data.md)  
+  
+  

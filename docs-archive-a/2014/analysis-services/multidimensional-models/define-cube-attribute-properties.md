@@ -1,0 +1,36 @@
+---
+title: 큐브 특성 속성 정의 | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+helpviewer_keywords:
+- cubes [Analysis Services], defining
+ms.assetid: 579ca818-f33d-4060-906d-c8bfee93bf99
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: c02d57e8d24e625dc0613f25d97765c9ae018803
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87646692"
+---
+# <a name="define-cube-attribute-properties"></a><span data-ttu-id="8be18-102">큐브 특성 속성 정의</span><span class="sxs-lookup"><span data-stu-id="8be18-102">Define Cube Attribute Properties</span></span>
+  <span data-ttu-id="8be18-103">큐브 특성 속성을 사용하면 같은 데이터베이스 차원을 기반으로 하는 큐브 차원의 차원 특성에 고유한 설정을 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-103">Cube attribute properties enable you to specify unique settings for dimension attributes in cube dimensions based on the same database dimension.</span></span> <span data-ttu-id="8be18-104">다음 표에서는 큐브 특성의 속성에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-104">The following table describes the properties of a cube attribute.</span></span>  
+  
+|<span data-ttu-id="8be18-105">속성</span><span class="sxs-lookup"><span data-stu-id="8be18-105">Property</span></span>|<span data-ttu-id="8be18-106">설명</span><span class="sxs-lookup"><span data-stu-id="8be18-106">Description</span></span>|  
+|--------------|-----------------|  
+|`AggregationUsage`|<span data-ttu-id="8be18-107">집계 디자인 마법사에서 특성의 집계를 디자인하는 방법을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-107">Specifies how the Aggregation Design Wizard will design aggregations for the attribute.</span></span> <span data-ttu-id="8be18-108">이 속성 값은 다음 중 하나일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-108">This property can have the following values:</span></span><br /><br /> <span data-ttu-id="8be18-109">`Default`: 기본값입니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-109">`Default`: Default.</span></span> <span data-ttu-id="8be18-110">집계 디자인 마법사에서 특성 유형을 기반으로 기본 규칙을 적용합니다(키의 경우 전체, 기타의 경우 제한 없음).</span><span class="sxs-lookup"><span data-stu-id="8be18-110">The Aggregation Design Wizard applies a default rule based on the type of attribute (Full for keys, Unrestricted for others).</span></span><br /><br /> <span data-ttu-id="8be18-111">`None`: 큐브의 집계에 이 특성이 포함되지 않아야 합니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-111">`None`: No aggregation for the cube should include this attribute.</span></span><br /><br /> <span data-ttu-id="8be18-112">`Unrestricted`: 집계 디자인 마법사에 제한 사항이 적용 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-112">`Unrestricted`: No restrictions are placed on the Aggregation Design Wizard.</span></span><br /><br /> <span data-ttu-id="8be18-113">`Full`: 큐브의 모든 집계에 이 특성이 포함되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-113">`Full`: Every aggregation for the cube must include this attribute.</span></span>|  
+|`AttributeHierarchyEnabled`|<span data-ttu-id="8be18-114">이 큐브 차원에서 특성 계층을 사용할 수 있는지 여부를 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-114">Identifies whether the attribute hierarchy is enables on this cube dimension.</span></span> <span data-ttu-id="8be18-115">이렇게 하면 특정 큐브나 차원 역할에 대해 특성 계층을 비활성화할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-115">This allows attribute hierarchies to be disabled on specific cubes or dimension roles.</span></span> <span data-ttu-id="8be18-116">기본 특성 계층이 비활성화된 경우 이 설정은 적용되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-116">This setting has no effect if the underlying attribute hierarchy is disabled.</span></span> <span data-ttu-id="8be18-117">기본값은 `True`여야 합니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-117">Default value is `True`.</span></span>|  
+|`OptimizedState`|<span data-ttu-id="8be18-118">이 큐브 차원에서 특성 계층을 최적화할지 여부를 식별합니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-118">Indicates whether the attribute hierarchy is optimized on this cube dimension.</span></span> <span data-ttu-id="8be18-119">이렇게 하면 특정 큐브 또는 차원 역할에서 특성 계층을 최적화할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-119">This allows attribute hierarchies to be optimized on specific cubes or dimension roles.</span></span> <span data-ttu-id="8be18-120">기본 특성 계층이 최적화되지 않는 경우 이 설정은 적용되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-120">This setting has no effect if the underlying attribute hierarchy is not optimized.</span></span> <span data-ttu-id="8be18-121">이 속성 값은 다음 중 하나일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-121">This property can have the following values:</span></span><br /><br /> <span data-ttu-id="8be18-122">`FullyOptimized`: 기본값입니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-122">`FullyOptimized`: Default.</span></span> <span data-ttu-id="8be18-123">인스턴스에서 계층에 대해 인덱스를 작성하여 쿼리 성능을 향상시킵니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-123">The instance builds indexes for the hierarchy to improve query performance.</span></span> <span data-ttu-id="8be18-124">기본값입니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-124">This is the default value.</span></span><br /><br /> <span data-ttu-id="8be18-125">`NotOptimized`: 인스턴스는 추가 인덱스를 작성하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-125">`NotOptimized`: The instance does not build additional indexes.</span></span>|  
+|`AttributeHierarchyVisible`|<span data-ttu-id="8be18-126">이 큐브 차원에서 특성 계층을 표시할지 여부를 식별합니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-126">Indicates whether the attribute hierarchy is visible on this cube dimension.</span></span> <span data-ttu-id="8be18-127">이렇게 하면 특정 큐브 또는 차원 역할에서 특성 계층을 표시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-127">This allows attribute hierarchies to be visible on specific cubes or dimension roles.</span></span> <span data-ttu-id="8be18-128">기본 특성 계층이 표시되지 않는 경우 이 설정은 적용되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-128">This setting has no effect if the underlying attribute hierarchy is not visible.</span></span> <span data-ttu-id="8be18-129">기본값은 `True`입니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-129">The default value is `True`.</span></span>|  
+|`AttributeID`|<span data-ttu-id="8be18-130">특성의 고유 ID를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="8be18-130">Contains the unique identifier (ID) of the attribute.</span></span>|  
+  
+## <a name="see-also"></a><span data-ttu-id="8be18-131">참고 항목</span><span class="sxs-lookup"><span data-stu-id="8be18-131">See Also</span></span>  
+ <span data-ttu-id="8be18-132">[큐브 차원 속성 정의](define-cube-dimension-properties.md) </span><span class="sxs-lookup"><span data-stu-id="8be18-132">[Define Cube Dimension Properties](define-cube-dimension-properties.md) </span></span>  
+ [<span data-ttu-id="8be18-133">큐브 계층 속성 정의</span><span class="sxs-lookup"><span data-stu-id="8be18-133">Define Cube Hierarchy Properties</span></span>](define-cube-hierarchy-properties.md)  
+  
+  

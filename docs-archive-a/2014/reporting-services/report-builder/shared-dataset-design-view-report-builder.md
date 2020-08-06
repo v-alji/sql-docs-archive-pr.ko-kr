@@ -1,0 +1,103 @@
+---
+title: 공유 데이터 세트 디자인 뷰 (보고서 작성기) | Microsoft Docs
+ms.custom: ''
+ms.date: 04/27/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+ms.assetid: 47c502da-d163-45d9-bf04-0849e5ba7929
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 4a3c34b984ab3aca5bbd6313d088695f22ef2255
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87648311"
+---
+# <a name="shared-dataset-design-view-report-builder"></a><span data-ttu-id="91e20-102">공유 데이터 세트 디자인 뷰(보고서 작성기)</span><span class="sxs-lookup"><span data-stu-id="91e20-102">Shared Dataset Design View (Report Builder)</span></span>
+  <span data-ttu-id="91e20-103">공유 데이터 세트 창에서 다른 사용자와 공유할 수 있는 데이터 세트 쿼리를 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-103">The Shared Dataset Design window helps you create a dataset query that you can share with others.</span></span> <span data-ttu-id="91e20-104">이 창에서 공유 데이터 원본을 선택하고, 공유 데이터 세트에 대한 속성을 지정하고, 쿼리 디자이너에서 쿼리를 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-104">The window lets you select a shared data source, specify properties for the shared dataset, and create a query in the query designer.</span></span>  
+  
+ <span data-ttu-id="91e20-105">![rs_SharedDatasetDesignMode](../media/rs-shareddatasetdesignmode.gif "rs_SharedDatasetDesignMode")</span><span class="sxs-lookup"><span data-stu-id="91e20-105">![rs_SharedDatasetDesignMode](../media/rs-shareddatasetdesignmode.gif "rs_SharedDatasetDesignMode")</span></span>  
+  
+ <span data-ttu-id="91e20-106">보고서의 데이터로 작업 하는 방법에 대 한 자세한 내용은 [보고서에 데이터 추가 &#40;보고서 작성기 및 SSRS&#41;](../report-data/report-datasets-ssrs.md)를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="91e20-106">For more information about working with data in a report, see [Add Data to a Report &#40;Report Builder and SSRS&#41;](../report-data/report-datasets-ssrs.md).</span></span>  
+  
+##  <a name="the-ribbon"></a><a name="Ribbon"></a><span data-ttu-id="91e20-107">리본 메뉴</span><span class="sxs-lookup"><span data-stu-id="91e20-107">The Ribbon</span></span>  
+ <span data-ttu-id="91e20-108">리본은 태스크를 완료하는 데 필요한 명령을 빠르게 찾을 수 있도록 도와줍니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-108">The Ribbon helps you quickly find the commands that you need to complete a task.</span></span> <span data-ttu-id="91e20-109">명령은 연결, 데이터 세트, 쿼리 디자이너 같은 논리 그룹에 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-109">Commands are organized into the following logical groups: Connection, Dataset, and Query Designer.</span></span>  
+  
+### <a name="connection"></a><span data-ttu-id="91e20-110">연결</span><span class="sxs-lookup"><span data-stu-id="91e20-110">Connection</span></span>  
+ <span data-ttu-id="91e20-111">연결 그룹의 **선택** 단추를 사용하여 보고서에서 공유 데이터 원본을 선택하거나 보고서 서버에서 공유 데이터 원본을 찾습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-111">Use the **Select** button in the Connection group to select a shared data source in your report, or browse to a shared data source on the report server.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="91e20-112">공유 데이터 세트는 공유 데이터 원본을 기반으로 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-112">A shared dataset must be based on a shared data source.</span></span> <span data-ttu-id="91e20-113">필요한 데이터 원본을 사용할 수 없는 경우 보고서 서버에서 만들어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-113">If the data source that you need is not available, you must create one on the report server.</span></span> <span data-ttu-id="91e20-114">자세한 내용은 온라인 설명서의 Reporting Services 설명서에서 [공유 데이터 원본 만들기, 삭제 또는 수정 &#40;보고서 관리자&#41;](../create-delete-or-modify-a-shared-data-source-report-manager.md) 을 참조 하십시오 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [Books Online](https://go.microsoft.com/fwlink/?linkid=121312).</span><span class="sxs-lookup"><span data-stu-id="91e20-114">For more information, see [Create, Delete, or Modify a Shared Data Source &#40;Report Manager&#41;](../create-delete-or-modify-a-shared-data-source-report-manager.md) in the Reporting Services documentation in [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)][Books Online](https://go.microsoft.com/fwlink/?linkid=121312).</span></span>  
+  
+ <span data-ttu-id="91e20-115">자세한 내용은 [데이터 연결, 데이터 원본 및 연결 문자열](../data-connections-data-sources-and-connection-strings-in-report-builder.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="91e20-115">For more information, see [Data Connections, Data Sources, and Connection Strings in Report Builder](../data-connections-data-sources-and-connection-strings-in-report-builder.md).</span></span>  
+  
+### <a name="dataset"></a><span data-ttu-id="91e20-116">데이터 세트</span><span class="sxs-lookup"><span data-stu-id="91e20-116">Dataset</span></span>  
+ <span data-ttu-id="91e20-117">**옵션 설정** 단추를 사용하여 공유 데이터 세트 속성을 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-117">Use the **Set Options** button to set shared dataset properties.</span></span> <span data-ttu-id="91e20-118">여기에는 다음과 같은 옵션이 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-118">These include the following:</span></span>  
+  
+-   <span data-ttu-id="91e20-119">필드.</span><span class="sxs-lookup"><span data-stu-id="91e20-119">Fields.</span></span> <span data-ttu-id="91e20-120">필드 컬렉션에 필드를 추가하거나 편집할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-120">You can add a field or edit a field in the field collection.</span></span>  
+  
+-   <span data-ttu-id="91e20-121">데이터 옵션.</span><span class="sxs-lookup"><span data-stu-id="91e20-121">Data options.</span></span> <span data-ttu-id="91e20-122">대/소문자 구분 및 데이터 정렬처럼 일치 조건과 데이터 정렬 순서에 영향을 주는 옵션을 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-122">You can set options that affect match criteria and sort order, such as case sensitivity and collation.</span></span>  
+  
+-   <span data-ttu-id="91e20-123">필터.</span><span class="sxs-lookup"><span data-stu-id="91e20-123">Filters.</span></span> <span data-ttu-id="91e20-124">데이터 연결에서 검색된 보고서 데이터를 제한하는 필터를 정의할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-124">You can define filters that limit the data in a report after it is retrieved from the data connection.</span></span>  
+  
+-   <span data-ttu-id="91e20-125">매개 변수.</span><span class="sxs-lookup"><span data-stu-id="91e20-125">Parameters.</span></span> <span data-ttu-id="91e20-126">매개 변수를 추가하거나 매개 변수 옵션을 편집할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-126">You can add a parameter or edit parameter options.</span></span> <span data-ttu-id="91e20-127">예를 들어 보고서 서버에서 이 공유 데이터 세트에 대한 캐시 새로 고침 계획을 만들 수 있도록 각 매개 변수에 대한 기본값을 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-127">For example, you can specify a default value for each parameter so that you can create a cache refresh plan for this shared dataset on the report server.</span></span>  
+  
+ <span data-ttu-id="91e20-128">설정한 값이 보고서 서버에서 공유 데이터 세트 정의의 일부가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-128">The values that you set become part of the shared dataset definition on the report server.</span></span> <span data-ttu-id="91e20-129">보고서 작성자가 이 공유 데이터 세트를 보고서에 포함시키면 지정한 옵션이 해당 데이터 세트 인스턴스에 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-129">When a report author includes this shared dataset in a report, the options that you specify apply to that dataset instance.</span></span>  
+  
+ <span data-ttu-id="91e20-130">공유 데이터 세트가 보고서에 추가되면 보고서 작성자가 데이터 정렬, 대/소문자 구분, 악센트 구분, 일본어 가나 구분, 전자/반자 구분, 부분합 옵션을 재정의할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-130">After a shared dataset is added to a report, a report author can override the following options: collation, case sensitivity, accent sensitivity, kanatype sensitivity, width sensitivity, subtotals.</span></span> <span data-ttu-id="91e20-131">또한 데이터 세트 필터를 추가로 만들어 보고서에서 데이터를 제한할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-131">They can also create additional dataset filters to limit the data in the report.</span></span>  
+  
+ <span data-ttu-id="91e20-132">자세한 내용은 [보고서 포함된 데이터 세트 및 공유 데이터 세트&#40;보고서 작성기 및 SSRS&#41;](../report-data/report-embedded-datasets-and-shared-datasets-report-builder-and-ssrs.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="91e20-132">For more information, see [Report Embedded Datasets and Shared Datasets &#40;Report Builder and SSRS&#41;](../report-data/report-embedded-datasets-and-shared-datasets-report-builder-and-ssrs.md).</span></span>  
+  
+ <span data-ttu-id="91e20-133">캐시 새로 고침 계획에 대 한 자세한 내용은 온라인 설명서의 Reporting Services 설명서에서 [공유 데이터 집합 캐시 &#40;SSRS&#41;](../report-server/cache-shared-datasets-ssrs.md) 를 참조 하세요 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [Books Online](https://go.microsoft.com/fwlink/?linkid=121312).</span><span class="sxs-lookup"><span data-stu-id="91e20-133">For more information about cache refresh plans, see [Cache Shared Datasets &#40;SSRS&#41;](../report-server/cache-shared-datasets-ssrs.md) in the Reporting Services documentation in [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [Books Online](https://go.microsoft.com/fwlink/?linkid=121312).</span></span>  
+  
+### <a name="query-designer"></a><span data-ttu-id="91e20-134">쿼리 디자이너</span><span class="sxs-lookup"><span data-stu-id="91e20-134">Query Designer</span></span>  
+ <span data-ttu-id="91e20-135">쿼리 디자이너 도구 모음을 사용하면 데이터 연결에서 검색할 데이터를 지정하는 쿼리를 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-135">Use the query designer toolbar to help build a query that specifies which data to retrieve from the data connection.</span></span> <span data-ttu-id="91e20-136">표시되는 도구 모음은 데이터 연결의 데이터 원본 유형과 연결된 쿼리 디자이너에 따라 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-136">The toolbar that you see depends on the query designer that is associated with the data source type from the data connection.</span></span>  
+  
+ <span data-ttu-id="91e20-137">자세한 내용은 데이터 원본 유형에 해당 하는 항목을 참조 하십시오 .이 항목은 [외부 데이터 원본의 데이터 추가 &#40;SSRS&#41;](../report-data/add-data-from-external-data-sources-ssrs.md) 및 [쿼리 디자이너 &#40;보고서 작성기&#41;](../query-designers-report-builder.md)에 해당 합니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-137">For more information, see the topic that corresponds to the data source type in [Add Data from External Data Sources &#40;SSRS&#41;](../report-data/add-data-from-external-data-sources-ssrs.md) and [Query Designers &#40;Report Builder&#41;](../query-designers-report-builder.md).</span></span>  
+  
+
+  
+##  <a name="the-query-designer-surface"></a><a name="DesignSurface"></a><span data-ttu-id="91e20-138">쿼리 디자이너 화면</span><span class="sxs-lookup"><span data-stu-id="91e20-138">The Query Designer Surface</span></span>  
+ <span data-ttu-id="91e20-139">쿼리 디자이너를 사용하면 외부 데이터 원본에 필요한 구문으로 쿼리를 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-139">A query designer helps you to build a query in the syntax that is required by the external data source.</span></span>  
+  
+ <span data-ttu-id="91e20-140">일부 데이터 원본 유형은 외부 데이터 원본의 메타데이터를 탐색하는 데 사용할 수 있는 그래픽 쿼리 디자이너를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-140">Some data source types provide a graphical query designer that you can use to explore the metadata on an external data source.</span></span> <span data-ttu-id="91e20-141">메타데이터 창에서 이름을 쿼리 디자인 화면으로 대화형으로 끌어 오거나 사용할 이름을 대화형으로 선택할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-141">You can interactively drag names from the metadata pane to the query design surface, or interactively select the names to use.</span></span>  
+  
+ <span data-ttu-id="91e20-142">일부 데이터 원본 유형은 [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]등의 다른 도구에서 만든 쿼리에 붙여넣는 데 사용할 수 있는 텍스트 기반 쿼리 디자이너를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-142">Some data source types support a text-based query designer that you can use to paste in queries that you have created in other tools, such as [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)].</span></span>  
+  
+ <span data-ttu-id="91e20-143">각 데이터 원본 유형은 외부 데이터 원본에서 작동하는 쿼리에 대한 특정 요구 사항이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-143">Each data source type has specific requirements for the query that will work against the external data source.</span></span> <span data-ttu-id="91e20-144">자세한 내용은 온라인 설명서의&#41;설명서에서 ssrs&#41;및 [&#40;Reporting Services에서 지 원하는 데이터](../create-deploy-and-manage-mobile-and-paginated-reports.md) 원본 [&#40;ssrs](../report-data/add-data-from-external-data-sources-ssrs.md) 의 데이터 원본 유형에 해당 하는 항목을 참조 하세요 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [Books Online](https://go.microsoft.com/fwlink/?linkid=121312).</span><span class="sxs-lookup"><span data-stu-id="91e20-144">For more information, see the topic that corresponds to the data source type in [Add Data from External Data Sources &#40;SSRS&#41;](../report-data/add-data-from-external-data-sources-ssrs.md) and [Data Sources Supported by Reporting Services &#40;SSRS&#41;](../create-deploy-and-manage-mobile-and-paginated-reports.md) in the Reporting Services documentation in [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [Books Online](https://go.microsoft.com/fwlink/?linkid=121312).</span></span>  
+  
+
+  
+##  <a name="viewing-query-results"></a><a name="Results"></a><span data-ttu-id="91e20-145">쿼리 결과 보기</span><span class="sxs-lookup"><span data-stu-id="91e20-145">Viewing Query Results</span></span>  
+ <span data-ttu-id="91e20-146">보고서가 처리될 때 데이터 연결에서 데이터를 검색하는 쿼리를 공유 데이터 세트 디자인 뷰에서 작성합니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-146">In shared dataset design view, you are building a query that will retrieve data from the data connection when the report is processed.</span></span>  
+  
+ <span data-ttu-id="91e20-147">쿼리를 실행하여 데이터 연결의 예제 데이터를 검토하여 쿼리가 예상되는 데이터 형식을 반환하는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-147">Run the query to see example data from the data connection to verify that the query returns the type of data that you expect.</span></span> <span data-ttu-id="91e20-148">결과 집합의 열은 데이터 연결의 데이터 스키마에 대한 메타데이터에서 가져온 것입니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-148">The columns in the result set come from the metadata for data schemas from the data connection.</span></span> <span data-ttu-id="91e20-149">열 이름은 데이터 세트 필드 컬렉션이 됩니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-149">The column names become the dataset field collection.</span></span> <span data-ttu-id="91e20-150">쿼리 결과 집합에 표시되는 데이터 값은 디자인 타임 데이터입니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-150">The values of the data that you see in the query result set is design time data.</span></span> <span data-ttu-id="91e20-151">공유 데이터 세트를 보고서 서버에 공유 데이터 세트 정의로 저장하면 쿼리 텍스트만 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-151">After you save the shared dataset as a shared dataset definition on the report server, only the query text is saved.</span></span> <span data-ttu-id="91e20-152">쿼리 결과 집합의 데이터는 저장되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-152">The data in the query result set is not saved.</span></span>  
+  
+ <span data-ttu-id="91e20-153">보고서 작성자가 이 공유 데이터 세트를 보고서에 추가하면 보고서 서버의 데이터 세트 정의에 대한 포인터가 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-153">When a report author adds this shared dataset to a report, a pointer to the dataset definition on the report server is added.</span></span> <span data-ttu-id="91e20-154">보고서에서 데이터 세트 필드 컬렉션은 보고서 데이터 창에 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-154">In the report, the dataset field collection appears in the Report Data pane.</span></span> <span data-ttu-id="91e20-155">쿼리 텍스트는 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-155">The query text is not available.</span></span>  
+  
+ <span data-ttu-id="91e20-156">쿼리를 실행하기 위해 사용한 자격 증명은 보고서 서버에서 보고서를 미리 보거나 보고서를 실행할 때 사용한 자격 증명과 구분됩니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-156">The credentials that you use to run a query are separate from the credentials that are used to preview a report or to run a report from the report server.</span></span> <span data-ttu-id="91e20-157">자세한 내용은 [보고서 작성기에 자격 증명 지정](../specify-credentials-in-report-builder.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="91e20-157">For more information, see [Specify Credentials in Report Builder](../specify-credentials-in-report-builder.md).</span></span>  
+  
+### <a name="running-a-report-with-parameters"></a><span data-ttu-id="91e20-158">매개 변수가 있는 보고서 실행</span><span class="sxs-lookup"><span data-stu-id="91e20-158">Running a Report with Parameters</span></span>  
+ <span data-ttu-id="91e20-159">쿼리에 쿼리 변수가 포함되는 경우 데이터 세트 매개 변수가 자동으로 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-159">When your query includes query variables, dataset parameters are created automatically for you.</span></span> <span data-ttu-id="91e20-160">또한 데이터 세트 쿼리 작성을 마치면 데이터 세트 매개 변수로 설정된 보고서 매개 변수가 자동으로 만들어집니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-160">In turn, when you finish building the dataset query, report parameters that are set to dataset parameters are created automatically.</span></span>  
+  
+ <span data-ttu-id="91e20-161">보고서에 매개 변수가 있는 경우 모든 매개 변수에 기본값이 있어야 보고서를 자동으로 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-161">If a report contains parameters, all the parameters must have default values before the report can run automatically.</span></span> <span data-ttu-id="91e20-162">매개 변수에 기본값이 없는 경우 보고서를 실행할 때에는 매개 변수 값을 선택한 후 **실행** 탭에서 **보고서 보기** 를 클릭해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-162">If a parameter does not have a default value, when you run the report you must choose a value for the parameter, and then click **View Report** on the **Run** tab.</span></span>  
+  
+ <span data-ttu-id="91e20-163">자세한 내용은 [보고서 매개 변수&#40;보고서 작성기 및 보고서 디자이너&#41;](../report-design/report-parameters-report-builder-and-report-designer.md)에 대해 자세히 알아봅니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-163">For more information, see [Report Parameters &#40;Report Builder and Report Designer&#41;](../report-design/report-parameters-report-builder-and-report-designer.md).</span></span>  
+  
+
+  
+##  <a name="saving-the-shared-dataset"></a><a name="Save"></a> <span data-ttu-id="91e20-164">공유 데이터 세트 저장</span><span class="sxs-lookup"><span data-stu-id="91e20-164">Saving the Shared Dataset</span></span>  
+ <span data-ttu-id="91e20-165">작성한 쿼리를 저장하려면 **보고서 작성기** 단추에서 **저장** 또는 **다른 이름으로 저장**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-165">To save the query that you built, on the **Report Builder** button, click **Save** or **Save As**.</span></span> <span data-ttu-id="91e20-166">보고서 서버에서 해당 폴더로 이동하고 공유 데이터 세트 정의를 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-166">Navigate to the appropriate folder on the report server and save the shared dataset definition.</span></span> <span data-ttu-id="91e20-167">공유 데이터 세트는 보고서 서버에 저장할 때까지 다른 사용자가 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="91e20-167">The shared dataset is not available to others until you save it to the report server.</span></span>  
+  
+
+  
+## <a name="see-also"></a><span data-ttu-id="91e20-168">참고 항목</span><span class="sxs-lookup"><span data-stu-id="91e20-168">See Also</span></span>  
+ <span data-ttu-id="91e20-169">[보고서 &#40;보고서 작성기 및 SSRS&#41;에 데이터를 추가 합니다.](../report-data/report-datasets-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="91e20-169">[Add Data to a Report &#40;Report Builder and SSRS&#41;](../report-data/report-datasets-ssrs.md) </span></span>  
+ <span data-ttu-id="91e20-170">[데이터 필터링, 그룹화 및 정렬 &#40;보고서 작성기 및 SSRS&#41;](../report-design/filter-group-and-sort-data-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="91e20-170">[Filter, Group, and Sort Data &#40;Report Builder and SSRS&#41;](../report-design/filter-group-and-sort-data-report-builder-and-ssrs.md) </span></span>  
+ [<span data-ttu-id="91e20-171">보고서 매개 변수&#40;보고서 작성기 및 보고서 디자이너&#41;</span><span class="sxs-lookup"><span data-stu-id="91e20-171">Report Parameters &#40;Report Builder and Report Designer&#41;</span></span>](../report-design/report-parameters-report-builder-and-report-designer.md)  
+  
+  

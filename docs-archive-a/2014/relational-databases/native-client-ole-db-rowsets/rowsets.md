@@ -1,0 +1,67 @@
+---
+title: 행 집합 | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: native-client
+ms.topic: reference
+helpviewer_keywords:
+- rowsets [OLE DB], about rowsets
+- SQL Server Native Client OLE DB provider, rowsets
+- OLE DB rowsets
+- OLE DB rowsets, about rowsets
+- rowsets [OLE DB]
+ms.assetid: 5e7b3cbe-3670-4e18-8172-2226e0b6b142
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 1245d17dc0f3757b3c212146c8c162de6e48a483
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87648373"
+---
+# <a name="rowsets"></a><span data-ttu-id="1cad3-102">행 집합</span><span class="sxs-lookup"><span data-stu-id="1cad3-102">Rowsets</span></span>
+  <span data-ttu-id="1cad3-103">행 집합은 데이터 열이 포함된 행의 집합입니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-103">A rowset is a set of rows that contain columns of data.</span></span> <span data-ttu-id="1cad3-104">행 집합은 모든 OLE DB 데이터 공급자가 결과 집합 데이터를 테이블 형식으로 노출할 수 있도록 하는 중앙 개체입니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-104">Rowsets are central objects that enable all OLE DB data providers to expose result set data in tabular form.</span></span>  
+  
+ <span data-ttu-id="1cad3-105">소비자는 **IDBCreateSession::CreateSession** 메서드를 사용하여 세션을 만든 후 세션에서 **IOpenRowset** 또는 **IDBCreateCommand** 인터페이스를 사용하여 행 집합을 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-105">After a consumer creates a session by using the **IDBCreateSession::CreateSession** method, the consumer can use either the **IOpenRowset** or **IDBCreateCommand** interface on the session to create a rowset.</span></span> <span data-ttu-id="1cad3-106">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]Native Client OLE DB 공급자는 두 인터페이스를 모두 지원 합니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-106">The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB provider supports both of these interfaces.</span></span> <span data-ttu-id="1cad3-107">여기서는 두 메서드에 대해 모두 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-107">Both of these methods are described here.</span></span>  
+  
+-   <span data-ttu-id="1cad3-108">**IOpenRowset::OpenRowset** 메서드를 호출하여 행 집합을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-108">Create a rowset by calling the **IOpenRowset::OpenRowset** method.</span></span>  
+  
+     <span data-ttu-id="1cad3-109">이것은 단일 테이블에 대해 행 집합을 만드는 것과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-109">This is equivalent to creating a rowset over a single table.</span></span> <span data-ttu-id="1cad3-110">이 메서드는 단일 기본 테이블의 모든 행이 포함된 행 집합을 열고 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-110">This method opens and returns a rowset that includes all of the rows from a single base table.</span></span> <span data-ttu-id="1cad3-111">**OpenRowset**에 대한 인수 중 하나는 행 집합을 만드는 데 사용할 테이블을 식별하는 테이블 ID입니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-111">One of the arguments to **OpenRowset** is a table ID that identifies the table from which to create the rowset.</span></span>  
+  
+-   <span data-ttu-id="1cad3-112">**IDBCreateCommand::CreateCommand** 메서드를 호출하여 명령 개체를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-112">Create a command object by calling the **IDBCreateCommand::CreateCommand** method.</span></span>  
+  
+     <span data-ttu-id="1cad3-113">명령 개체는 공급자가 지원하는 명령을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-113">The command object executes commands that the provider supports.</span></span> <span data-ttu-id="1cad3-114">소비자는 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB 공급자를 사용하여 SELECT 문이나 저장 프로시저 호출과 같은 [!INCLUDE[tsql](../../includes/tsql-md.md)] 문을 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-114">With the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB provider, the consumer can specify any [!INCLUDE[tsql](../../includes/tsql-md.md)] statement, such as a SELECT statement or a call to a stored procedure.</span></span> <span data-ttu-id="1cad3-115">명령 개체를 사용하여 행 집합을 만드는 단계는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-115">The steps for creating a rowset by using a command object are:</span></span>  
+  
+    1.  <span data-ttu-id="1cad3-116">소비자는 세션에서 **IDBCreateCommand::CreateCommand** 메서드를 호출하여 명령 개체를 가져오고 해당 명령 개체에서 **ICommandText** 인터페이스를 요청합니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-116">The consumer calls the **IDBCreateCommand::CreateCommand** method on the session to get a command object requesting the **ICommandText** interface on the command object.</span></span> <span data-ttu-id="1cad3-117">이 **ICommandText** 인터페이스는 실제 명령 텍스트를 설정하고 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-117">This **ICommandText** interface sets and retrieves the actual command text.</span></span> <span data-ttu-id="1cad3-118">소비자는 **ICommandText::SetCommandText** 메서드를 호출하여 텍스트 명령을 채웁니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-118">The consumer fills in the text command by calling the **ICommandText::SetCommandText** method.</span></span>  
+  
+    2.  <span data-ttu-id="1cad3-119">사용자는 명령에서 **ICommand::Execute** 메서드를 호출합니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-119">The user calls the **ICommand::Execute** method on the command.</span></span> <span data-ttu-id="1cad3-120">명령을 실행할 때 작성된 행 집합 개체에는 명령의 결과 집합이 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-120">The rowset object built when the command executes contains the result set from the command.</span></span>  
+  
+ <span data-ttu-id="1cad3-121">소비자는 **ICommandProperties** 인터페이스를 사용하여 **ICommand::Execute** 인터페이스가 실행한 명령에서 반환된 행 집합의 속성을 가져오거나 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-121">The consumer can use the **ICommandProperties** interface to get or set the properties for the rowset returned by the command executed by the **ICommand::Execute** interfaces.</span></span> <span data-ttu-id="1cad3-122">자주 요청되는 속성은 행 집합에서 지원해야 하는 인터페이스입니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-122">The most commonly requested properties are the interfaces the rowset must support.</span></span> <span data-ttu-id="1cad3-123">인터페이스 외에도 소비자는 행 집합이나 인터페이스의 동작을 수정하는 속성을 요청할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-123">In addition to interfaces, the consumer can request properties that modify the behavior of the rowset or interface.</span></span>  
+  
+ <span data-ttu-id="1cad3-124">소비자는 **IRowset::Release** 메서드를 사용하여 행 집합을 해제합니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-124">Consumers release rowsets with the **IRowset::Release** method.</span></span> <span data-ttu-id="1cad3-125">행 집합을 해제하면 해당 행 집합에서 소비자가 보유한 행 핸들이 모두 해제됩니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-125">Releasing a rowset releases any row handles held by the consumer on that rowset.</span></span> <span data-ttu-id="1cad3-126">행 집합을 해제해도 접근자는 해제되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-126">Releasing a rowset does not release the accessors.</span></span> <span data-ttu-id="1cad3-127">**IAccessor** 인터페이스가 있는 경우 이를 해제해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="1cad3-127">If you have an **IAccessor** interface, it still has to be released.</span></span>  
+  
+## <a name="in-this-section"></a><span data-ttu-id="1cad3-128">섹션 내용</span><span class="sxs-lookup"><span data-stu-id="1cad3-128">In This Section</span></span>  
+  
+-   [<span data-ttu-id="1cad3-129">IOpenRowset을 사용하여 행 집합 만들기</span><span class="sxs-lookup"><span data-stu-id="1cad3-129">Creating a Rowset with IOpenRowset</span></span>](creating-a-rowset-with-iopenrowset.md)  
+  
+-   [<span data-ttu-id="1cad3-130">ICommand::Execute를 사용하여 행 집합 만들기</span><span class="sxs-lookup"><span data-stu-id="1cad3-130">Creating Rowsets with ICommand::Execute</span></span>](creating-rowsets-with-icommand-execute.md)  
+  
+-   [<span data-ttu-id="1cad3-131">행 집합 속성 및 동작</span><span class="sxs-lookup"><span data-stu-id="1cad3-131">Rowset Properties and Behaviors</span></span>](rowset-properties-and-behaviors.md)  
+  
+-   [<span data-ttu-id="1cad3-132">행 집합 및 SQL Server 커서</span><span class="sxs-lookup"><span data-stu-id="1cad3-132">Rowsets and SQL Server Cursors</span></span>](rowsets-and-sql-server-cursors.md)  
+  
+-   [<span data-ttu-id="1cad3-133">행 인출</span><span class="sxs-lookup"><span data-stu-id="1cad3-133">Fetching Rows</span></span>](fetching-rows.md)  
+  
+-   [<span data-ttu-id="1cad3-134">IRow를 사용하여 단일 행 인출</span><span class="sxs-lookup"><span data-stu-id="1cad3-134">Fetching a Single Row with IRow</span></span>](fetching-a-single-row-with-irow.md)  
+  
+-   [<span data-ttu-id="1cad3-135">책갈피</span><span class="sxs-lookup"><span data-stu-id="1cad3-135">Bookmarks</span></span>](bookmarks.md)  
+  
+-   [<span data-ttu-id="1cad3-136">행 집합의 데이터 업데이트</span><span class="sxs-lookup"><span data-stu-id="1cad3-136">Updating Data in Rowsets</span></span>](updating-data-in-rowsets.md)  
+  
+## <a name="see-also"></a><span data-ttu-id="1cad3-137">참고 항목</span><span class="sxs-lookup"><span data-stu-id="1cad3-137">See Also</span></span>  
+ [<span data-ttu-id="1cad3-138">SQL Server Native Client&#40;OLE DB&#41;</span><span class="sxs-lookup"><span data-stu-id="1cad3-138">SQL Server Native Client &#40;OLE DB&#41;</span></span>](../native-client/ole-db/sql-server-native-client-ole-db.md)  
+  
+  
