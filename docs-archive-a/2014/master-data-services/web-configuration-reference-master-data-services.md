@@ -1,0 +1,71 @@
+---
+title: 웹 구성 참조(Master Data Services) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: master-data-services
+ms.topic: conceptual
+helpviewer_keywords:
+- web configuration file [Master Data Services]
+ms.assetid: b8cc9a35-97ab-4fe0-ab4b-c07f13d9793a
+author: lrtoyou1223
+ms.author: lle
+ms.openlocfilehash: 71e72bdb45a29c29c2187c381f67a525f0bd51c5
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87740095"
+---
+# <a name="web-configuration-reference-master-data-services"></a><span data-ttu-id="ab0c4-102">웹 구성 참조(Master Data Services)</span><span class="sxs-lookup"><span data-stu-id="ab0c4-102">Web Configuration Reference (Master Data Services)</span></span>
+  [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] <span data-ttu-id="ab0c4-103">에서는 IIS(인터넷 정보 서비스)가 [!INCLUDE[ssMDSmdm](../includes/ssmdsmdm-md.md)] 웹 애플리케이션 및 웹 서비스를 호스트할 수 있도록 하는 구성 설정이 Web.config 파일에 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-103">uses a Web.config file to contain the configuration settings that enable Internet Information Services (IIS) to host the [!INCLUDE[ssMDSmdm](../includes/ssmdsmdm-md.md)] Web application and the Web service.</span></span> <span data-ttu-id="ab0c4-104">이 Web.config 파일은 [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] 설치 경로의 WebApplication 폴더에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-104">This Web.config file is located in the WebApplication folder of the [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] installation path.</span></span> <span data-ttu-id="ab0c4-105">경로 및 사용 권한에 대한 자세한 내용은 [폴더 및 파일 사용 권한&#40;Master Data Services&#41;](folder-and-file-permissions-master-data-services.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-105">For more information about the path and permissions, see [Folder and File Permissions &#40;Master Data Services&#41;](folder-and-file-permissions-master-data-services.md).</span></span>  
+  
+## <a name="webconfig-elements"></a><span data-ttu-id="ab0c4-106">Web.Config 요소</span><span class="sxs-lookup"><span data-stu-id="ab0c4-106">Web.Config Elements</span></span>  
+ <span data-ttu-id="ab0c4-107">Web.config 파일에는 [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] **\<masterDataServices>** 표준 IIS, .NET Framework, ASP.NET 및 WINDOWS COMMUNICATION FOUNDATION (WCF) 구성 요소 외에도 사용자 지정 요소인가 포함 되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-107">The Web.config file contains a custom [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] element, **\<masterDataServices>**, in addition to standard IIS, .NET Framework, ASP.NET, and Windows Communication Foundation (WCF) configuration elements.</span></span> <span data-ttu-id="ab0c4-108">다음 표에서는 Web.config 파일에 포함된 요소에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-108">The following table describes the elements included in the Web.config file.</span></span>  
+  
+|<span data-ttu-id="ab0c4-109">구성 요소</span><span class="sxs-lookup"><span data-stu-id="ab0c4-109">Configuration Element</span></span>|<span data-ttu-id="ab0c4-110">설명</span><span class="sxs-lookup"><span data-stu-id="ab0c4-110">Description</span></span>|  
+|---------------------------|-----------------|  
+|`masterDataServices`|<span data-ttu-id="ab0c4-111">사용자 지정 요소.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-111">Custom element.</span></span> <span data-ttu-id="ab0c4-112">[!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] 웹 서비스를 [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] 데이터베이스에 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-112">Connects the [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] Web service to a [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] database.</span></span>|  
+|`connectionStrings`|<span data-ttu-id="ab0c4-113">ASP.NET 요소.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-113">ASP.NET element.</span></span> <span data-ttu-id="ab0c4-114">자세한 내용은 MSDN Library에서 [connectionStrings 요소(ASP.NET 설정 스키마)](https://go.microsoft.com/fwlink/?LinkId=178347) 를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-114">For more information, see [connectionStrings Element (ASP.NET Settings Schema)](https://go.microsoft.com/fwlink/?LinkId=178347) in the MSDN Library.</span></span>|  
+|`system.web`|<span data-ttu-id="ab0c4-115">ASP.NET 요소.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-115">ASP.NET element.</span></span> <span data-ttu-id="ab0c4-116">자세한 내용은 MSDN Library에서 [system.web 요소(ASP.NET 설정 스키마)](https://go.microsoft.com/fwlink/?LinkId=178348) 를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-116">For more information, see [system.web Element (ASP.NET Settings Schema)](https://go.microsoft.com/fwlink/?LinkId=178348) in the MSDN Library.</span></span>|  
+|`startup`|<span data-ttu-id="ab0c4-117">.NET Framework 요소.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-117">.NET Framework element.</span></span> <span data-ttu-id="ab0c4-118">자세한 내용은 MSDN Library의 [ \<startup> 요소](https://go.microsoft.com/fwlink/?LinkId=178349) 를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-118">For more information, see [\<startup> Element](https://go.microsoft.com/fwlink/?LinkId=178349) in the MSDN Library.</span></span>|  
+|`runtime`|<span data-ttu-id="ab0c4-119">.NET Framework 요소.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-119">.NET Framework element.</span></span> <span data-ttu-id="ab0c4-120">자세한 내용은 MSDN Library의 [ \<runtime> 요소](https://go.microsoft.com/fwlink/?LinkId=178350) 를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-120">For more information, see [\<runtime> Element](https://go.microsoft.com/fwlink/?LinkId=178350) in the MSDN Library.</span></span>|  
+|`system.codedom`|<span data-ttu-id="ab0c4-121">.NET Framework 요소.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-121">.NET Framework element.</span></span> <span data-ttu-id="ab0c4-122">자세한 내용은 MSDN Library의 [ \<system.codedom> 요소](https://go.microsoft.com/fwlink/?LinkId=178351) 를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-122">For more information, see [\<system.codedom> Element](https://go.microsoft.com/fwlink/?LinkId=178351) in the MSDN Library.</span></span>|  
+|`system.web.extensions`|<span data-ttu-id="ab0c4-123">ASP.NET 요소.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-123">ASP.NET element.</span></span> <span data-ttu-id="ab0c4-124">자세한 내용은 MSDN Library에서 [system.web.extensions 요소(ASP.NET 설정 스키마)](https://go.microsoft.com/fwlink/?LinkId=178352) 를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-124">For more information, see [system.web.extensions Element (ASP.NET Settings Schema)](https://go.microsoft.com/fwlink/?LinkId=178352) in the MSDN Library.</span></span>|  
+|`system.webServer`|<span data-ttu-id="ab0c4-125">IIS 요소를 포함하는 섹션 그룹.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-125">Section group that contains IIS elements.</span></span> <span data-ttu-id="ab0c4-126">자세한 내용은 MSDN Library에서 [system.webServer 섹션 그룹 \[IIS 7 설정 스키마\]](https://go.microsoft.com/fwlink/?LinkId=178353)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-126">For more information, see [system.webServer Section Group \[IIS 7 Settings Schema\]](https://go.microsoft.com/fwlink/?LinkId=178353) in the MSDN Library.</span></span>|  
+|`system.serviceModel`|<span data-ttu-id="ab0c4-127">WCF 요소.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-127">WCF element.</span></span> <span data-ttu-id="ab0c4-128">자세한 내용은 [\<system.serviceModel>](https://go.microsoft.com/fwlink/?LinkId=178354) MSDN 라이브러리의을 참조 하십시오.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-128">For more information, see [\<system.serviceModel>](https://go.microsoft.com/fwlink/?LinkId=178354) in the MSDN Library.</span></span>|  
+|`system.diagnostics`|<span data-ttu-id="ab0c4-129">.NET Framework 요소.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-129">.NET Framework element.</span></span> <span data-ttu-id="ab0c4-130">자세한 내용은 MSDN Library의 [ \<system.diagnostics> 요소](https://go.microsoft.com/fwlink/?LinkId=178355) 를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-130">For more information, see [\<system.diagnostics> Element](https://go.microsoft.com/fwlink/?LinkId=178355) in the MSDN Library.</span></span>|  
+|`appSettings`|<span data-ttu-id="ab0c4-131">ASP.NET 요소.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-131">ASP.NET element.</span></span> <span data-ttu-id="ab0c4-132">자세한 내용은 MSDN Library에서 [appSettings 요소(일반 설정 스키마)](https://go.microsoft.com/fwlink/?LinkId=178356) 를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-132">For more information, see [appSettings Element (General Settings Schema)](https://go.microsoft.com/fwlink/?LinkId=178356) in the MSDN Library.</span></span>|  
+  
+## <a name="masterdataservices-element"></a><span data-ttu-id="ab0c4-133">masterDataServices 요소</span><span class="sxs-lookup"><span data-stu-id="ab0c4-133">masterDataServices Element</span></span>  
+ <span data-ttu-id="ab0c4-134">**\<masterDataServices>** 요소는 [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] 웹 서비스를 데이터베이스에 연결 하는 데 사용 되는 사용자 지정 요소입니다 [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="ab0c4-134">The **\<masterDataServices>** element is a custom element that is used to connect a [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] Web service to a [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] database.</span></span>  
+  
+### <a name="syntax"></a><span data-ttu-id="ab0c4-135">구문</span><span class="sxs-lookup"><span data-stu-id="ab0c4-135">Syntax</span></span>  
+  
+```  
+<masterDataServices>  
+   <instance virtualPath="path" siteName="name" connectionName="name" serviceName="name" />  
+</masterDataServices>  
+```  
+  
+### <a name="elements-and-attributes"></a><span data-ttu-id="ab0c4-136">요소 및 특성</span><span class="sxs-lookup"><span data-stu-id="ab0c4-136">Elements and Attributes</span></span>  
+  
+|<span data-ttu-id="ab0c4-137">항목</span><span class="sxs-lookup"><span data-stu-id="ab0c4-137">Item</span></span>|<span data-ttu-id="ab0c4-138">설명</span><span class="sxs-lookup"><span data-stu-id="ab0c4-138">Description</span></span>|  
+|----------|-----------------|  
+|`instance`|<span data-ttu-id="ab0c4-139">자식 요소.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-139">Child element.</span></span> <span data-ttu-id="ab0c4-140">웹 서비스와 데이터베이스 연결 문자열에 대한 정보를 지정하는 특성을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-140">Contains attributes that specify information for the Web service and database connection string.</span></span>|  
+|`virtualPath`|<span data-ttu-id="ab0c4-141">특성.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-141">Attribute.</span></span> <span data-ttu-id="ab0c4-142">[!INCLUDE[ssMDSmdm](../includes/ssmdsmdm-md.md)] 웹 애플리케이션 및 서비스의 가상 경로를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-142">Specifies the virtual path of the [!INCLUDE[ssMDSmdm](../includes/ssmdsmdm-md.md)] Web application and service.</span></span> <span data-ttu-id="ab0c4-143">이는 `path` **\<application>** **\<site>** IIS ApplicationHost.config 파일의 요소 아래에 있는 요소의 특성에 해당 합니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-143">This corresponds to the `path` attribute of the **\<application>** element under the **\<site>** element in the IIS ApplicationHost.config file.</span></span>|  
+|`siteName`|<span data-ttu-id="ab0c4-144">특성.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-144">Attribute.</span></span> <span data-ttu-id="ab0c4-145">[!INCLUDE[ssMDSmdm](../includes/ssmdsmdm-md.md)] 웹 애플리케이션과 서비스를 호스트하는 사이트의 이름을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-145">Specifies the name of the site that hosts the [!INCLUDE[ssMDSmdm](../includes/ssmdsmdm-md.md)] Web application and service.</span></span> <span data-ttu-id="ab0c4-146">이는 `name` **\<site>** **\<sites>** IIS ApplicationHost.config 파일의 아래에 있는 요소의 특성에 해당 합니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-146">This corresponds to the `name` attribute of the **\<site>** element under **\<sites>** in the IIS ApplicationHost.config file.</span></span>|  
+|`connectionName`|<span data-ttu-id="ab0c4-147">특성.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-147">Attribute.</span></span> <span data-ttu-id="ab0c4-148">사용할 연결 이름을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-148">Specifies the name of the connection to use.</span></span> <span data-ttu-id="ab0c4-149">이는 `name` **\<add>** Web.config의 요소 아래에 있는 요소의 특성에 해당 합니다 **\<connectionStrings>** .</span><span class="sxs-lookup"><span data-stu-id="ab0c4-149">This corresponds to the `name` attribute of the **\<add>** element under the **\<connectionStrings>** element in Web.config.</span></span>|  
+|`serviceName`|<span data-ttu-id="ab0c4-150">특성.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-150">Attribute.</span></span> <span data-ttu-id="ab0c4-151">웹 서비스의 이름을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-151">Specifies the name of the Web service.</span></span> <span data-ttu-id="ab0c4-152">이는 `name` **\<service>** Web.config의 요소 아래에 있는 요소의 특성에 해당 합니다 **\<services>** .</span><span class="sxs-lookup"><span data-stu-id="ab0c4-152">This corresponds to the `name` attribute of the **\<service>** element under the **\<services>** element in Web.config.</span></span>|  
+  
+### <a name="example"></a><span data-ttu-id="ab0c4-153">예제</span><span class="sxs-lookup"><span data-stu-id="ab0c4-153">Example</span></span>  
+ <span data-ttu-id="ab0c4-154">다음 예에서는 MDSDB를 통해 지정된 연결 문자열을 사용하는 /MDS 경로와 Contoso 사이트의 MDS1이라는 서비스를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="ab0c4-154">The following example demonstrates a service named MDS1 on the Contoso site and /MDS path using a connection string specified by MDSDB.</span></span>  
+  
+```  
+<masterDataServices>  
+   <instance virtualPath="/MDS" siteName="Contoso" connectionName="MDSDB" serviceName="MDS1" />  
+</masterDataServices>  
+```  
+  
+  
