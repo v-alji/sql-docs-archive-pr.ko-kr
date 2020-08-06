@@ -1,0 +1,98 @@
+---
+title: Hyperion Essbase 쿼리 디자이너 사용자 인터페이스 (보고서 작성기) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+f1_keywords:
+- "10013"
+helpviewer_keywords:
+- Hyperion Essbase query designer
+- query designers, Hyperion
+ms.assetid: d89a6773-dbe5-48e5-bda9-db0e67100696
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 38da75955608d95eb9fe673c7cdef5896bbe2787
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87743000"
+---
+# <a name="hyperion-essbase-query-designer-user-interface-report-builder"></a><span data-ttu-id="74545-102">Hyperion Essbase 쿼리 디자이너 사용자 인터페이스(보고서 작성기)</span><span class="sxs-lookup"><span data-stu-id="74545-102">Hyperion Essbase Query Designer User Interface (Report Builder)</span></span>
+  [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] <span data-ttu-id="74545-103">는 [!INCLUDE[extEssbase](../includes/extessbase-md.md)] 데이터 원본에 대한 MDX(Multidimensional Expression) 쿼리를 작성하기 위한 그래픽 쿼리 디자이너를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-103">provides a graphical query designer for building Multidimensional Expression (MDX) queries for a [!INCLUDE[extEssbase](../includes/extessbase-md.md)] data source.</span></span> <span data-ttu-id="74545-104">MDX 그래픽 쿼리 디자이너에는 디자인 모드와 쿼리 모드의 두 가지 모드가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-104">The MDX graphical query designer has two modes: Design mode and Query mode.</span></span> <span data-ttu-id="74545-105">각 모드는 메타데이터 창을 제공하며 이 창을 통해 데이터 원본에 정의되어 있는 큐브에서 멤버를 끌어 보고서 처리 시 데이터를 검색하는 MDX 쿼리를 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-105">Each mode provides a Metadata pane from which you can drag members from a cube defined on the data source to build an MDX query that retrieves data when the report is processed.</span></span>
+
+> [!IMPORTANT]
+>  <span data-ttu-id="74545-106">사용자는 쿼리를 작성하고 실행할 때 데이터 원본에 액세스합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-106">Users access data sources when they create and run queries.</span></span> <span data-ttu-id="74545-107">데이터 원본에 대해서는 읽기 전용 권한과 같이 최소한의 사용 권한을 부여해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-107">You should grant minimal permissions on the data sources, such as read-only permissions.</span></span>
+
+ <span data-ttu-id="74545-108">이 섹션에서는 그래픽 쿼리 디자이너의 각 모드에 있는 도구 모음 단추와 쿼리 디자이너 창에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-108">This section describes the toolbar buttons and query designer panes for each mode of the graphical query designer.</span></span>
+
+## <a name="graphical-query-designer-in-design-mode"></a><span data-ttu-id="74545-109">디자인 모드의 그래픽 쿼리 디자이너</span><span class="sxs-lookup"><span data-stu-id="74545-109">Graphical Query Designer in Design Mode</span></span>
+ <span data-ttu-id="74545-110">[!INCLUDE[extEssbase](../includes/extessbase-md.md)] 데이터 원본을 사용하는 데이터 세트에 대한 MDX 쿼리를 편집할 경우 그래픽 쿼리 디자이너가 디자인 모드에서 열립니다.</span><span class="sxs-lookup"><span data-stu-id="74545-110">When you edit an MDX query for a dataset that uses a [!INCLUDE[extEssbase](../includes/extessbase-md.md)] data source, the graphical query designer opens in Design mode.</span></span> <span data-ttu-id="74545-111">다음 그림에서는 디자인 모드에서 표시되는 창을 해당 레이블과 함께 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="74545-111">The following figure labels the panes for Design mode.</span></span>
+
+ <span data-ttu-id="74545-112">![Hyperion Essbase 데이터 원본을 위한 쿼리 디자이너](media/rsqd-dshyperionessbase-mdx-designmode.gif "Hyperion Essbase 데이터 원본을 위한 쿼리 디자이너")</span><span class="sxs-lookup"><span data-stu-id="74545-112">![Query Designer for Hyperion Essbase data source](media/rsqd-dshyperionessbase-mdx-designmode.gif "Query Designer for Hyperion Essbase data source")</span></span>
+
+ <span data-ttu-id="74545-113">다음 표에서는 이 모드의 창을 나열합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-113">The following table lists the panes in this mode.</span></span>
+
+|<span data-ttu-id="74545-114">창</span><span class="sxs-lookup"><span data-stu-id="74545-114">Pane</span></span>|<span data-ttu-id="74545-115">함수</span><span class="sxs-lookup"><span data-stu-id="74545-115">Function</span></span>|
+|----------|--------------|
+|<span data-ttu-id="74545-116">큐브 선택 단추</span><span class="sxs-lookup"><span data-stu-id="74545-116">Select Cube button</span></span>|<span data-ttu-id="74545-117">현재 선택한 큐브를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-117">Displays the currently selected cube.</span></span>|
+|<span data-ttu-id="74545-118">메타데이터 창</span><span class="sxs-lookup"><span data-stu-id="74545-118">Metadata pane</span></span>|<span data-ttu-id="74545-119">큐브의 계층적 목록을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-119">Displays a hierarchical list of cubes.</span></span>|
+|<span data-ttu-id="74545-120">계산 멤버 창</span><span class="sxs-lookup"><span data-stu-id="74545-120">Calculated Members pane</span></span>|<span data-ttu-id="74545-121">쿼리에 사용할 수 있는 현재 정의된 계산 멤버를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-121">Displays the currently defined calculated members available for use in the query.</span></span>|
+|<span data-ttu-id="74545-122">필터 창</span><span class="sxs-lookup"><span data-stu-id="74545-122">Filter pane</span></span>|<span data-ttu-id="74545-123">쿼리에 적용할 필터를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-123">Displays the filters to apply in the query.</span></span>|
+|<span data-ttu-id="74545-124">데이터 창</span><span class="sxs-lookup"><span data-stu-id="74545-124">Data pane</span></span>|<span data-ttu-id="74545-125">쿼리의 실행 결과를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-125">Displays the results of running the query.</span></span>|
+
+ <span data-ttu-id="74545-126">메타데이터 창의 차원 및 측정값과 계산 멤버 창의 계산 멤버를 데이터 창으로 끌 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-126">You can drag dimensions and measures from the Metadata pane, and calculated members from the Calculated Member pane onto the Data pane.</span></span> <span data-ttu-id="74545-127">도구 모음의 **자동 실행** 토글 단추가 설정된 경우 개체를 데이터 창에 놓을 때마다 쿼리 디자이너에서 쿼리를 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-127">If the **AutoExecute** toggle button on the toolbar is on, the query designer runs the query every time you drop an object onto the Data pane.</span></span> <span data-ttu-id="74545-128">**자동 실행** 이 해제된 경우에는 데이터 창을 변경할 때 쿼리 디자이너에서 쿼리를 실행하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-128">If **AutoExecute** is off, the query designer does not run the query as you make changes to the Data pane.</span></span> <span data-ttu-id="74545-129">도구 모음의 **실행** 단추를 사용하여 쿼리를 수동으로 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-129">You can manually run the query using the **Run** button on the toolbar.</span></span>
+
+ <span data-ttu-id="74545-130">필터 창에서 차원 값을 선택하여 데이터 원본에서 검색되는 데이터를 제한할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-130">In the Filter pane, you can select dimension values to limit the data retrieved from the data source.</span></span> <span data-ttu-id="74545-131">디자인 모드에서 필터에 정의하는 값은 쿼리 모드에서 MDX WHERE 절에 나타납니다.</span><span class="sxs-lookup"><span data-stu-id="74545-131">Values you define in the filter in Design mode appear in the MDX Where clause in Query mode.</span></span>
+
+### <a name="toolbar-for-the-graphical-query-designer-in-design-mode-toolbar"></a><span data-ttu-id="74545-132">디자인 모드의 그래픽 쿼리 디자이너를 위한 도구 모음</span><span class="sxs-lookup"><span data-stu-id="74545-132">Toolbar for the Graphical Query Designer in Design Mode Toolbar</span></span>
+ <span data-ttu-id="74545-133">쿼리 디자이너 도구 모음은 그래픽 인터페이스를 사용하여 MDX 쿼리를 디자인하는 데 도움이 되는 단추를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-133">The query designer toolbar provides buttons to help you design MDX queries using the graphical interface.</span></span> <span data-ttu-id="74545-134">다음 표에서는 단추와 해당 기능을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="74545-134">The following table shows the buttons and describes their functions.</span></span>
+
+|<span data-ttu-id="74545-135">단추</span><span class="sxs-lookup"><span data-stu-id="74545-135">Button</span></span>|<span data-ttu-id="74545-136">설명</span><span class="sxs-lookup"><span data-stu-id="74545-136">Description</span></span>|
+|------------|-----------------|
+|<span data-ttu-id="74545-137">**텍스트로 편집**</span><span class="sxs-lookup"><span data-stu-id="74545-137">**Edit As Text**</span></span>|<span data-ttu-id="74545-138">텍스트 기반 쿼리 디자이너와 그래픽 쿼리 디자이너 사이를 전환합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-138">Toggle between the text-based query designer and the graphical query designer.</span></span> <span data-ttu-id="74545-139">이 데이터 원본 유형에는 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-139">Not available for this data source type.</span></span>|
+|<span data-ttu-id="74545-140">**가져오기**</span><span class="sxs-lookup"><span data-stu-id="74545-140">**Import**</span></span>|<span data-ttu-id="74545-141">파일 시스템의 보고서 정의 파일(.rdl)에서 기존 쿼리를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="74545-141">Import an existing query from a report definition (.rdl) file on the file system.</span></span>|
+|<span data-ttu-id="74545-142">![데이터 세트 필드 새로 고침](media/rsqdicon-refreshfields.gif "데이터 세트 필드 새로 고침")</span><span class="sxs-lookup"><span data-stu-id="74545-142">![Refresh dataset fields](media/rsqdicon-refreshfields.gif "Refresh dataset fields")</span></span>|<span data-ttu-id="74545-143">데이터 원본의 메타데이터를 새로 고칩니다.</span><span class="sxs-lookup"><span data-stu-id="74545-143">Refresh metadata from the data source.</span></span>|
+|<span data-ttu-id="74545-144">![계산 멤버 추가](../analysis-services/media/rsqdicon-addcalculatedmember.gif "계산 멤버 추가")</span><span class="sxs-lookup"><span data-stu-id="74545-144">![Add calculated member](../analysis-services/media/rsqdicon-addcalculatedmember.gif "Add calculated member")</span></span>|<span data-ttu-id="74545-145">**계산 멤버 작성기** 대화 상자를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-145">Display the **Calculated Member Builder** dialog box.</span></span> <span data-ttu-id="74545-146">이 대화 상자를 사용하여 **계산 순서** 속성 설정을 비롯한 계산 멤버 식 생성 및 편집 작업을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-146">Use this to create or edit expressions for a calculated member, including setting the **Solve Order** property.</span></span>|
+|<span data-ttu-id="74545-147">![빈 셀 표시 설정/해제](../analysis-services/media/rsqdicon-showemptycells.gif "빈 셀 표시 설정/해제")</span><span class="sxs-lookup"><span data-stu-id="74545-147">![Toggle for show empty cells](../analysis-services/media/rsqdicon-showemptycells.gif "Toggle for show empty cells")</span></span>|<span data-ttu-id="74545-148">데이터 창에서 빈 셀을 표시하거나 표시하지 않는 기능 사이를 전환합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-148">Switch between showing and not showing empty cells in the Data pane.</span></span> <span data-ttu-id="74545-149">이것은 MDX에 NON EMPTY 절을 사용하는 것과 동일합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-149">(This is the equivalent to using the NON EMPTY clause in MDX).</span></span>|
+|<span data-ttu-id="74545-150">![쿼리 자동 실행](../analysis-services/media/rsqdicon-autoexecute.gif "쿼리 자동 실행")</span><span class="sxs-lookup"><span data-stu-id="74545-150">![AutoExecute the query](../analysis-services/media/rsqdicon-autoexecute.gif "AutoExecute the query")</span></span>|<span data-ttu-id="74545-151">데이터 창에서 열을 삭제하는 경우와 같이 변경 내용이 있을 때마다 쿼리를 자동으로 실행하고 결과를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-151">Automatically run the query and show the result every time a change is made, for example, deleting a column in the Data pane.</span></span> <span data-ttu-id="74545-152">결과는 데이터 창에 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="74545-152">Results are shown in the Data pane.</span></span>|
+|<span data-ttu-id="74545-153">![삭제](../analysis-services/media/rsqdicon-delete.gif "삭제")</span><span class="sxs-lookup"><span data-stu-id="74545-153">![Delete](../analysis-services/media/rsqdicon-delete.gif "Delete")</span></span>|<span data-ttu-id="74545-154">선택한 항목을 쿼리에서 삭제합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-154">Delete the selected item from the query.</span></span> <span data-ttu-id="74545-155">이 단추를 사용하여 필터 창에서 선택한 행을 삭제할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-155">Use this button to delete selected rows in the Filter pane.</span></span>|
+|<span data-ttu-id="74545-156">![쿼리 실행](../analysis-services/media/rsqdicon-run.gif "쿼리 실행")</span><span class="sxs-lookup"><span data-stu-id="74545-156">![Run the query](../analysis-services/media/rsqdicon-run.gif "Run the query")</span></span>|<span data-ttu-id="74545-157">쿼리를 실행하고 데이터 창에 결과를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-157">Run the query and display the results in the Data pane.</span></span>|
+|<span data-ttu-id="74545-158">![쿼리 취소](../analysis-services/media/rsqdicon-cancel.gif "쿼리 취소")</span><span class="sxs-lookup"><span data-stu-id="74545-158">![Cancel the query](../analysis-services/media/rsqdicon-cancel.gif "Cancel the query")</span></span>|<span data-ttu-id="74545-159">쿼리를 취소합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-159">Cancel the query.</span></span>|
+|<span data-ttu-id="74545-160">![디자인 모드로 전환](../analysis-services/media/rsqdicon-designmode.gif "디자인 모드로 전환")</span><span class="sxs-lookup"><span data-stu-id="74545-160">![Switch to Design mode](../analysis-services/media/rsqdicon-designmode.gif "Switch to Design mode")</span></span>|<span data-ttu-id="74545-161">디자인 모드와 쿼리 모드 사이를 전환합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-161">Switch between Design mode and Query mode.</span></span>|
+
+## <a name="graphical-query-designer-in-query-mode"></a><span data-ttu-id="74545-162">쿼리 모드의 그래픽 쿼리 디자이너</span><span class="sxs-lookup"><span data-stu-id="74545-162">Graphical Query Designer in Query Mode</span></span>
+ <span data-ttu-id="74545-163">그래픽 쿼리 디자이너를 쿼리 모드로 변경하려면 도구 모음에서 **디자인 모드** 토글 단추를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-163">To change the graphical query designer to Query mode, click the **Design Mode** toggle button on the toolbar.</span></span>
+
+ <span data-ttu-id="74545-164">![Hyperion용 쿼리 모드의 쿼리 디자이너](media/rsqd-hyperionessbase-mdx-querymode.gif "Hyperion용 쿼리 모드의 쿼리 디자이너")</span><span class="sxs-lookup"><span data-stu-id="74545-164">![Query Designer in Query Mode for Hyperion](media/rsqd-hyperionessbase-mdx-querymode.gif "Query Designer in Query Mode for Hyperion")</span></span>
+
+ <span data-ttu-id="74545-165">다음 표에서는 각 창의 기능을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-165">The following table describes the function of each pane.</span></span>
+
+|<span data-ttu-id="74545-166">창</span><span class="sxs-lookup"><span data-stu-id="74545-166">Pane</span></span>|<span data-ttu-id="74545-167">함수</span><span class="sxs-lookup"><span data-stu-id="74545-167">Function</span></span>|
+|----------|--------------|
+|<span data-ttu-id="74545-168">큐브 선택 단추</span><span class="sxs-lookup"><span data-stu-id="74545-168">Select Cube button</span></span>|<span data-ttu-id="74545-169">현재 선택한 큐브를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-169">Displays the currently selected cube.</span></span>|
+|<span data-ttu-id="74545-170">메타데이터/함수 창</span><span class="sxs-lookup"><span data-stu-id="74545-170">Metadata/Functions pane</span></span>|<span data-ttu-id="74545-171">쿼리 텍스트를 작성하는 데 사용할 수 있는 메타데이터 또는 함수의 목록을 보여 주는 탭 창을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-171">Displays a tabbed window that shows a list of available metadata or functions that can be used to build the query text.</span></span>|
+|<span data-ttu-id="74545-172">쿼리 창</span><span class="sxs-lookup"><span data-stu-id="74545-172">Query pane</span></span>|<span data-ttu-id="74545-173">현재 쿼리 텍스트를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-173">Displays the current query text.</span></span>|
+|<span data-ttu-id="74545-174">결과 창</span><span class="sxs-lookup"><span data-stu-id="74545-174">Result pane</span></span>|<span data-ttu-id="74545-175">쿼리 결과를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-175">Displays the results of the query.</span></span>|
+
+ <span data-ttu-id="74545-176">메타데이터 창에서 측정값과 차원을 **메타데이터** 탭에서 MDX 쿼리 창으로 끌 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-176">From the Metadata pane, you can drag measures and dimensions from the **Metadata** tab onto the MDX Query pane.</span></span> <span data-ttu-id="74545-177">함수는 **함수** 탭에서 MDX 쿼리 창으로 끌 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-177">You can drag functions from the **Functions** tab onto the MDX Query pane.</span></span> <span data-ttu-id="74545-178">쿼리를 실행하면 현재 MDX 쿼리의 결과가 결과 창에 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="74545-178">When you execute the query, the Result pane displays the results for the current MDX query.</span></span>
+
+### <a name="toolbar-for-the-graphical-query-designer-in-query-mode"></a><span data-ttu-id="74545-179">쿼리 모드의 그래픽 쿼리 디자이너를 위한 도구 모음</span><span class="sxs-lookup"><span data-stu-id="74545-179">Toolbar for the Graphical Query Designer in Query Mode</span></span>
+ <span data-ttu-id="74545-180">쿼리 디자이너 도구 모음은 그래픽 인터페이스를 사용하여 MDX 쿼리를 디자인하는 데 도움이 되는 단추를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="74545-180">The query designer toolbar provides buttons to help you design MDX queries using the graphical interface.</span></span> <span data-ttu-id="74545-181">디자인 모드와 쿼리 모드의 도구 모음 단추가 동일하지만 쿼리 모드의 경우 다음 단추를 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="74545-181">The toolbar buttons are identical between Design mode and Query mode, but the following buttons are not enabled for Query mode:</span></span>
+
+-   <span data-ttu-id="74545-182">**텍스트로 편집**</span><span class="sxs-lookup"><span data-stu-id="74545-182">**Edit As Text**</span></span>
+
+-   <span data-ttu-id="74545-183">**계산 멤버 추가**(![계산 멤버 추가](../analysis-services/media/rsqdicon-addcalculatedmember.gif "계산 멤버 추가"))</span><span class="sxs-lookup"><span data-stu-id="74545-183">**Add Calculated Member** (![Add calculated member](../analysis-services/media/rsqdicon-addcalculatedmember.gif "Add calculated member"))</span></span>
+
+-   <span data-ttu-id="74545-184">**빈 셀 표시**(![빈 셀 표시 설정/해제](../analysis-services/media/rsqdicon-showemptycells.gif "빈 셀 표시 설정/해제"))</span><span class="sxs-lookup"><span data-stu-id="74545-184">**Show Empty Cells** (![Toggle for show empty cells](../analysis-services/media/rsqdicon-showemptycells.gif "Toggle for show empty cells"))</span></span>
+
+-   <span data-ttu-id="74545-185">**자동 실행**(![쿼리 자동 실행](../analysis-services/media/rsqdicon-autoexecute.gif "쿼리 자동 실행"))</span><span class="sxs-lookup"><span data-stu-id="74545-185">**AutoExecute** (![AutoExecute the query](../analysis-services/media/rsqdicon-autoexecute.gif "AutoExecute the query"))</span></span>
+
+## <a name="see-also"></a><span data-ttu-id="74545-186">참고 항목</span><span class="sxs-lookup"><span data-stu-id="74545-186">See Also</span></span>
+ [<span data-ttu-id="74545-187">쿼리 디자이너&#40;보고서 작성기&#41;</span><span class="sxs-lookup"><span data-stu-id="74545-187">Query Designers &#40;Report Builder&#41;</span></span>](../../2014/reporting-services/query-designers-report-builder.md)
+
+

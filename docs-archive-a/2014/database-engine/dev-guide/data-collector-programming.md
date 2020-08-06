@@ -1,0 +1,28 @@
+---
+title: 데이터 수집기 프로그래밍 | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: database-engine
+ms.topic: reference
+helpviewer_keywords:
+- data collector [SQL Server], programming
+ms.assetid: 53b4752b-055d-4716-b2bc-75b4cce84101
+author: mashamsft
+ms.author: mathoma
+ms.openlocfilehash: 9f4da839f25da8f8aab3e21fa98547eff72d2140
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87742540"
+---
+# <a name="data-collector-programming"></a><span data-ttu-id="b7023-102">데이터 수집기 프로그래밍</span><span class="sxs-lookup"><span data-stu-id="b7023-102">Data Collector Programming</span></span>
+  <span data-ttu-id="b7023-103"><xref:Microsoft.SqlServer.Management.Collector>에서 데이터 수집기 API를 사용하면 개체 모델을 통해 모든 구성 작업을 프로그래밍 방식으로 제어할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b7023-103">The data collector API, in <xref:Microsoft.SqlServer.Management.Collector>, allows programmatic control of all configuration operations through the object model.</span></span> <span data-ttu-id="b7023-104">또한 API를 사용하는 데이터 수집 작업은 대부분 서버에 설치되는 저장 프로시저로 구현됩니다.</span><span class="sxs-lookup"><span data-stu-id="b7023-104">In addition, many of the data collection operations that use the API are implemented as stored procedures that are installed on the server.</span></span>
+
+ <span data-ttu-id="b7023-105">다음 그림에서는 데이터 컬렉션 개체 모델의 중요 요소를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="b7023-105">The following illustration shows key elements of the data collector object model.</span></span>
+
+ <span data-ttu-id="b7023-106">![데이터 수집기 개체 모델](../../../2014/database-engine/dev-guide/media/dc-objectmodel.gif "데이터 수집기 개체 모델")</span><span class="sxs-lookup"><span data-stu-id="b7023-106">![The Data Collector Object Model](../../../2014/database-engine/dev-guide/media/dc-objectmodel.gif "The Data Collector Object Model")</span></span>
+
+

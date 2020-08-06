@@ -1,0 +1,38 @@
+---
+title: 트랜잭션 승격 | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: clr
+ms.topic: reference
+helpviewer_keywords:
+- distributed transactions [CLR integration]
+- promoting transactions [CLR integration]
+- Enlist keyword
+- transaction promotion [CLR integration]
+ms.assetid: 5bc7e26e-28ad-4198-a40d-8b2c648ba304
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: e78cbb3d2fc888e56c0b55780daf7b449fe6dc40
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87742288"
+---
+# <a name="transaction-promotion"></a><span data-ttu-id="144e3-102">트랜잭션 승격</span><span class="sxs-lookup"><span data-stu-id="144e3-102">Transaction Promotion</span></span>
+  <span data-ttu-id="144e3-103">트랜잭션 *승격* 은 필요에 따라 완전히 배포 가능한 트랜잭션으로 자동 승격될 수 있는 경량 로컬 트랜잭션에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-103">Transaction *promotion* describes a lightweight, local transaction that can be automatically promoted to a fully distributable transaction as needed.</span></span> <span data-ttu-id="144e3-104">서버의 데이터베이스 트랜잭션 내에서 관리되는 저장 프로시저를 호출하면 로컬 트랜잭션의 컨텍스트에서 CLR(공용 언어 런타임) 코드가 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-104">When a managed stored procedure is invoked within a database transaction on the server, the common language runtime (CLR) code is run in the context of a local transaction.</span></span>  <span data-ttu-id="144e3-105">데이터베이스 트랜잭션 내에서 원격 서버에 대한 연결을 열면 원격 서버에 대한 연결이 분산 트랜잭션에 참여하고 로컬 트랜잭션이 분산 트랜잭션으로 자동 승격됩니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-105">If a connection to a remote server is opened within a database transaction, the connection to the remote server is enlisted into the distributed transaction and the local transaction is automatically promoted to a distributed transaction.</span></span> <span data-ttu-id="144e3-106">따라서 트랜잭션 승격은 필요할 때까지 분산 트랜잭션의 생성을 지연시켜 분산 트랜잭션의 오버헤드를 최소화합니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-106">So, transaction promotion minimizes the overhead of distributed transactions by deferring the creation of a distributed transaction until it is needed.</span></span> <span data-ttu-id="144e3-107">`Enlist` 키워드를 사용하여 트랜잭션 승격을 사용하도록 설정한 경우 트랜잭션 승격이 자동으로 수행되며 개발자 작업이 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-107">Transaction promotion is automatic, if it has been enabled using the `Enlist` keyword, and does not require intervention from the developer.</span></span> <span data-ttu-id="144e3-108">.NET Framework Data Provider for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]는 .NET Framework `System.Data.SqlClient` 네임스페이스의 클래스를 통해 처리되는 트랜잭션 승격 지원을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-108">The .NET Framework Data Provider for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] provides support for transaction promotion, handled through the classes in the .NET Framework `System.Data.SqlClient` namespace.</span></span>  
+  
+## <a name="the-enlist-keyword"></a><span data-ttu-id="144e3-109">Enlist 키워드</span><span class="sxs-lookup"><span data-stu-id="144e3-109">The Enlist Keyword</span></span>  
+ <span data-ttu-id="144e3-110">`ConnectionString` 개체의 `SqlConnection` 속성은 `Enlist`에서 트랜잭션 컨텍스트를 검색하고 자동으로 연결을 분산 트랜잭션에 참여시킬지 여부를 나타내는 `System.Data.SqlClient` 키워드를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-110">The `ConnectionString` property of a `SqlConnection` object supports the `Enlist` keyword, which indicates whether `System.Data.SqlClient` detects transactional contexts and automatically enlists the connection in a distributed transaction.</span></span> <span data-ttu-id="144e3-111">이 키워드를 true(기본값)로 설정하면 해당 연결이 여는 스레드의 현재 트랜잭션 컨텍스트에 자동으로 참여합니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-111">If this keyword is set to true (the default), the connection is automatically enlisted in the current transaction context of the opening thread.</span></span> <span data-ttu-id="144e3-112">이 키워드를 false로 설정하면 SqlClient 연결이 분산 트랜잭션과 상호 작용하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-112">If this keyword is set to false, the SqlClient connection does not interact with a distributed transaction.</span></span> <span data-ttu-id="144e3-113">연결 문자열에 `Enlist`를 지정하지 않은 경우 연결을 열 때 해당 키워드가 검색되면 연결이 자동으로 분산 트랜잭션에 참여합니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-113">If `Enlist` is not specified in the connection string, the connection is automatically enlisted in a distributed transaction if one is detected at the time the connection is opened.</span></span>  
+  
+## <a name="distributed-transactions"></a><span data-ttu-id="144e3-114">분산 트랜잭션</span><span class="sxs-lookup"><span data-stu-id="144e3-114">Distributed Transactions</span></span>  
+ <span data-ttu-id="144e3-115">분산 트랜잭션은 일반적으로 많은 시스템 리소스를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-115">Distributed transactions typically consume significant system resources.</span></span> <span data-ttu-id="144e3-116">MS DTC([!INCLUDE[msCoName](../../includes/msconame-md.md)] Distributed Transaction Coordinator)는 이러한 트랜잭션을 관리하고 해당 트랜잭션에서 액세스되는 모든 리소스 관리자를 통합합니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-116">[!INCLUDE[msCoName](../../includes/msconame-md.md)] Distributed Transaction Coordinator (MS DTC) manages such transactions, and integrates all of the resource managers accessed in these transactions.</span></span> <span data-ttu-id="144e3-117">한편, 트랜잭션 승격은 실제로 작업을 단순한 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 트랜잭션에 위임하는 특수한 형태의 `System.Transactions` 트랜잭션입니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-117">Transaction promotion, on the other hand, is a special form of a `System.Transactions` transaction that effectively delegates the work to a simple [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] transaction.</span></span> <span data-ttu-id="144e3-118">`System.Transactions`, `System.Data.SqlClient` 및 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]는 트랜잭션 처리와 관련된 작업을 조정하고 필요에 따라 완전한 분산 트랜잭션으로 승격합니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-118">`System.Transactions`, `System.Data.SqlClient`, and [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] coordinate the work involved in handling the transaction, promoting it to a full distributed transaction as needed.</span></span>  
+  
+ <span data-ttu-id="144e3-119">트랜잭션 승격을 사용하면 활성 `TransactionScope` 트랜잭션을 사용하여 연결을 열고 다른 연결은 열지 않을 때 완전 분산 트랜잭션의 추가 오버헤드를 발생시키지 않고 트랜잭션이 경량 트랜잭션으로 커밋된다는 이점이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="144e3-119">The benefit of using transaction promotion is that when a connection is opened with an active `TransactionScope` transaction, and no other connections are opened, the transaction commits as a lightweight transaction, rather than incurring the additional overhead of a full distributed transaction.</span></span> <span data-ttu-id="144e3-120">에 대 한 자세한 내용은 `TransactionScope` [system.object 사용](../native-client-ole-db-transactions/transactions.md)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="144e3-120">For more information about `TransactionScope`, see [Using System.Transactions](../native-client-ole-db-transactions/transactions.md).</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="144e3-121">참고 항목</span><span class="sxs-lookup"><span data-stu-id="144e3-121">See Also</span></span>  
+ [<span data-ttu-id="144e3-122">CLR 통합 및 트랜잭션</span><span class="sxs-lookup"><span data-stu-id="144e3-122">CLR Integration and Transactions</span></span>](clr-integration-and-transactions.md)  
+  
+  

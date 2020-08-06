@@ -1,0 +1,44 @@
+---
+title: CPU 유휴 상태 시간 및 지속 시간 설정(SQL Server Management Studio) | Microsoft 문서
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: ssms
+ms.topic: conceptual
+helpviewer_keywords:
+- CPU [SQL Server], idle conditions
+- time [SQL Server], CPU idle and duration
+- duration of CPU idle [SQL Server]
+- SQL Server Agent, CPU idle conditions
+- idle time [SQL Server]
+ms.assetid: 8647b465-d899-4cc7-9640-134a506d0a2e
+author: stevestein
+ms.author: sstein
+ms.openlocfilehash: 1660f6d70977b8f590a18adf952a6a19f32a26cf
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87742736"
+---
+# <a name="set-cpu-idle-time-and-duration-sql-server-management-studio"></a><span data-ttu-id="039f1-102">CPU 유휴 상태 시간 및 지속 시간 설정(SQL Server Management Studio)</span><span class="sxs-lookup"><span data-stu-id="039f1-102">Set CPU Idle Time and Duration (SQL Server Management Studio)</span></span>
+  <span data-ttu-id="039f1-103">이 항목에서는 [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] 에서 [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]를 사용하여 서버의 CPU 유휴 상태 판단 기준을 정의하는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-103">This topic explains how to define the CPU idle condition for your server in [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)].</span></span> <span data-ttu-id="039f1-104">CPU 유휴 정의는 [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 에이전트가 이벤트에 응답 하는 방법에 영향을 줍니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-104">The CPU idle definition influences how [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent responds to events.</span></span> <span data-ttu-id="039f1-105">예를 들어 CPU 유휴 상태 판단 기준을 평균 CPU 사용량이 10% 이하로 떨어져서 10분 동안 이 수준을 유지하는 것으로 가정해 보세요.</span><span class="sxs-lookup"><span data-stu-id="039f1-105">For example, suppose that you define the CPU idle condition as when the average CPU usage falls below 10 percent and remains at this level for 10 minutes.</span></span> <span data-ttu-id="039f1-106">그런 다음 서버 CPU가 유휴 상태 판단 기준에 도달할 때마다 작업이 실행되도록 정의하면 해당 작업은 CPU 사용량이 10% 이하로 떨어져서 10분 동안 이 수준을 유지할 때 시작됩니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-106">Then if you have defined jobs to execute whenever the server CPU reaches an idle condition, the job will start when the CPU usage falls below 10 percent and remains at that level for 10 minutes.</span></span> <span data-ttu-id="039f1-107">이 작업이 사용 중인 서버 성능에 상당한 영향을 주는 경우 CPU 유휴 상태 판단 기준 정의 방법이 중요합니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-107">If this is a job that significantly impacts the performance of your server, how you define the CPU idle condition is important.</span></span>  
+  
+##  <a name="using-sql-server-management-studio"></a><a name="SSMSProcedure"></a> <span data-ttu-id="039f1-108">SQL Server Management Studio 사용</span><span class="sxs-lookup"><span data-stu-id="039f1-108">Using SQL Server Management Studio</span></span>  
+  
+#### <a name="to-set-cpu-idle-time-and-duration"></a><span data-ttu-id="039f1-109">CPU 유휴 시간 및 기간을 설정하려면</span><span class="sxs-lookup"><span data-stu-id="039f1-109">To set CPU idle time and duration</span></span>  
+  
+1.  <span data-ttu-id="039f1-110">**개체 탐색기** 에서 인스턴스에 연결한 [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] 다음 해당 인스턴스를 확장 합니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-110">In **Object Explorer,** connect to an instance of the [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)], and then expand that instance.</span></span>  
+  
+2.  <span data-ttu-id="039f1-111">**SQL Server 에이전트**를 마우스 오른쪽 단추로 클릭하고 **속성**을 클릭한 다음 **고급** 페이지를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-111">Right-click **SQL Server Agent**, click **Properties**, and select the **Advanced** page.</span></span>  
+  
+3.  <span data-ttu-id="039f1-112">**CPU 유휴 상태 판단 기준**에서 다음을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-112">Under **Idle CPU condition**, do the following:</span></span>  
+  
+    -   <span data-ttu-id="039f1-113">**CPU 유휴 상태 판단 기준 정의**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-113">Check **Define idle CPU condition.**</span></span>  
+  
+    -   <span data-ttu-id="039f1-114">**평균 CPU 사용량이 다음 미만인 경우** (모든 CPU에서) 상자에 백분율(%)을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-114">Specify a percentage for the **Average CPU usage falls below** (across all CPUs) box.</span></span> <span data-ttu-id="039f1-115">이 옵션은 CPU가 유휴 상태로 간주되기 전에 도달해야 하는 사용량 수준을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-115">This sets the usage level that the CPU must fall below before it is considered idle.</span></span>  
+  
+    -   <span data-ttu-id="039f1-116">**다음 시간 미만인 경우** 상자에 시간(초)을 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-116">Specify a number of seconds for the **And remains below this level for** box.</span></span> <span data-ttu-id="039f1-117">이 옵션은 CPU가 유휴 상태로 간주되기 전에 최소 CPU 사용량을 유지해야 하는 지속 기간을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="039f1-117">This sets the duration that the minimum CPU usage must remain at before it is considered idle.</span></span>  
+  
+  
