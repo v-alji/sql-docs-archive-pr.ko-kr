@@ -1,0 +1,51 @@
+---
+title: 계산 열 만들기 (SSAS 테이블 형식) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+f1_keywords:
+- sql12.as.daxref.CreataCalculatedColumn.f1
+ms.assetid: 59440510-2d76-41dc-9b55-edc15259f9da
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: cdb56ffb2b42aa8225b7eff76b11315ea511fd81
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87727355"
+---
+# <a name="create-a-calculated-column-ssas-tabular"></a><span data-ttu-id="f9809-102">계산 열 만들기(SSAS 테이블 형식)</span><span class="sxs-lookup"><span data-stu-id="f9809-102">Create a Calculated Column (SSAS Tabular)</span></span>
+  <span data-ttu-id="f9809-103">계산 열을 사용하면 모델에 새 데이터를 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-103">Calculated columns allow you to add new data to your model.</span></span> <span data-ttu-id="f9809-104">열에 값을 붙여 넣거나 가져오는 대신 열의 행 수준 값을 정의 하는 DAX 수식을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-104">Instead of pasting or importing values into the column, you create a DAX formula that defines the column's row level values.</span></span> <span data-ttu-id="f9809-105">유효한 수식을 만든 다음 ENTER 키를 누르면 계산 열의 각 행에서 값이 계산되어 채워집니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-105">The values in each row of a calculated column are calculated and populated when you create a valid formula and then click ENTER.</span></span> <span data-ttu-id="f9809-106">그런 다음 다른 데이터 열과 마찬가지로 보고 또는 분석 애플리케이션에 계산 열을 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-106">The calculated column can then be added to a reporting or analysis application just as would any other column of data.</span></span> <span data-ttu-id="f9809-107">이 항목에서는 모델 디자이너의 DAX 수식 입력줄을 사용하여 새 계산 열을 만드는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-107">This topic describes how to create a new calculated column by using the DAX formula bar in the model designer.</span></span>  
+  
+#### <a name="to-create-a-new-calculated-column"></a><span data-ttu-id="f9809-108">새 계산 열을 만들려면</span><span class="sxs-lookup"><span data-stu-id="f9809-108">To create a new calculated column</span></span>  
+  
+1.  <span data-ttu-id="f9809-109">모델 디자이너의 데이터 뷰에서 계산 열을 추가하려는 테이블을 선택한 다음 **열** 메뉴를 클릭하고 **열 추가**를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-109">In the model designer, in Data View, select the table to which you want to add a calculated column, then click the **Column** menu, and then click **Add Column**.</span></span>  
+  
+     <span data-ttu-id="f9809-110">비어 있는 가장 오른쪽 열에서**열 추가** 가 강조 표시되고 커서가 수식 입력줄로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-110">**Add Column** is highlighted over the empty rightmost column, and the cursor moves to the formula bar.</span></span>  
+  
+     <span data-ttu-id="f9809-111">기존의 두 열 사이에 새 열을 만들려면 기존 열을 마우스 오른쪽 단추로 클릭하고 **열 삽입**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-111">To create a new column between two existing columns, right-click an existing column, and then click **Insert Column**.</span></span>  
+  
+2.  <span data-ttu-id="f9809-112">수식 입력줄에서 다음 중 하나를 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-112">In the formula bar, do one of the following:</span></span>  
+  
+    -   <span data-ttu-id="f9809-113">등호 다음에 수식을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-113">Type an equal sign followed by a formula.</span></span>  
+  
+    -   <span data-ttu-id="f9809-114">등호 다음에 DAX 함수 및 함수에 필요한 매개 변수와 인수를 차례로 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-114">Type an equal sign, followed by a DAX function, followed by arguments and parameters as required by the function.</span></span>  
+  
+    -   <span data-ttu-id="f9809-115">함수 단추(**fx**)를 클릭한 다음 **함수 삽입** 대화 상자에서 범주와 함수를 선택한 후 **확인**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-115">Click the function button (**fx**), then in the **Insert Function** dialog box, select a category and function, and then click **OK**.</span></span> <span data-ttu-id="f9809-116">수식 입력줄에서 함수에 필요한 나머지 인수 및 매개 변수를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-116">In the formula bar, type the remaining arguments and parameters as required by the function.</span></span>  
+  
+3.  <span data-ttu-id="f9809-117">Enter 키를 눌러 수식을 적용합니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-117">Press ENTER to accept the formula.</span></span>  
+  
+     <span data-ttu-id="f9809-118">전체 열이 수식으로 채워지고 각 행의 값이 계산됩니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-118">The entire column is populated with the formula, and a value is calculated for each row.</span></span>  
+  
+> [!TIP]  
+>  <span data-ttu-id="f9809-119">중첩된 함수가 있는 기존 수식의 중간에 DAX 수식 자동 완성 기능을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-119">You can use DAX Formula AutoComplete in the middle of an existing formula with nested functions.</span></span> <span data-ttu-id="f9809-120">삽입 지점 바로 전 텍스트는 드롭다운 목록의 값을 표시하는 데 사용되며 삽입 지점 이후의 모든 텍스트는 변경되지 않은 상태로 유지됩니다.</span><span class="sxs-lookup"><span data-stu-id="f9809-120">The text immediately before the insertion point is used to display values in the drop-down list, and all of the text after the insertion point remains unchanged.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="f9809-121">참고 항목</span><span class="sxs-lookup"><span data-stu-id="f9809-121">See Also</span></span>  
+ <span data-ttu-id="f9809-122">[SSAS 테이블 형식&#41;&#40;계산 열](ssas-calculated-columns.md) </span><span class="sxs-lookup"><span data-stu-id="f9809-122">[Calculated Columns &#40;SSAS Tabular&#41;](ssas-calculated-columns.md) </span></span>  
+ [<span data-ttu-id="f9809-123">측정값&#40;SSAS 테이블 형식&#41;</span><span class="sxs-lookup"><span data-stu-id="f9809-123">Measures &#40;SSAS Tabular&#41;</span></span>](measures-ssas-tabular.md)  
+  
+  

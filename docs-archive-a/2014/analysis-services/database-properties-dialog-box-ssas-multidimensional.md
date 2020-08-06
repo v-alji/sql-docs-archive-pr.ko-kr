@@ -1,0 +1,43 @@
+---
+title: 데이터베이스 속성 대화 상자 (SSAS-다차원) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+f1_keywords:
+- sql12.asvs.sqlserverstudio.databaseproperties.f1
+ms.assetid: 70f000b7-917f-4699-b142-7a0d13ff767c
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: a465c333557f19e9572cd9c2b1f7c80aaf4ab5bd
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87727452"
+---
+# <a name="database-properties-dialog-box-ssas---multidimensional"></a><span data-ttu-id="fe3e6-102">데이터베이스 속성 대화 상자(SSAS - 다차원)</span><span class="sxs-lookup"><span data-stu-id="fe3e6-102">Database Properties Dialog Box (SSAS - Multidimensional)</span></span>
+  <span data-ttu-id="fe3e6-103">**의** 데이터베이스 속성 [!INCLUDE[ssManStudioFull](../includes/ssmanstudiofull-md.md)] 대화 상자를 사용하여 [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)] 데이터베이스의 데이터베이스 속성을 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-103">Use the **Database Properties** dialog box in [!INCLUDE[ssManStudioFull](../includes/ssmanstudiofull-md.md)] to set the properties of a database in an [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)] database.</span></span> <span data-ttu-id="fe3e6-104">개체 탐색기에서 데이터베이스를 마우스 오른쪽 단추로 클릭하고 **속성** 을 선택하면 **데이터베이스 속성**대화 상자가 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-104">You can display the **Database Properties** dialog box by right-clicking a database in Object Explorer and selecting **Properties**.</span></span>  
+  
+## <a name="options"></a><span data-ttu-id="fe3e6-105">옵션</span><span class="sxs-lookup"><span data-stu-id="fe3e6-105">Options</span></span>  
+  
+|<span data-ttu-id="fe3e6-106">용어</span><span class="sxs-lookup"><span data-stu-id="fe3e6-106">Term</span></span>|<span data-ttu-id="fe3e6-107">정의</span><span class="sxs-lookup"><span data-stu-id="fe3e6-107">Definition</span></span>|  
+|----------|----------------|  
+|<span data-ttu-id="fe3e6-108">**이름**</span><span class="sxs-lookup"><span data-stu-id="fe3e6-108">**Name**</span></span>|<span data-ttu-id="fe3e6-109">데이터베이스 이름을 변경하려면 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-109">Type to change the name of the database.</span></span>|  
+|<span data-ttu-id="fe3e6-110">**ID**</span><span class="sxs-lookup"><span data-stu-id="fe3e6-110">**ID**</span></span>|<span data-ttu-id="fe3e6-111">데이터베이스의 식별자를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-111">Displays the identifier of the database.</span></span>|  
+|<span data-ttu-id="fe3e6-112">**설명**</span><span class="sxs-lookup"><span data-stu-id="fe3e6-112">**Description**</span></span>|<span data-ttu-id="fe3e6-113">데이터베이스에 대한 설명을 변경하려면 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-113">Type to change the description of the database.</span></span>|  
+|<span data-ttu-id="fe3e6-114">**생성된 타임스탬프**</span><span class="sxs-lookup"><span data-stu-id="fe3e6-114">**Create Timestamp**</span></span>|<span data-ttu-id="fe3e6-115">데이터베이스를 만든 날짜와 시간을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-115">Displays the date and time the database was created.</span></span>|  
+|<span data-ttu-id="fe3e6-116">**최종 스키마 업데이트**</span><span class="sxs-lookup"><span data-stu-id="fe3e6-116">**Last Schema Update**</span></span>|<span data-ttu-id="fe3e6-117">데이터베이스에 대한 메타데이터를 마지막으로 업데이트한 날짜와 시간을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-117">Displays the date and time the metadata for the database was last updated.</span></span>|  
+|<span data-ttu-id="fe3e6-118">**마지막 업데이트**</span><span class="sxs-lookup"><span data-stu-id="fe3e6-118">**Last Update**</span></span>|<span data-ttu-id="fe3e6-119">데이터베이스에 대한 데이터를 마지막으로 업데이트한 날짜와 시간을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-119">Displays the date and time the data for the database was last updated.</span></span>|  
+|<span data-ttu-id="fe3e6-120">**데이터 원본 가장 정보**</span><span class="sxs-lookup"><span data-stu-id="fe3e6-120">**Data Source Impersonation Info**</span></span>|<span data-ttu-id="fe3e6-121">데이터베이스에 포함된 데이터 원본에 연결하고 상호 작용할 때 데이터베이스에서 사용할 가장 정보를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-121">Select the impersonation information used by the database when connecting to and interacting with data sources contained by the database.</span></span> <span data-ttu-id="fe3e6-122">유효한 값은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-122">Valid values include the following:</span></span><br /><br /> <span data-ttu-id="fe3e6-123">**ImpersonateAccount** : 특정 Windows 사용자 이름 및 암호를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-123">**ImpersonateAccount** (use a specific Windows user name and password).</span></span><br /><br /> <span data-ttu-id="fe3e6-124">**ImpersonateService** : 서비스 계정을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-124">**ImpersonateService** (use the service account).</span></span><br /><br /> <span data-ttu-id="fe3e6-125">**ImpersonateCurrentUser** : 현재 사용자의 자격 증명을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-125">**ImpersonateCurrentUser** (use the credentials of the current user).</span></span><br /><br /> <span data-ttu-id="fe3e6-126">**Default** : MOLAP 작업에는 서비스 계정을 사용하고 데이터 마이닝에는 현재 사용자를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-126">**Default** (use the service account for MOLAP operations and current user for data mining).</span></span><br /><br /> <span data-ttu-id="fe3e6-127">데이터베이스 수준에서 데이터 원본 가장 설정을 지정할 수 있지만 이렇게 하면 해당 가장 설정에 대해 **상속** 을 지정하는 데이터 원본만 영향을 받습니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-127">Although you can set data source impersonation settings at the database level, doing so will only affect those data sources that specify **Inherit** for their impersonation settings.</span></span> <span data-ttu-id="fe3e6-128">데이터 원본에 직접 지정된 가장 설정은 항상 데이터베이스 수준에서 지정된 설정보다 우선합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-128">Impersonation settings specified directly on the data source will always override any settings that are specified at the database level.</span></span><br /><br /> <span data-ttu-id="fe3e6-129">가장 옵션을 선택할 때는 지원해야 하는 작업의 유형을 고려해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-129">When choosing an impersonation option, consider the types of operations that will need to be supported.</span></span> <span data-ttu-id="fe3e6-130">처리와 같은 일부 작업은 수행할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-130">Some operations, such as processing, cannot be performed by</span></span>|  
+|<span data-ttu-id="fe3e6-131">**마지막 처리**</span><span class="sxs-lookup"><span data-stu-id="fe3e6-131">**Last Processed**</span></span>|<span data-ttu-id="fe3e6-132">데이터베이스를 마지막으로 처리한 날짜와 시간을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-132">Displays the date and time the database was last processed.</span></span>|  
+|<span data-ttu-id="fe3e6-133">**예상 크기**</span><span class="sxs-lookup"><span data-stu-id="fe3e6-133">**Estimated Size**</span></span>|<span data-ttu-id="fe3e6-134">데이터베이스의 예상 크기를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-134">Displays the estimated size of the database.</span></span>|  
+|<span data-ttu-id="fe3e6-135">**저장소 위치**</span><span class="sxs-lookup"><span data-stu-id="fe3e6-135">**Storage Location**</span></span>|<span data-ttu-id="fe3e6-136">데이터베이스의 위치를 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-136">Specifies the location of the database.</span></span> <span data-ttu-id="fe3e6-137">데이터베이스가 기본 데이터 디렉터리에 있으면 이 값은 비어 있게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="fe3e6-137">If the database is located in the default Data directory, this value will be empty.</span></span>|  
+  
+## <a name="see-also"></a><span data-ttu-id="fe3e6-138">참고 항목</span><span class="sxs-lookup"><span data-stu-id="fe3e6-138">See Also</span></span>  
+ <span data-ttu-id="fe3e6-139">[Analysis Services 디자이너 및 대화 상자 &#40;다차원 데이터&#41;](analysis-services-designers-and-dialog-boxes-multidimensional-data.md) </span><span class="sxs-lookup"><span data-stu-id="fe3e6-139">[Analysis Services Designers and Dialog Boxes &#40;Multidimensional Data&#41;](analysis-services-designers-and-dialog-boxes-multidimensional-data.md) </span></span>  
+ [<span data-ttu-id="fe3e6-140">다차원 model 데이터베이스&#40;SSAS&#41;</span><span class="sxs-lookup"><span data-stu-id="fe3e6-140">Multidimensional Model Databases &#40;SSAS&#41;</span></span>](multidimensional-models/multidimensional-model-databases-ssas.md)  
+  
+  
