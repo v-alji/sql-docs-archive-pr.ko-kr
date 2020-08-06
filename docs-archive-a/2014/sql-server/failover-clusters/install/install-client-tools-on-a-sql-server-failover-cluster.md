@@ -1,0 +1,57 @@
+---
+title: SQL Server 장애 조치(Failover) 클러스터에 클라이언트 도구 설치 | Microsoft 문서
+ms.custom: ''
+ms.date: 03/09/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: install
+ms.topic: conceptual
+ms.assetid: 3c82d510-9798-46be-bebb-cac9bef56936
+author: MashaMSFT
+ms.author: mathoma
+ms.openlocfilehash: b9cd0b426c01ebdb6f61d164302963ac3c7ff8aa
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87650589"
+---
+# <a name="install-client-tools-on-a-sql-server-failover-cluster"></a><span data-ttu-id="0d174-102">SQL Server 장애 조치 클러스터에 클라이언트 도구 설치</span><span class="sxs-lookup"><span data-stu-id="0d174-102">Install Client Tools on a SQL Server Failover Cluster</span></span>
+  <span data-ttu-id="0d174-103">[!INCLUDE[ssManStudioFull](../../../includes/ssmanstudiofull-md.md)] 와 같은 클라이언트 도구는 동일한 시스템의 모든 인스턴스에서 공통으로 공유하는 기능으로,</span><span class="sxs-lookup"><span data-stu-id="0d174-103">Client tools such as [!INCLUDE[ssManStudioFull](../../../includes/ssmanstudiofull-md.md)] are shared features common across all instances on the same machine.</span></span> <span data-ttu-id="0d174-104">나란히 설치할 수 있도록 지원되는 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 의 이전 버전과 호환됩니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-104">They are backward compatible, with supported [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] versions that can be installed side by side.</span></span> <span data-ttu-id="0d174-105">한 번에 하나의 클라이언트 도구 버전만 노드에 존재합니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-105">Only one version of the client tool exists on a node at a time.</span></span>  
+  
+ <span data-ttu-id="0d174-106">설치 중에 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 클라이언트 도구가 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 클러스터의 첫 번째 노드에 설치되면 자동으로 임의 노드에 추가되어 나중에 노드 추가를 사용하여 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 인스턴스에 추가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-106">If the [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] client tools are installed during setup on first node of the [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] cluster, they are automatically added to any nodes that may be added later to the instance of [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] using Add Node.</span></span>  
+  
+> [!IMPORTANT]  
+>  [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] <span data-ttu-id="0d174-107">온라인 설명서는 노드 추가를 사용하여 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 클러스터에 추가된 노드에 자동으로 추가되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-107">Books Online is not automatically added to the additional nodes added to the [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] cluster using Add Node.</span></span> [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] <span data-ttu-id="0d174-108">온라인 설명서의 로컬 복사본을 두려는 노드에 수동으로 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 온라인 설명서를 설치할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-108">Books Online can be installed manually on the nodes that you wish to have a local copy of [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Books Online.</span></span>  
+  
+ <span data-ttu-id="0d174-109">[!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 클러스터의 초기 설치 중에 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 클라이언트 도구를 설치하지 않는 경우 나중에 아래 설명된 절차에 따라 설치할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-109">If you do not install the [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] client tools during the initial installation of the [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] cluster, you can install it later as described in the procedures below.</span></span>  
+  
+## <a name="installation-procedures"></a><span data-ttu-id="0d174-110">설치 절차</span><span class="sxs-lookup"><span data-stu-id="0d174-110">Installation procedures</span></span>  
+  
+#### <a name="installing-ssnoversion-client-tools-using-the-setup-user-interface"></a><span data-ttu-id="0d174-111">설치 사용자 인터페이스를 사용하여 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 클라이언트 도구 설치</span><span class="sxs-lookup"><span data-stu-id="0d174-111">Installing [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Client Tools Using the Setup User Interface</span></span>  
+  
+1.  <span data-ttu-id="0d174-112">[!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 설치 미디어를 넣고</span><span class="sxs-lookup"><span data-stu-id="0d174-112">Insert the [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] installation media.</span></span> <span data-ttu-id="0d174-113">루트 설치 폴더에서 Setup.exe를 두 번 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-113">From the root installation folder, double click Setup.exe.</span></span> <span data-ttu-id="0d174-114">네트워크 공유에서 설치하려면 공유에서 루트 폴더를 찾은 다음 Setup.exe를 두 번 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-114">To install from the network share, locate the root folder on the share, and then double-click Setup.exe.</span></span>  
+  
+2.  <span data-ttu-id="0d174-115">**설치** 페이지에서 **새 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 독립 실행형 설치 또는 기존 설치에 기능 추가**를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-115">On the **Installation** page, click **New [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] stand-alone installation or add Features to an existing installation**.</span></span> <span data-ttu-id="0d174-116">**[!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 장애 조치(failover) 클러스터 새로 설치**를 클릭하지 마세요.</span><span class="sxs-lookup"><span data-stu-id="0d174-116">Do not click **New [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] failover cluster installation**.</span></span>  
+  
+3.  <span data-ttu-id="0d174-117">시스템 구성 검사기가 설치를 계속하기 전에 컴퓨터의 시스템 상태를 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-117">The system configuration checker verifies the system state of your computer before Setup will continue.</span></span>  
+  
+4.  <span data-ttu-id="0d174-118">**설치 유형** 페이지에서 **[!INCLUDE[ssCurrent](../../../includes/sscurrent-md.md)] 새로 설치**를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-118">On the **Installation Type** page, click **Perform a new installation of [!INCLUDE[ssCurrent](../../../includes/sscurrent-md.md)]**.</span></span>  
+  
+5.  <span data-ttu-id="0d174-119">**기능 선택** 페이지에서 설치할 도구를 선택하고 설치 프로세스의 나머지 단계를 진행합니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-119">On the **Feature Selection** page, select the tools that you want to install and follow through the rest of the steps of the Setup process.</span></span>  
+  
+#### <a name="installing-ssnoversion-client-tools-at-the-command-prompt"></a><span data-ttu-id="0d174-120">명령 프롬프트를 사용하여 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 클라이언트 도구 설치</span><span class="sxs-lookup"><span data-stu-id="0d174-120">Installing [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] client tools at the command prompt</span></span>  
+  
+1.  <span data-ttu-id="0d174-121">[!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 클라이언트 도구 및 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 온라인 설명서를 설치하려면 다음 명령을 실행합니다. Setup.exe/q/Action=Install /Features=Tools</span><span class="sxs-lookup"><span data-stu-id="0d174-121">To install [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] client tools and [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Books Online, run the following command: Setup.exe/q/Action=Install /Features=Tools</span></span>  
+  
+2.  <span data-ttu-id="0d174-122">기본 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 관리 도구만 설치하려면 다음 명령을 실행합니다. Setup.exe/q/Action=Install Features=SSMS.</span><span class="sxs-lookup"><span data-stu-id="0d174-122">To install only the basic [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Management tools run the following command: Setup.exe/q/Action=Install Features=SSMS.</span></span> <span data-ttu-id="0d174-123">그러면 [!INCLUDE[ssManStudio](../../../includes/ssmanstudio-md.md)] , [!INCLUDE[ssDEnoversion](../../../includes/ssdenoversion-md.md)], sqlcmd 유틸리티 및 [!INCLUDE[ssExpress](../../../includes/ssexpress-md.md)]Powershell 공급자에 대한 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 지원이 설치됩니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-123">This will install [!INCLUDE[ssManStudio](../../../includes/ssmanstudio-md.md)] support for [!INCLUDE[ssDEnoversion](../../../includes/ssdenoversion-md.md)], [!INCLUDE[ssExpress](../../../includes/ssexpress-md.md)], sqlcmd utility, and the [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Powershell provider.</span></span>  
+  
+3.  <span data-ttu-id="0d174-124">전체 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 관리 도구를 설치하려면 다음 명령을 실행합니다. Setup.exe/q/Action=Install /Features=ADV_SSMS.</span><span class="sxs-lookup"><span data-stu-id="0d174-124">To install the complete [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Management tools, run the following command: Setup.exe/q/Action=Install /Features=ADV_SSMS.</span></span> <span data-ttu-id="0d174-125">기능에 대 한 매개 변수 값에 대 한 자세한 내용은 [명령 프롬프트에서 SQL Server 2014 설치](../../../database-engine/install-windows/install-sql-server-from-the-command-prompt.md)를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="0d174-125">For more information about parameter values for the features, see [Install SQL Server 2014 from the Command Prompt](../../../database-engine/install-windows/install-sql-server-from-the-command-prompt.md).</span></span>  
+  
+### <a name="uninstalling-ssnoversion-client-tools"></a><span data-ttu-id="0d174-126">[!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 클라이언트 도구 제거</span><span class="sxs-lookup"><span data-stu-id="0d174-126">Uninstalling [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Client Tools</span></span>  
+ <span data-ttu-id="0d174-127">클라이언트 도구는 제어판의 프로그램 추가/제거에 **[!INCLUDE[msCoName](../../../includes/msconame-md.md)][!INCLUDE[ssCurrent](../../../includes/sscurrent-md.md)]** 로 나타나고 여기서 제거할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-127">They appear in Add or Remove programs in Control Panel as **[!INCLUDE[msCoName](../../../includes/msconame-md.md)][!INCLUDE[ssCurrent](../../../includes/sscurrent-md.md)]**, and can be removed from there.</span></span> <span data-ttu-id="0d174-128">장애 조치(Failover) 클러스터에서 [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] 인스턴스를 제거하기 위해 노드 제거를 사용하면 클라이언트 구성 요소가 동시에 제거되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="0d174-128">When you use Remove Node to uninstall an instance of [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] from the failover cluster, the client components are not uninstalled at the same time.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="0d174-129">참고 항목</span><span class="sxs-lookup"><span data-stu-id="0d174-129">See Also</span></span>  
+ [<span data-ttu-id="0d174-130">SQL Server 설치 로그 파일 보기 및 읽기</span><span class="sxs-lookup"><span data-stu-id="0d174-130">View and Read SQL Server Setup Log Files</span></span>](../../../database-engine/install-windows/view-and-read-sql-server-setup-log-files.md)  
+  
+  
