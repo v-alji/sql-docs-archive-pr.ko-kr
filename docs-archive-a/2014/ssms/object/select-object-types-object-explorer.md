@@ -1,0 +1,27 @@
+---
+title: 개체 유형 선택(개체 탐색기) | Microsoft 문서
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: ssms
+ms.topic: conceptual
+f1_keywords:
+- sql12.swb.common.selectobjecttypes.f1
+ms.assetid: 6d27ab0b-a016-4fb3-9391-74c6a9c1991c
+author: stevestein
+ms.author: sstein
+ms.openlocfilehash: eb06ec2ddd75f21eae697a5a9c439c893bfbd7b4
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87727860"
+---
+# <a name="select-object-types-object-explorer"></a><span data-ttu-id="3afea-102">개체 유형 선택(개체 탐색기)</span><span class="sxs-lookup"><span data-stu-id="3afea-102">Select Object Types (Object Explorer)</span></span>
+  <span data-ttu-id="3afea-103">이 대화 상자를 사용하여 **개체 선택** 대화 상자에 나타나는 개체 유형을 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3afea-103">Use this dialog box to specify the types of objects that appear in the **Select Objects** dialog box.</span></span>  
+  
+## <a name="select-the-types-of-objects-to-find"></a><span data-ttu-id="3afea-104">찾을 개체 유형 선택</span><span class="sxs-lookup"><span data-stu-id="3afea-104">Select the Types of Objects to Find</span></span>  
+ <span data-ttu-id="3afea-105">**개체 유형** 목록에서 항목을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="3afea-105">Select items in the **Object Type** list.</span></span> <span data-ttu-id="3afea-106">목록에는 해당 동작 유형에 사용할 수 있는 항목만 포함됩니다. 예를 들어 새 개체의 소유자를 선택하면 **로그인** 만 나타납니다.</span><span class="sxs-lookup"><span data-stu-id="3afea-106">The list contains only the items available for the type of action; for instance, only **Logins** appear if you are selecting the owner for a new object.</span></span>  
+  
+  
