@@ -1,0 +1,49 @@
+---
+title: 배포 된 큐브 찾아보기 | Microsoft Docs
+ms.custom: ''
+ms.date: 06/14/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+ms.assetid: 849c6109-1453-4fe4-a892-c49a982cfadb
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: b876c8b2876aaf4ad28b0f4ea3fb8bab32cd787b
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87652427"
+---
+# <a name="browsing-the-deployed-cube"></a><span data-ttu-id="1ef73-102">배포된 큐브 찾아보기</span><span class="sxs-lookup"><span data-stu-id="1ef73-102">Browsing the Deployed Cube</span></span>
+  <span data-ttu-id="1ef73-103">다음 태스크에서는 [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)] Tutorial 큐브를 찾아봅니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-103">In the following task, you browse the [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)] Tutorial cube.</span></span> <span data-ttu-id="1ef73-104">분석할 때 여러 차원 간에 측정값을 비교하므로 Excel 피벗 테이블을 사용하여 데이터를 찾습니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-104">Because our analysis compares measure across multiple dimensions, you will use an Excel PivotTable to browse your data.</span></span> <span data-ttu-id="1ef73-105">피벗 테이블을 사용하면 Internet Sales가 특정 기간, 고객 인구 통계 및 제품 라인에 표시될 때 어떻게 변경되는지 볼 수 있도록 고객, 날짜 및 제품 정보를 각각 다른 축에 배치할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-105">Using a PivotTable lets you place customer, date, and product information on different axes so that you can see how Internet Sales change when viewed across specific time periods, customer demographics, and product lines.</span></span>  
+  
+### <a name="to-browse-the-deployed-cube"></a><span data-ttu-id="1ef73-106">배포된 큐브를 찾아보려면</span><span class="sxs-lookup"><span data-stu-id="1ef73-106">To browse the deployed cube</span></span>  
+  
+1.  <span data-ttu-id="1ef73-107">에서 큐브 디자이너로 전환 하려면 [!INCLUDE[ssBIDevStudio](../includes/ssbidevstudio-md.md)] 솔루션 탐색기의 **큐브** 폴더에서 \*\* [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)] Tutorial\*\* 큐브를 두 번 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-107">To switch to Cube Designer in [!INCLUDE[ssBIDevStudio](../includes/ssbidevstudio-md.md)], double-click the **[!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)] Tutorial** cube in the **Cubes** folder of the Solution Explorer.</span></span>  
+  
+2.  <span data-ttu-id="1ef73-108">**브라우저** 탭을 연 다음 디자이너 도구 모음에서 **다시 연결** 단추를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-108">Open the **Browser** tab, and then click the **Reconnect** button on the toolbar of the designer.</span></span>  
+  
+3.  <span data-ttu-id="1ef73-109">Excel 아이콘을 클릭하여 작업 영역 데이터베이스를 데이터 원본으로 사용하여 Excel을 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-109">Click the Excel icon to launch Excel using the workspace database as the data source.</span></span> <span data-ttu-id="1ef73-110">데이터 연결을 사용하도록 설정할지를 묻는 메시지가 표시되면 **사용**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-110">When prompted to enable connections, click **Enable**.</span></span>  
+  
+4.  <span data-ttu-id="1ef73-111">피벗 테이블 필드 목록에서 **Internet Sales**를 확장한 다음 **Sales Amount** 측정값을 **값** 영역으로 끌어옵니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-111">In the PivotTable Field List, expand **Internet Sales**, and then drag the **Sales Amount** measure to the **Values** area.</span></span>  
+  
+5.  <span data-ttu-id="1ef73-112">피벗 테이블 필드 목록에서 **Product**를 확장합니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-112">In the PivotTable Field List, expand **Product**.</span></span>  
+  
+6.  <span data-ttu-id="1ef73-113">**Product Model Lines** 사용자 계층을 **열** 영역으로 끌어옵니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-113">Drag the **Product Model Lines** user hierarchy to the **Columns** area.</span></span>  
+  
+7.  <span data-ttu-id="1ef73-114">피벗 테이블 필드 목록에서 **Customer**를 확장하고 **Location**을 확장한 다음 Customer 차원의 위치 표시 폴더에서 **Customer Geography** 계층을 **행** 영역으로 끌어옵니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-114">In the PivotTable Field List, expand **Customer**, expand **Location**, and then drag the **Customer Geography** hierarchy from the Location display folder in the Customer dimension to the **Rows** area.</span></span>  
+  
+8.  <span data-ttu-id="1ef73-115">피벗 테이블 필드 목록에서 **Order Date**를 확장한 다음 **Order Date.Calendar Date** 계층을 **Report Filter** 영역으로 끌어옵니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-115">In the PivotTable Field List, expand **Order Date**, and then drag the **Order Date.Calendar Date** hierarchy to the **Report Filter** area.</span></span>  
+  
+9. <span data-ttu-id="1ef73-116">데이터 창의 **Order Date.Calendar Date** 필터에서 오른쪽 화살표를 클릭하고 **(모두)** 수준 확인란의 선택을 취소한 다음 **2006**, **H1 CY 2006**, **Q1 CY 2006**을 차례로 확장합니다. 그런 다음 **February 2006**확인란을 선택하고 **확인**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-116">Click the arrow to the right of the **Order Date.Calendar Date** filter in the data pane, clear the check box for the **(All)** level, expand **2006**, expand **H1 CY 2006**, expand **Q1 CY 2006**, select the check box for **February 2006**, and then click **OK**.</span></span>  
+  
+     <span data-ttu-id="1ef73-117">다음 그림에 표시된 것처럼 2006년 2월의 지역별 인터넷 판매와 제품 라인이 나타납니다.</span><span class="sxs-lookup"><span data-stu-id="1ef73-117">Internet sales by region and product line for the month of February, 2006 appear as shown in the following image.</span></span>  
+  
+     <span data-ttu-id="1ef73-118">![국가 및 제품 라인별 인터넷 판매](../../2014/tutorials/media/l3-cube-browser-finish.gif "국가 및 제품 라인별 인터넷 판매")</span><span class="sxs-lookup"><span data-stu-id="1ef73-118">![Internet sales by region and product line](../../2014/tutorials/media/l3-cube-browser-finish.gif "Internet sales by region and product line")</span></span>  
+  
+## <a name="next-lesson"></a><span data-ttu-id="1ef73-119">다음 단원</span><span class="sxs-lookup"><span data-stu-id="1ef73-119">Next Lesson</span></span>  
+ [<span data-ttu-id="1ef73-120">4단원: 고급 특성 및 차원 속성 정의</span><span class="sxs-lookup"><span data-stu-id="1ef73-120">Lesson 4: Defining Advanced Attribute and Dimension Properties</span></span>](lesson-4-defining-advanced-attribute-and-dimension-properties.md)  
+  
+  

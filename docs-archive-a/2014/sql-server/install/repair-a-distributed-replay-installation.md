@@ -1,0 +1,38 @@
+---
+title: Distributed Replay 설치 복구 | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: database-engine
+ms.topic: conceptual
+ms.assetid: 6fcd8ca8-1ceb-457d-9545-096c74e274d7
+author: mashamsft
+ms.author: mathoma
+ms.openlocfilehash: 57f5b2bde308e48dbf14b52a8b159b30f6a98bc8
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87653140"
+---
+# <a name="repair-a-distributed-replay-installation"></a><span data-ttu-id="e054c-102">Distributed Replay 설치 복구</span><span class="sxs-lookup"><span data-stu-id="e054c-102">Repair a Distributed Replay Installation</span></span>
+  <span data-ttu-id="e054c-103">Distributed Replay 구성 요소(컨트롤러 또는 서비스)를 복구하면 다음 작업이 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="e054c-103">Repairing a Distributed Replay component (controller or client) will do the following:</span></span>  
+  
+1.  <span data-ttu-id="e054c-104">관련된 모든 파일이 디스크에 다시 설치되어 기존 파일이 대체됩니다.</span><span class="sxs-lookup"><span data-stu-id="e054c-104">Install all associated files on disk again, and replace any existing files.</span></span>  
+  
+2.  <span data-ttu-id="e054c-105">해당 서비스 계정이 제거되었으면 Windows 서비스 계정을 다시 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="e054c-105">Recreate the Windows service account if the corresponding service account was removed.</span></span>  
+  
+ <span data-ttu-id="e054c-106">복구 작업으로 구성 요소를 추가하거나 제거할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="e054c-106">You cannot use the Repair operation to add or remove components.</span></span> <span data-ttu-id="e054c-107">구성 요소를 추가 하거나 제거 하려면 설치 프로그램의 **기능 선택** 페이지에 있는 기능 트리에서 해당 구성 요소를 선택 하거나 선택 취소 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 합니다.</span><span class="sxs-lookup"><span data-stu-id="e054c-107">To add or remove components, check or uncheck the corresponding component in the Feature tree on the **Feature Selection** page in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Setup.</span></span>  
+  
+### <a name="to-repair-a-failed-installation-of-distributed-replay"></a><span data-ttu-id="e054c-108">실패한 Distributed Replay 설치를 복구하려면</span><span class="sxs-lookup"><span data-stu-id="e054c-108">To repair a failed installation of Distributed Replay</span></span>  
+  
+1.  <span data-ttu-id="e054c-109">**시작** 메뉴에서 **제어판**을 클릭 한 다음 **프로그램 추가/제거**를 두 번 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="e054c-109">From the **Start** menu, click **Control Panel**, and then double-click **Add or Remove Programs**.</span></span>  
+  
+2.  <span data-ttu-id="e054c-110">[!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] **프로그램 제거 또는 변경** 창에서를 선택한 다음 [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] 대화 상자에서 **복구**를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="e054c-110">Select [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] in the **Uninstall or change a program** window, and then in the [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] dialog box, click **Repair**.</span></span>  
+  
+3.  <span data-ttu-id="e054c-111">마법사의 단계를 따르고 [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] **기능 선택** 페이지에서 복구 하려는 Distributed Replay 구성 요소를 선택 하 고 **다음**을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="e054c-111">Follow the steps in the [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] wizard, and on the **Select Features** page, select the Distributed Replay components you want to repair, and then click **Next.**.</span></span>  
+  
+4.  <span data-ttu-id="e054c-112">[!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] 설치 마법사를 완료하여 선택한 Distributed Replay 기능을 복구합니다.</span><span class="sxs-lookup"><span data-stu-id="e054c-112">Complete the [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] Installation Wizard to repair the selected Distributed Replay features.</span></span>  
+  
+  

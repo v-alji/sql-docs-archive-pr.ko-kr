@@ -1,0 +1,62 @@
+---
+title: 스크립트 구성 요소에서 데이터 원본에 연결 | Microsoft Docs
+ms.custom: ''
+ms.date: 03/09/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: integration-services
+ms.topic: reference
+helpviewer_keywords:
+- Script component [Integration Services], connecting to data sources
+ms.assetid: 96de63ab-ff48-4e7e-89e0-ffd6a89c63b6
+author: chugugrace
+ms.author: chugu
+ms.openlocfilehash: 9272f946abb68a1c54cd6f4851806ec6a1b15de7
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87652210"
+---
+# <a name="connecting-to-data-sources-in-the-script-component"></a><span data-ttu-id="23a97-102">스크립트 구성 요소에서 데이터 원본에 연결</span><span class="sxs-lookup"><span data-stu-id="23a97-102">Connecting to Data Sources in the Script Component</span></span>
+  <span data-ttu-id="23a97-103">연결 관리자는 특정 유형의 데이터 원본에 연결하는 데 필요한 정보를 캡슐화하고 저장하는 편리한 단위입니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-103">A connection manager is a convenient unit that encapsulates and stores the information that is required to connect to a data source of a particular type.</span></span> <span data-ttu-id="23a97-104">자세한 내용은 [Integration Services&#40;SSIS&#41; 연결](../../connection-manager/integration-services-ssis-connections.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="23a97-104">For more information, see [Integration Services &#40;SSIS&#41; Connections](../../connection-manager/integration-services-ssis-connections.md).</span></span>  
+  
+ <span data-ttu-id="23a97-105">**스크립트 변환 편집기**의 **연결 관리자** 페이지에서 **추가** 및 **제거** 단추를 클릭하여 원본 또는 대상 구성 요소의 사용자 지정 스크립트에서 기존 연결 관리자에 액세스할 수 있게 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-105">You can make existing connection managers available for access by the custom script in the source or destination component by clicking the **Add** and **Remove** buttons on the **Connection Managers** page of the **Script Transformation Editor**.</span></span> <span data-ttu-id="23a97-106">그러나 데이터를 로드하거나 저장하고 데이터 원본에 대한 연결을 열고 닫는 사용자 지정 코드는 개발자가 직접 작성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-106">However, you must write your own custom code to load or save your data, and possibly to open and close the connection to the data source.</span></span> <span data-ttu-id="23a97-107">**스크립트 변환 편집기**의 **연결 관리자** 페이지에 대한 자세한 내용은 [스크립트 구성 요소 편집기에서 스크립트 구성 요소 구성](configuring-the-script-component-in-the-script-component-editor.md) 및 [스크립트 변환 편집기&#40;연결 관리자 페이지&#41;](../../script-transformation-editor-connection-managers-page.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="23a97-107">For more information about the **Connection Managers** page of the **Script Transformation Editor**, see [Configuring the Script Component in the Script Component Editor](configuring-the-script-component-in-the-script-component-editor.md) and [Script Transformation Editor &#40;Connection Managers Page&#41;](../../script-transformation-editor-connection-managers-page.md).</span></span>  
+  
+ <span data-ttu-id="23a97-108">스크립트 구성 요소에서는 각 연결 관리자에 대해 해당 연결 관리자와 동일한 이름을 갖는 강력한 형식의 접근자가 있는 `Connections` 컬렉션 클래스를 `ComponentWrapper` 프로젝트 항목에 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-108">The Script component creates a `Connections` collection class in the `ComponentWrapper` project item that contains a strongly-typed accessor for each connection manager that has the same name as the connection manager itself.</span></span> <span data-ttu-id="23a97-109">이 컬렉션은 `Connections` 클래스의 `ScriptMain` 속성을 통해 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-109">This collection is exposed through the `Connections` property of the `ScriptMain` class.</span></span> <span data-ttu-id="23a97-110">접근자 속성은 해당 연결 관리자에 대한 참조를 <xref:Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSConnectionManager100>의 인스턴스로 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-110">The accessor property returns a reference to the connection manager as an instance of <xref:Microsoft.SqlServer.Dts.Runtime.Wrapper.IDTSConnectionManager100>.</span></span> <span data-ttu-id="23a97-111">예를 들어 대화 상자의 연결 관리자 페이지에서 `MyADONETConnection`이라는 연결 관리자를 추가한 경우 스크립트에서 다음 코드를 추가하여 해당 연결 관리자에 대한 참조를 가져올 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-111">For example, if you have added a connection manager named `MyADONETConnection` on the Connection Managers page of the dialog box, you can obtain a reference to it in your script by adding the following code:</span></span>  
+  
+ `Dim myADONETConnectionManager As IDTSConnectionManager100 = _`  
+  
+ `Me.Connections.MyADONETConnection`  
+  
+> [!NOTE]  
+>  <span data-ttu-id="23a97-112">`AcquireConnection`을 호출하려면 먼저 연결 관리자에서 반환하는 연결 유형을 알고 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-112">You must know the type of connection that is returned by the connection manager before you call `AcquireConnection`.</span></span> <span data-ttu-id="23a97-113">스크립트 태스크에는 `Option Strict`가 설정되어 있으므로 `Object` 형식으로 반환된 연결을 사용하려면 먼저 이 연결을 적절한 연결 유형으로 캐스팅해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-113">Because the Script task has `Option Strict` enabled, you must cast the connection, which is returned as type `Object`, to the appropriate connection type before you can use it.</span></span>  
+  
+ <span data-ttu-id="23a97-114">그런 다음 특정 연결 관리자의 `AcquireConnection` 메서드를 호출하여 기본 연결이나 데이터 원본에 연결하는 데 필요한 정보를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-114">Next, you call the `AcquireConnection` method of the specific connection manager to obtain either the underlying connection or the information that is required to connect to the data source.</span></span> <span data-ttu-id="23a97-115">예를 들어 다음 코드를 사용하여 ADO.NET 연결 관리자에 의해 래핑된 **System.Data.SqlConnection**에 대한 참조를 가져올 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-115">For example, you obtain a reference to the **System.Data.SqlConnection** wrapped by an ADO.NET connection manager by using the following code:</span></span>  
+  
+ `Dim myADOConnection As SqlConnection = _`  
+  
+ `CType(MyADONETConnectionManager.AcquireConnection(Nothing), SqlConnection)`  
+  
+ <span data-ttu-id="23a97-116">반면 플랫 파일 연결 관리자에 대해 동일한 메서드를 호출할 경우에는 파일 데이터 원본의 경로와 파일 이름만 반환됩니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-116">In contrast, the same call to a flat file connection manager returns only the path and file name of the file data source.</span></span>  
+  
+ `Dim myFlatFile As String = _`  
+  
+ `CType(MyFlatFileConnectionManager.AcquireConnection(Nothing), String)`  
+  
+ <span data-ttu-id="23a97-117">플랫 파일의 데이터를 읽거나 쓰려면 `System.IO.StreamReader` 또는 `Streamwriter`에 이 경로와 파일 이름을 제공해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-117">You then must provide this path and file name to a `System.IO.StreamReader` or `Streamwriter` to read or write the data in the flat file.</span></span>  
+  
+> [!IMPORTANT]  
+>  <span data-ttu-id="23a97-118">스크립트 구성 요소에서 관리 코드를 작성하는 경우 OLE DB 연결 관리자 및 Excel 연결 관리자와 같이 관리되지 않는 개체를 반환하는 연결 관리자의 AcquireConnection 메서드는 호출할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-118">When you write managed code in a Script component, you cannot call the AcquireConnection method of connection managers that return unmanaged objects, such as the OLE DB connection manager and the Excel connection manager.</span></span> <span data-ttu-id="23a97-119">그러나 이러한 연결 관리자의 ConnectionString 속성을 읽고 **System.Data.OleDb** 네임스페이스에서 OLEDB **connection**의 연결 문자열을 사용하여 코드에서 직접 데이터 원본에 연결할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-119">However, you can read the ConnectionString property of these connection managers, and connect to the data source directly in your code by using the connection string of an OLEDB **connection** from the **System.Data.OleDb** namespace.</span></span>  
+>   
+>  <span data-ttu-id="23a97-120">관리되지 않는 개체를 반환하는 연결 관리자의 AcquireConnection 메서드를 호출해야 하는 경우에는 ADO.NET 연결 관리자를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-120">If you need to call the AcquireConnection method of a connection manager that returns an unmanaged object, use an ADO.NET connection manager.</span></span> <span data-ttu-id="23a97-121">ADO.NET 연결 관리자에서 OLE DB 공급자를 사용하도록 구성할 경우 이 연결 관리자는 .NET Framework Data Provider for OLE DB를 사용하여 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-121">When you configure the ADO.NET connection manager to use an OLE DB provider, it connects by using the .NET Framework Data Provider for OLE DB.</span></span> <span data-ttu-id="23a97-122">이 경우 AcquireConnection 메서드는 `System.Data.OleDb.OleDbConnection` 관리 되지 않는 개체 대신을 반환 합니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-122">In this case, the AcquireConnection method returns a `System.Data.OleDb.OleDbConnection` instead of an unmanaged object.</span></span> <span data-ttu-id="23a97-123">ADO.NET 연결 관리자를 Excel 데이터 원본에 사용할 수 있도록 구성하려면 **연결 관리자** 대화 상자의 **모두** 페이지에서 Microsoft OLE DB Provider for Jet를 선택하고 Excel 통합 문서를 지정한 다음 **확장 속성** 값으로 `Excel 8.0`(Excel 97 이상의 경우)을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="23a97-123">To configure an ADO.NET connection manager for use with an Excel data source, select the Microsoft OLE DB Provider for Jet, specify an Excel workbook, and then enter `Excel 8.0` (for Excel 97 and later) as the value of **Extended Properties** on the **All** page of the **Connection Manager** dialog box.</span></span>  
+  
+ <span data-ttu-id="23a97-124">스크립트 구성 요소에 연결 관리자를 사용하는 방법에 대한 자세한 내용은 [스크립트 구성 요소를 사용하여 원본 만들기](../../extending-packages-scripting-data-flow-script-component-types/creating-a-source-with-the-script-component.md) 및 [스크립트 구성 요소를 사용하여 대상 만들기](../../extending-packages-scripting-data-flow-script-component-types/creating-a-destination-with-the-script-component.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="23a97-124">For more information about how to use connection managers with the script component, see [Creating a Source with the Script Component](../../extending-packages-scripting-data-flow-script-component-types/creating-a-source-with-the-script-component.md) and [Creating a Destination with the Script Component](../../extending-packages-scripting-data-flow-script-component-types/creating-a-destination-with-the-script-component.md).</span></span>  
+  
+<span data-ttu-id="23a97-125">![Integration Services 아이콘 (작은 아이콘)](../../media/dts-16.gif "Integration Services 아이콘(작은 아이콘)")  **은 최신 상태로 유지 Integration Services**</span><span class="sxs-lookup"><span data-stu-id="23a97-125">![Integration Services icon (small)](../../media/dts-16.gif "Integration Services icon (small)")  **Stay Up to Date with Integration Services**</span></span><br /> <span data-ttu-id="23a97-126">Microsoft의 최신 다운로드, 문서, 예제 및 비디오와 커뮤니티에서 선택된 솔루션을 보려면 MSDN의 [!INCLUDE[ssISnoversion](../../../includes/ssisnoversion-md.md)] 페이지를 방문하세요.</span><span class="sxs-lookup"><span data-stu-id="23a97-126">For the latest downloads, articles, samples, and videos from Microsoft, as well as selected solutions from the community, visit the [!INCLUDE[ssISnoversion](../../../includes/ssisnoversion-md.md)] page on MSDN:</span></span><br /><br /> [<span data-ttu-id="23a97-127">MSDN의 Integration Services 페이지를 방문하세요.</span><span class="sxs-lookup"><span data-stu-id="23a97-127">Visit the Integration Services page on MSDN</span></span>](https://go.microsoft.com/fwlink/?LinkId=136655)<br /><br /> <span data-ttu-id="23a97-128">이러한 업데이트에 대한 자동 알림을 받으려면 해당 페이지에서 제공하는 RSS 피드를 구독하세요.</span><span class="sxs-lookup"><span data-stu-id="23a97-128">For automatic notification of these updates, subscribe to the RSS feeds available on the page.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="23a97-129">참고 항목</span><span class="sxs-lookup"><span data-stu-id="23a97-129">See Also</span></span>  
+ <span data-ttu-id="23a97-130">[SSIS&#41; 연결을 &#40;Integration Services](../../connection-manager/integration-services-ssis-connections.md) </span><span class="sxs-lookup"><span data-stu-id="23a97-130">[Integration Services &#40;SSIS&#41; Connections](../../connection-manager/integration-services-ssis-connections.md) </span></span>  
+ [<span data-ttu-id="23a97-131">연결 관리자 만들기</span><span class="sxs-lookup"><span data-stu-id="23a97-131">Create Connection Managers</span></span>](../../create-connection-managers.md)  
+  
+  

@@ -1,0 +1,22 @@
+---
+title: 별칭(SQL Server 구성 관리자) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: configuration
+ms.topic: conceptual
+ms.assetid: 7dc5d029-a1ed-4c13-a5c2-2aafb0f7866f
+author: stevestein
+ms.author: sstein
+ms.openlocfilehash: 939fddf3ff41466303aa77fd1e1b45b6aeafc65f
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87648726"
+---
+# <a name="aliases-sql-server-configuration-manager"></a><span data-ttu-id="9eed1-102">별칭(SQL Server 구성 관리자)</span><span class="sxs-lookup"><span data-stu-id="9eed1-102">Aliases (SQL Server Configuration Manager)</span></span>
+  <span data-ttu-id="9eed1-103">별칭은 연결 설정에 사용할 수 있는 대체 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="9eed1-103">An alias is an alternate name that can be used to make a connection.</span></span> <span data-ttu-id="9eed1-104">별칭은 연결 문자열의 필수 요소를 캡슐화하고 사용자가 선택한 이름으로 나타납니다.</span><span class="sxs-lookup"><span data-stu-id="9eed1-104">The alias encapsulates the required elements of a connection string, and exposes them with a name chosen by the user.</span></span> <span data-ttu-id="9eed1-105">이 컴퓨터의 [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 클라이언트에 대한 별칭을 만들려면 콘솔 창에서 **별칭**을 마우스 오른쪽 단추로 클릭한 다음, **새 별칭**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="9eed1-105">To create an alias for the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] clients on this computer, right-click **Aliases** in the console pane, and then click **New Alias**.</span></span> <span data-ttu-id="9eed1-106">이 컴퓨터의 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 클라이언트에 대한 기존 별칭을 구성하려면 콘솔 창에서 **별칭** 을 클릭하고 세부 정보 창에서 기존 별칭을 마우스 오른쪽 단추로 클릭한 다음 **속성**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="9eed1-106">To configure an existing alias for the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] clients on this computer, click **Aliases** in the console pane, right-click the desired existing alias in the details pane, and then click **Properties**.</span></span>  
+  
+  
