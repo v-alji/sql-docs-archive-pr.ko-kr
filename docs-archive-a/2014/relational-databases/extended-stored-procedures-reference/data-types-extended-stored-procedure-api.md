@@ -1,0 +1,67 @@
+---
+title: 데이터 형식(확장 저장 프로시저 API) | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: stored-procedures
+ms.topic: reference
+helpviewer_keywords:
+- extended stored procedures [SQL Server], data types
+- data types [SQL Server], extended stored procedures
+ms.assetid: 37fb86b9-8819-4387-bcdc-9616968e15ad
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: aae0c6f2b309d182a93274171d2f8c21344fe3b0
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87638775"
+---
+# <a name="data-types-extended-stored-procedure-api"></a><span data-ttu-id="de2b7-102">데이터 형식(확장 저장 프로시저 API)</span><span class="sxs-lookup"><span data-stu-id="de2b7-102">Data Types (Extended Stored Procedure API)</span></span>
+    
+> [!IMPORTANT]  
+>  [!INCLUDE[ssNoteDepFutureDontUse](../../includes/ssnotedepfuturedontuse-md.md)] <span data-ttu-id="de2b7-103">대신 CLR 통합을 사용하세요.</span><span class="sxs-lookup"><span data-stu-id="de2b7-103">Use CLR integration instead.</span></span>  
+  
+ <span data-ttu-id="de2b7-104">확장 저장 프로시저 API 데이터 형식을 사용하려면 프로그램에 Srv.h 헤더 파일을 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-104">To use the Extended Stored Procedure API data types, include the Srv.h header file in your program.</span></span>  
+  
+|<span data-ttu-id="de2b7-105">데이터 형식</span><span class="sxs-lookup"><span data-stu-id="de2b7-105">Data type</span></span>|<span data-ttu-id="de2b7-106">SQL Server 데이터 형식</span><span class="sxs-lookup"><span data-stu-id="de2b7-106">SQL Server data type</span></span>|<span data-ttu-id="de2b7-107">Description</span><span class="sxs-lookup"><span data-stu-id="de2b7-107">Description</span></span>|  
+|---------------|--------------------------|-----------------|  
+|<span data-ttu-id="de2b7-108">SRVBIGBINARY</span><span class="sxs-lookup"><span data-stu-id="de2b7-108">SRVBIGBINARY</span></span>|`binary`|<span data-ttu-id="de2b7-109">길이가 0-8000바이트인 `binary` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-109">`binary` data type, length 0 to 8000 bytes.</span></span>|  
+|<span data-ttu-id="de2b7-110">SRVBIGCHAR</span><span class="sxs-lookup"><span data-stu-id="de2b7-110">SRVBIGCHAR</span></span>|`char`|<span data-ttu-id="de2b7-111">길이가 0-8000바이트인 `character` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-111">`character` data type, length 0 to 8000 bytes.</span></span>|  
+|<span data-ttu-id="de2b7-112">SRVBIGVARBINARY</span><span class="sxs-lookup"><span data-stu-id="de2b7-112">SRVBIGVARBINARY</span></span>|`varbinary`|<span data-ttu-id="de2b7-113">길이가 0-8000바이트인 가변 길이 `binary` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-113">Variable-length `binary` data type, length 0 to 8000 bytes.</span></span>|  
+|<span data-ttu-id="de2b7-114">SRVBIGVARCHAR</span><span class="sxs-lookup"><span data-stu-id="de2b7-114">SRVBIGVARCHAR</span></span>|`varchar`|<span data-ttu-id="de2b7-115">길이가 0-8000바이트인 가변 길이 `character` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-115">Variable-length `character` data type, length 0 to 8000 bytes.</span></span>|  
+|<span data-ttu-id="de2b7-116">SRVBINARY</span><span class="sxs-lookup"><span data-stu-id="de2b7-116">SRVBINARY</span></span>|`binary`|<span data-ttu-id="de2b7-117">`binary` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-117">`binary` data type.</span></span>|  
+|<span data-ttu-id="de2b7-118">SRVBIT</span><span class="sxs-lookup"><span data-stu-id="de2b7-118">SRVBIT</span></span>|`Bit`|<span data-ttu-id="de2b7-119">`bit` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-119">`bit` data type.</span></span>|  
+|<span data-ttu-id="de2b7-120">SRVBITN</span><span class="sxs-lookup"><span data-stu-id="de2b7-120">SRVBITN</span></span>|`bit null`|<span data-ttu-id="de2b7-121">`bit` 데이터 형식으로 null 값이 허용됩니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-121">`bit` data type, null values allowed.</span></span>|  
+|<span data-ttu-id="de2b7-122">SRVCHAR</span><span class="sxs-lookup"><span data-stu-id="de2b7-122">SRVCHAR</span></span>|`char`|<span data-ttu-id="de2b7-123">`character` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-123">`character` data type.</span></span>|  
+|<span data-ttu-id="de2b7-124">SRVDATETIME</span><span class="sxs-lookup"><span data-stu-id="de2b7-124">SRVDATETIME</span></span>|`datetime`|<span data-ttu-id="de2b7-125">8바이트 `datetime` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-125">8-byte `datetime` data type.</span></span>|  
+|<span data-ttu-id="de2b7-126">SRVDATETIM4</span><span class="sxs-lookup"><span data-stu-id="de2b7-126">SRVDATETIM4</span></span>|`smalldatetime`|<span data-ttu-id="de2b7-127">4 바이트 `smalldatetime` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-127">4-byte `smalldatetime` data type.</span></span>|  
+|<span data-ttu-id="de2b7-128">SRVDATETIMN</span><span class="sxs-lookup"><span data-stu-id="de2b7-128">SRVDATETIMN</span></span>|<span data-ttu-id="de2b7-129">**datetime null**</span><span class="sxs-lookup"><span data-stu-id="de2b7-129">**datetime null**</span></span>|<span data-ttu-id="de2b7-130">`smalldatetime` 또는 `datetime` 데이터 형식으로 null 값이 허용됩니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-130">`smalldatetime` or `datetime` data type, null values allowed.</span></span>|  
+|<span data-ttu-id="de2b7-131">SRVDECIMAL</span><span class="sxs-lookup"><span data-stu-id="de2b7-131">SRVDECIMAL</span></span>|`decimal`|<span data-ttu-id="de2b7-132">`decimal` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-132">`decimal` data type.</span></span>|  
+|<span data-ttu-id="de2b7-133">SRVDECIMALN</span><span class="sxs-lookup"><span data-stu-id="de2b7-133">SRVDECIMALN</span></span>|`decimal null`|<span data-ttu-id="de2b7-134">`decimal` 데이터 형식으로 null 값이 허용됩니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-134">`decimal` data type, null values allowed.</span></span>|  
+|<span data-ttu-id="de2b7-135">SRVFLT4</span><span class="sxs-lookup"><span data-stu-id="de2b7-135">SRVFLT4</span></span>|`real`|<span data-ttu-id="de2b7-136">4 바이트 `real` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-136">4-byte `real` data type.</span></span>|  
+|<span data-ttu-id="de2b7-137">SRVFLT8</span><span class="sxs-lookup"><span data-stu-id="de2b7-137">SRVFLT8</span></span>|`float`|<span data-ttu-id="de2b7-138">8바이트 `float` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-138">8-byte `float` data type.</span></span>|  
+|<span data-ttu-id="de2b7-139">SRVFLTN</span><span class="sxs-lookup"><span data-stu-id="de2b7-139">SRVFLTN</span></span>|<span data-ttu-id="de2b7-140">`real` &#124; `float null`</span><span class="sxs-lookup"><span data-stu-id="de2b7-140">`real` &#124; `float null`</span></span>|<span data-ttu-id="de2b7-141">`real` 또는 `float` 데이터 형식으로 null 값이 허용됩니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-141">`real` or `float` data type, null values allowed.</span></span>|  
+|<span data-ttu-id="de2b7-142">SRVIMAGE</span><span class="sxs-lookup"><span data-stu-id="de2b7-142">SRVIMAGE</span></span>|`image`|<span data-ttu-id="de2b7-143">`image` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-143">`image` data type.</span></span>|  
+|<span data-ttu-id="de2b7-144">SRVINT1</span><span class="sxs-lookup"><span data-stu-id="de2b7-144">SRVINT1</span></span>|`tinyint`|<span data-ttu-id="de2b7-145">1 바이트 `tinyint` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-145">1-byte `tinyint` data type.</span></span>|  
+|<span data-ttu-id="de2b7-146">SRVINT2</span><span class="sxs-lookup"><span data-stu-id="de2b7-146">SRVINT2</span></span>|`smallint`|<span data-ttu-id="de2b7-147">2 바이트 `smallint` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-147">2-byte `smallint` data type.</span></span>|  
+|<span data-ttu-id="de2b7-148">SRVINT4</span><span class="sxs-lookup"><span data-stu-id="de2b7-148">SRVINT4</span></span>|`int`|<span data-ttu-id="de2b7-149">4 바이트 `int` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-149">4-byte `int` data type.</span></span>|  
+|<span data-ttu-id="de2b7-150">SRVINTN</span><span class="sxs-lookup"><span data-stu-id="de2b7-150">SRVINTN</span></span>|<span data-ttu-id="de2b7-151">`tinyint` &#124; `smallint` &#124; `int null`</span><span class="sxs-lookup"><span data-stu-id="de2b7-151">`tinyint` &#124; `smallint` &#124; `int null`</span></span>|<span data-ttu-id="de2b7-152">`tinyint`, `smallint` 또는 `int` 데이터 형식으로 null 값이 허용됩니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-152">`tinyint`, `smallint`, or `int` data type, null values allowed.</span></span>|  
+|<span data-ttu-id="de2b7-153">SRVMONEY4</span><span class="sxs-lookup"><span data-stu-id="de2b7-153">SRVMONEY4</span></span>|`smallmoney`|<span data-ttu-id="de2b7-154">4 바이트 `smallmoney` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-154">4-byte `smallmoney` data type.</span></span>|  
+|<span data-ttu-id="de2b7-155">SRVMONEY</span><span class="sxs-lookup"><span data-stu-id="de2b7-155">SRVMONEY</span></span>|`money`|<span data-ttu-id="de2b7-156">8바이트 `money` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-156">8-byte `money` data type.</span></span>|  
+|<span data-ttu-id="de2b7-157">SRVMONEYN</span><span class="sxs-lookup"><span data-stu-id="de2b7-157">SRVMONEYN</span></span>|<span data-ttu-id="de2b7-158">`money` &#124; `smallmoney null`</span><span class="sxs-lookup"><span data-stu-id="de2b7-158">`money` &#124; `smallmoney null`</span></span>|<span data-ttu-id="de2b7-159">`smallmoney` 또는 `money` 데이터 형식으로 null 값이 허용됩니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-159">`smallmoney` or `money` data type, null values allowed.</span></span>|  
+|<span data-ttu-id="de2b7-160">SRVNCHAR</span><span class="sxs-lookup"><span data-stu-id="de2b7-160">SRVNCHAR</span></span>|<span data-ttu-id="de2b7-161">**nchar**</span><span class="sxs-lookup"><span data-stu-id="de2b7-161">**nchar**</span></span>|<span data-ttu-id="de2b7-162">유니코드 `character` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-162">Unicode `character` data type.</span></span>|  
+|<span data-ttu-id="de2b7-163">SRVNTEXT</span><span class="sxs-lookup"><span data-stu-id="de2b7-163">SRVNTEXT</span></span>|`ntext`|<span data-ttu-id="de2b7-164">유니코드 `text` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-164">Unicode `text` data type.</span></span>|  
+|<span data-ttu-id="de2b7-165">SRVNUMERIC</span><span class="sxs-lookup"><span data-stu-id="de2b7-165">SRVNUMERIC</span></span>|`numeric`|<span data-ttu-id="de2b7-166">`numeric` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-166">`numeric` data type.</span></span>|  
+|<span data-ttu-id="de2b7-167">SRVNUMERICN</span><span class="sxs-lookup"><span data-stu-id="de2b7-167">SRVNUMERICN</span></span>|`numeric null`|<span data-ttu-id="de2b7-168">`numeric` 데이터 형식으로 null 값이 허용됩니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-168">`numeric` data type, null values allowed.</span></span>|  
+|<span data-ttu-id="de2b7-169">SRVNVARCHAR</span><span class="sxs-lookup"><span data-stu-id="de2b7-169">SRVNVARCHAR</span></span>|<span data-ttu-id="de2b7-170">**nvarchar**</span><span class="sxs-lookup"><span data-stu-id="de2b7-170">**nvarchar**</span></span>|<span data-ttu-id="de2b7-171">유니코드 가변 길이 `character` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-171">Unicode variable-length `character` data type.</span></span>|  
+|<span data-ttu-id="de2b7-172">SRVTEXT</span><span class="sxs-lookup"><span data-stu-id="de2b7-172">SRVTEXT</span></span>|`text`|<span data-ttu-id="de2b7-173">`text` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-173">`text` data type.</span></span>|  
+|<span data-ttu-id="de2b7-174">SRVVARBINARY</span><span class="sxs-lookup"><span data-stu-id="de2b7-174">SRVVARBINARY</span></span>|`varbinary`|<span data-ttu-id="de2b7-175">가변 길이 `binary` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-175">Variable-length `binary` data type.</span></span>|  
+|<span data-ttu-id="de2b7-176">SRVVARCHAR</span><span class="sxs-lookup"><span data-stu-id="de2b7-176">SRVVARCHAR</span></span>|`varchar`|<span data-ttu-id="de2b7-177">가변 길이 `character` 데이터 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-177">Variable-length `character` data type.</span></span>|  
+  
+> [!IMPORTANT]  
+>  <span data-ttu-id="de2b7-178">확장 저장 프로시저의 원본 코드를 철저히 검토하고 프로덕션 서버에 DLL을 설치하기 전에 컴파일한 DLL을 테스트해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="de2b7-178">You should thoroughly review the source code of extended stored procedures, and you should test the compiled DLLs before you install them on a production server.</span></span> <span data-ttu-id="de2b7-179">보안 검토 및 테스트에 대한 자세한 내용은 [Microsoft 웹 사이트](https://go.microsoft.com/fwlink/?LinkID=54761&amp;clcid=0x409https://msdn.microsoft.com/security/)를 참조하십시오.</span><span class="sxs-lookup"><span data-stu-id="de2b7-179">For information about security review and testing, see this [Microsoft Web site](https://go.microsoft.com/fwlink/?LinkID=54761&amp;clcid=0x409https://msdn.microsoft.com/security/).</span></span>  
+  
+  

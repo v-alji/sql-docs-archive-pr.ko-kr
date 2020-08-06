@@ -1,0 +1,73 @@
+---
+title: 작업 단계 정보 보기 | Microsoft 문서
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: ssms
+ms.topic: conceptual
+helpviewer_keywords:
+- displaying job step information
+- jobs [SQL Server Agent], viewing
+- SQL Server Agent jobs, viewing
+- viewing job step information
+ms.assetid: e3f06492-dc86-4e06-b186-ea58aff6d591
+author: stevestein
+ms.author: sstein
+ms.openlocfilehash: 5d9fc6a006884bc564b5db2bfa8b168c8ae59149
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87638543"
+---
+# <a name="view-job-step-information"></a><span data-ttu-id="72c67-102">View Job Step Information</span><span class="sxs-lookup"><span data-stu-id="72c67-102">View Job Step Information</span></span>
+  <span data-ttu-id="72c67-103">이 항목에서는 작업 단계 속성 대화 상자에서 작업 단계의 세부 사항을 보는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-103">This topic describes how to view job step details in the Job Step Properties dialog.</span></span> <span data-ttu-id="72c67-104">또한 작업 단계 출력 보기에 대한 정보도 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-104">It also includes information about viewing job step output.</span></span>  
+  
+-   <span data-ttu-id="72c67-105">**시작하기 전 주의 사항:**</span><span class="sxs-lookup"><span data-stu-id="72c67-105">**Before you begin:**</span></span>  
+  
+     [<span data-ttu-id="72c67-106">제한 사항</span><span class="sxs-lookup"><span data-stu-id="72c67-106">Limitations and Restrictions</span></span>](#Restrictions)  
+  
+     [<span data-ttu-id="72c67-107">보안</span><span class="sxs-lookup"><span data-stu-id="72c67-107">Security</span></span>](#Security)  
+  
+-   <span data-ttu-id="72c67-108">**작업 단계 정보를 보려면**</span><span class="sxs-lookup"><span data-stu-id="72c67-108">**To view job step information, using:**</span></span>  
+  
+     [<span data-ttu-id="72c67-109">SQL Server Management Studio</span><span class="sxs-lookup"><span data-stu-id="72c67-109">SQL Server Management Studio</span></span>](#SSMS)  
+  
+##  <a name="before-you-begin"></a><a name="BeforeYouBegin"></a> <span data-ttu-id="72c67-110">시작하기 전에</span><span class="sxs-lookup"><span data-stu-id="72c67-110">Before You Begin</span></span>  
+  
+###  <a name="limitations-and-restrictions"></a><a name="Restrictions"></a> <span data-ttu-id="72c67-111">제한 사항</span><span class="sxs-lookup"><span data-stu-id="72c67-111">Limitations and Restrictions</span></span>  
+ <span data-ttu-id="72c67-112">테이블 또는 파일에 출력을 기록하도록 작업 단계를 구성했고 작업이 최소 한 번 이상 실행된 경우 **작업 단계 속성** 대화 상자의 **고급** 페이지에서 출력을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-112">If the job step has been configured to write its output to a table or file and the job has run at least once, you can view its output on the **Advanced** page of the **Job Step Properties** dialog.</span></span> <span data-ttu-id="72c67-113">작업 또는 작업 단계를 삭제하면 출력 로그는 자동으로 삭제됩니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-113">When a job or job step is deleted, the output log is automatically deleted.</span></span>  
+  
+###  <a name="security"></a><a name="Security"></a> <span data-ttu-id="72c67-114">보안</span><span class="sxs-lookup"><span data-stu-id="72c67-114">Security</span></span>  
+  
+####  <a name="permissions"></a><a name="Permissions"></a> <span data-ttu-id="72c67-115">권한</span><span class="sxs-lookup"><span data-stu-id="72c67-115">Permissions</span></span>  
+ <span data-ttu-id="72c67-116">**sysadmin** 고정 서버 역할의 멤버가 아닌 경우 소유한 작업만 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-116">You can view only those jobs that you own, unless you are a member of the **sysadmin** fixed server role.</span></span> <span data-ttu-id="72c67-117">이 역할의 멤버는 모든 작업 및 작업 단계 세부 사항을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-117">Members of this role can view all jobs and job step details.</span></span>  
+  
+##  <a name="using-sql-server-management-studio"></a><a name="SSMS"></a> <span data-ttu-id="72c67-118">SQL Server Management Studio 사용</span><span class="sxs-lookup"><span data-stu-id="72c67-118">Using SQL Server Management Studio</span></span>  
+  
+#### <a name="to-view-job-step-information"></a><span data-ttu-id="72c67-119">작업 단계 정보를 보려면</span><span class="sxs-lookup"><span data-stu-id="72c67-119">To view job step information</span></span>  
+  
+1.  <span data-ttu-id="72c67-120">**개체 탐색기** 에서 인스턴스에 연결한 [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] 다음 해당 인스턴스를 확장 합니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-120">In **Object Explorer,** connect to an instance of the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)], and then expand that instance.</span></span>  
+  
+2.  <span data-ttu-id="72c67-121">**SQL Server 에이전트**, **작업**을 차례로 확장한 다음 보려는 작업 단계가 포함된 작업을 마우스 오른쪽 단추로 클릭하고 **속성**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-121">Expand **SQL Server Agent**, expand **Jobs**, right-click the job that contains the job step to be viewed, and click **Properties**.</span></span>  
+  
+3.  <span data-ttu-id="72c67-122">**작업 속성** 대화 상자에서 **단계** 페이지를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-122">In the **Job Properties** dialog, click the **Steps** page.</span></span>  
+  
+4.  <span data-ttu-id="72c67-123">보려는 작업 단계를 클릭하고 **편집**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-123">Click the job step to be viewed, and click **Edit**.</span></span>  
+  
+5.  <span data-ttu-id="72c67-124">**작업 단계 속성** 대화 상자의 **일반** 페이지에서 작업 단계의 유형 및 역할을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-124">On the **General** page of the **Job Step Properties** dialog, you can view the type of job step and what it does.</span></span>  
+  
+6.  <span data-ttu-id="72c67-125">**고급** 페이지를 클릭하여 작업 단계가 성공 또는 실패한 경우 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 에이전트가 취하는 동작, 작업 단계를 시도해야 하는 횟수, 작업 단계 출력이 기록되는 위치 및 작업 단계가 실행되는 사용자를 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-125">Click the **Advanced** page to view the actions [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent takes if the job step succeeds or fails, how many times the job step should be attempted, where the job step output is written, and the user the job step runs as.</span></span>  
+  
+#### <a name="to-view-job-step-output"></a><span data-ttu-id="72c67-126">작업 단계 출력을 보려면</span><span class="sxs-lookup"><span data-stu-id="72c67-126">To view job step output</span></span>  
+  
+1.  <span data-ttu-id="72c67-127">**작업 단계 속성** 대화 상자에서 **고급** 페이지를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-127">In the **Job Step Properties** dialog, click the **Advanced** page.</span></span>  
+  
+2.  <span data-ttu-id="72c67-128">연결된 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 버전에 따라 다음과 같이 작업 단계 출력 파일 또는 테이블을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-128">Depending on the version of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] you are connected to, you can view either the job step output file or table as follows:</span></span>  
+  
+    -   <span data-ttu-id="72c67-129">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 이상에 연결된 경우 **테이블에 기록** 을 선택해야 **보기** 를 클릭할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-129">When you are connected to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] or later, you can click **View** only when **Log to table** is checked.</span></span> <span data-ttu-id="72c67-130">이 경우 작업 단계 출력은 **msdb** 데이터베이스의 **sysjobstepslogs** 테이블에 기록됩니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-130">In this case, the job step output is written to the **sysjobstepslogs** table in the **msdb** database.</span></span>  
+  
+    -   <span data-ttu-id="72c67-131">작업 단계 출력이 파일에 기록되는 경우 **보기** 단추를 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-131">The **View** button is disabled when job step output is written to a file.</span></span> <span data-ttu-id="72c67-132">작업 단계 출력 파일을 보려면 메모장을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="72c67-132">To view a job step output file, use Notepad.</span></span>  
+  
+  
