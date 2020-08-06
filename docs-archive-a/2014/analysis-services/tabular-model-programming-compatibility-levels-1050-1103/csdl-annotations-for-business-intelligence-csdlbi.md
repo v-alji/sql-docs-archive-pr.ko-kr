@@ -1,0 +1,81 @@
+---
+title: 비즈니스 인텔리전스에 대 한 CSDL 주석 (CSDLBI) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: reference
+ms.assetid: bf6f372a-bc67-45ea-a771-b2dc5b0527e5
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: b3414b0d8b2614e83f62e85c4f750ee0e8c7397d
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87649240"
+---
+# <a name="csdl-annotations-for-business-intelligence-csdlbi"></a><span data-ttu-id="4504b-102">비즈니스 인텔리전스에 대한 CSDL 주석(CSDLBI)</span><span class="sxs-lookup"><span data-stu-id="4504b-102">CSDL Annotations for Business Intelligence (CSDLBI)</span></span>
+  [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]<span data-ttu-id="4504b-103">는 CSDLBI(비즈니스 인텔리전스 포함 개념 스키마 정의 언어) 주석이라는 XML 형식으로 테이블 형식 모델 정의를 표현할 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-103">supports the presentation of the definition of a tabular model in an XML format called Conceptual Schema Definition Language with Business Intelligence annotations (CSDLBI).</span></span>  
+  
+ <span data-ttu-id="4504b-104">이 항목에서는 CSDLBI의 개요와 [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] 데이터 모델에서 CSDLBI를 사용하는 방법을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-104">This topic provides an overview of CSDLBI and how it is used with [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] data models.</span></span>  
+  
+## <a name="understanding-the-role-of-csdl"></a><span data-ttu-id="4504b-105">CSDL의 역할 이해</span><span class="sxs-lookup"><span data-stu-id="4504b-105">Understanding the Role of CSDL</span></span>  
+ <span data-ttu-id="4504b-106">CSDL(개념 스키마 데이터 언어)은 엔터티, 관계 및 함수를 설명하는 XML 기반 언어입니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-106">The Conceptual Schema Data Language (CSDL) is an XML-based language that describes entities, relationships, and functions.</span></span> <span data-ttu-id="4504b-107">CSDL은 엔터티 데이터 프레임워크의 일부로 정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-107">CSDL is defined as part of the Entity Data Framework.</span></span> <span data-ttu-id="4504b-108">BI 주석은 [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]를 사용하여 데이터 모델링을 지원하도록 설계된 확장 프로그램입니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-108">The BI annotations are an extension designed to support data modeling using [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)].</span></span>  
+  
+ <span data-ttu-id="4504b-109">CSDL이 엔터티 데이터 프레임워크와 호환되기는 하지만 엔터티 관계 모델을 이해하거나 모델을 기반으로 테이블 형식 모델이나 보고서를 작성할 수 있는 특수한 도구가 있어야 할 필요는 없습니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-109">Although CSDL is compliant with the Entity Data Framework, you do not need to understand the entity-relationship model or have any special tools to build a tabular model or a report based on a model.</span></span> <span data-ttu-id="4504b-110">[!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)]와 같은 클라이언트 도구 또는 AMO와 같은 API를 사용하여 모델을 작성하고 모델을 서버에 배포합니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-110">You build models by using client tools such as [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)] or an API such as AMO, and deploy the model to a server.</span></span> <span data-ttu-id="4504b-111">클라이언트는 모델 정의 파일을 사용하여 모델에 연결하며, 이것은 보고서 디자이너와 보고서 소비자가 사용할 수 있도록 대개 SharePoint 라이브러리에 게시됩니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-111">Clients connect to the model by using a model definition file, typically published to a SharePoint library where it can be used by report designers and report consumers.</span></span> <span data-ttu-id="4504b-112">자세한 내용은 다음 링크를 참조하십시오.</span><span class="sxs-lookup"><span data-stu-id="4504b-112">For more information, see these links:</span></span>  
+  
+-   [<span data-ttu-id="4504b-113">테이블 형식 모델 솔루션&#40;SSAS 테이블 형식&#41;</span><span class="sxs-lookup"><span data-stu-id="4504b-113">Tabular Model Solutions &#40;SSAS Tabular&#41;</span></span>](../tabular-model-solutions-ssas-tabular.md)  
+  
+-   [<span data-ttu-id="4504b-114">테이블 형식 모델 솔루션 배포&#40;SSAS 테이블 형식&#41;</span><span class="sxs-lookup"><span data-stu-id="4504b-114">Tabular Model Solution Deployment &#40;SSAS Tabular&#41;</span></span>](../tabular-models/tabular-model-solution-deployment-ssas-tabular.md)  
+  
+-   [<span data-ttu-id="4504b-115">PowerPivot BI 의미 체계 모델 연결 &#40;. bism&#41;</span><span class="sxs-lookup"><span data-stu-id="4504b-115">PowerPivot BI Semantic Model Connection &#40;.bism&#41;</span></span>](../power-pivot-sharepoint/power-pivot-bi-semantic-model-connection-bism.md)  
+  
+ <span data-ttu-id="4504b-116">CSDLBI 스키마는 [!INCLUDE[ssCrescent](../../includes/sscrescent-md.md)]와 같은 클라이언트의 모델 정의 요청에 대한 응답으로 Analysis Services 서버에서 생성됩니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-116">The CSDLBI schema is generated by the Analysis Services server in response to a request for a model definition from a client such as [!INCLUDE[ssCrescent](../../includes/sscrescent-md.md)].</span></span> <span data-ttu-id="4504b-117">클라이언트 애플리케이션에서 모델 데이터를 호스팅하는 Analysis Services 서버에 XML 쿼리를 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-117">The client application sends an XML query to the Analysis Services server that hosts the model data.</span></span> <span data-ttu-id="4504b-118">서버는 CSDLBI 주석을 사용하여 모델의 엔터티 정의가 포함된 XML 메시지를 응답으로 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-118">In response, the server sends an XML message containing a definition of the entities in the model, using the CSDLBI annotations.</span></span> <span data-ttu-id="4504b-119">그러면 보고 클라이언트는 이 정보를 토대로 모델에서 사용할 수 있는 필드, 집계 및 측정값을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-119">The reporting client then uses the information to present the fields, aggregations, and measures that are available in the model.</span></span> <span data-ttu-id="4504b-120">CSDLBI 주석은 데이터의 그룹화, 정렬 및 서식 지정 방법에 대한 정보도 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-120">The CSDLBI annotations also provide information about how to group, sort, and format the data.</span></span>  
+  
+ <span data-ttu-id="4504b-121">CSDLBI에 대 한 일반 정보는 [CSDLBI 개념](/analysis-services/csdlbi/csdlbi-concepts)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="4504b-121">For general information about CSDLBI, see [CSDLBI Concepts](/analysis-services/csdlbi/csdlbi-concepts).</span></span>  
+  
+### <a name="working-with-csdl"></a><span data-ttu-id="4504b-122">CSDL 작업</span><span class="sxs-lookup"><span data-stu-id="4504b-122">Working with CSDL</span></span>  
+ <span data-ttu-id="4504b-123">특정 테이블 형식 모델을 나타내는 CSDLBI 주석 집합은 단순 및 복합 엔터티 컬렉션이 포함된 XML 문서입니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-123">The set of CSDLBI annotations that represents any particular tabular model is an XML document containing a collection of entities, both simple and complex.</span></span> <span data-ttu-id="4504b-124">엔터티는 계산 열, 측정값 또는 KPI에 포함된 테이블(또는 차원), 열(특성), 연결(관계) 및 수식을 정의합니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-124">The entities define tables (or dimensions), columns (attributes), associations (relationships), and formulas included in calculated columns, measure, or KPIs.</span></span>  
+  
+ <span data-ttu-id="4504b-125">이러한 개체를 직접 수정할 수는 없으며 테이블 형식 모델을 사용할 수 있도록 제공된 클라이언트 도구 및 API(응용 프로그래밍 인터페이스)를 사용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-125">You cannot modify these objects directly, but must use the client tools and application programming interfaces (APIs) provided for working with tabular models.</span></span>  
+  
+ <span data-ttu-id="4504b-126">모델을 호스팅하는 서버에 DISCOVER 요청을 보내 모델의 CSDL을 얻을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-126">You can obtain the CSDL for a model by sending a DISCOVER request to the server that hosts the model.</span></span> <span data-ttu-id="4504b-127">이 요청은 서버 및 모델을 지정하고 선택적으로 뷰 또는 큐브 뷰를 지정하여 정규화해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-127">The request must be qualified by specifying the server and the model, and, optionally, a view or perspective.</span></span> <span data-ttu-id="4504b-128">반환되는 메시지는 XML 문자열입니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-128">The returned message is an XML string.</span></span> <span data-ttu-id="4504b-129">일부 요소는 언어별로 다르며, 현재 연결 언어에 따라 다른 값을 반환할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-129">Certain elements are language-dependent and may return different values depending on the language of the current connection.</span></span> <span data-ttu-id="4504b-130">자세한 내용은 [DISCOVER_CSDL_METADATA 행 집합](https://docs.microsoft.com/bi-reference/schema-rowsets/xml/discover-csdl-metadata-rowset)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="4504b-130">For more information, see [DISCOVER_CSDL_METADATA Rowset](https://docs.microsoft.com/bi-reference/schema-rowsets/xml/discover-csdl-metadata-rowset).</span></span>  
+  
+### <a name="csdlbi-versions"></a><span data-ttu-id="4504b-131">CSDLBI 버전</span><span class="sxs-lookup"><span data-stu-id="4504b-131">CSDLBI Versions</span></span>  
+ <span data-ttu-id="4504b-132">엔터티 데이터 프레임워크의 원래 CSDL 사양은 모델링을 지원하는 데 필요한 대부분의 엔터티와 속성을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-132">The original CSDL specification (from the Entity Data Framework) provides for most of the entities and properties that are needed to support modeling.</span></span> <span data-ttu-id="4504b-133">BI 주석은 테이블 형식 모델의 특별 요구 사항, [!INCLUDE[ssCrescent](../../includes/sscrescent-md.md)]와 같은 클라이언트에 필요한 보고 속성, 다차원 모델에 필요한 추가 메타데이터를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-133">The BI annotations support special requirements of tabular models, reporting properties required for clients such as [!INCLUDE[ssCrescent](../../includes/sscrescent-md.md)], and additional metadata required for multidimensional models.</span></span> <span data-ttu-id="4504b-134">이 단원에서는 각 버전의 업데이트를 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-134">This section describes the updates in each version.</span></span>  
+  
+ <span data-ttu-id="4504b-135">**CSDLBI 1.0**</span><span class="sxs-lookup"><span data-stu-id="4504b-135">**CSDLBI 1.0**</span></span>  
+  
+ <span data-ttu-id="4504b-136">[!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] 테이블 형식 모델을 지원하기 위한 CSDL 스키마에 대한 초기 추가 기능 집합에는 데이터 모델링, 사용자 지정 계산 및 향상된 프레젠테이션을 지원하는 주석이 포함되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-136">The initial set of additions to the CSDL schema to support [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] tabular models contained annotations in support of data modeling, custom calculations, and enhanced presentation:</span></span>  
+  
+-   <span data-ttu-id="4504b-137">테이블 형식 모델을 지원하는 새로운 요소 및 속성.</span><span class="sxs-lookup"><span data-stu-id="4504b-137">New elements and properties to support tabular models.</span></span> <span data-ttu-id="4504b-138">예를 들어, 모델을 채우는 데 사용되는 데이터베이스 쿼리 유형을 지정하기 위한 속성이 추가되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-138">For example, a property was added to specify the type of database query used to populate the model.</span></span>  
+  
+-   <span data-ttu-id="4504b-139">새로운 특성 및 기존 엔터티에 대한 확장.</span><span class="sxs-lookup"><span data-stu-id="4504b-139">New properties and extensions to existing entities.</span></span>  <span data-ttu-id="4504b-140">예를 들어, Association 요소는 관계를 지원하도록 확장되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-140">For example, the Association element was extended to support relationships.</span></span>  
+  
+-   <span data-ttu-id="4504b-141">시각화 및 탐색 속성,</span><span class="sxs-lookup"><span data-stu-id="4504b-141">Visualization and navigation properties.</span></span> <span data-ttu-id="4504b-142">예를 들어, 사용자 지정 정렬 필드, 기본 이미지를 지원하기 위한 속성이 추가되었습니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-142">For example, properties were added to support custom sorting fields, default images, and</span></span>  
+  
+ <span data-ttu-id="4504b-143">**CSDLBI 1.1**</span><span class="sxs-lookup"><span data-stu-id="4504b-143">**CSDLBI 1.1**</span></span>  
+  
+ <span data-ttu-id="4504b-144">이 버전의 CSDLBI 스키마에는 다차원 데이터베이스(예: OLAP 큐브)를 지원하는 추가 기능이 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-144">This version of the CSDLBI schema includes additions in support of multidimensional databases (such as OLAP cubes).</span></span> <span data-ttu-id="4504b-145">새로운 요소와 속성은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="4504b-145">The new elements and properties are as follows:</span></span>  
+  
+-   <span data-ttu-id="4504b-146">엔터티인 차원에 대한 지원.</span><span class="sxs-lookup"><span data-stu-id="4504b-146">Support for dimensions as entities.</span></span>  
+  
+-   <span data-ttu-id="4504b-147">계층에 대한 지원.</span><span class="sxs-lookup"><span data-stu-id="4504b-147">Support for hierarchies.</span></span>  
+  
+-   <span data-ttu-id="4504b-148">ROLAP 파티션 제공.</span><span class="sxs-lookup"><span data-stu-id="4504b-148">Exposes ROLAP partitions.</span></span>  
+  
+-   <span data-ttu-id="4504b-149">번역에 대한 지원.</span><span class="sxs-lookup"><span data-stu-id="4504b-149">Support for translations.</span></span>  
+  
+-   <span data-ttu-id="4504b-150">큐브 뷰에 대한 지원.</span><span class="sxs-lookup"><span data-stu-id="4504b-150">Support for perspectives.</span></span>  
+  
+ <span data-ttu-id="4504b-151">CSDLBI 주석의 개별 요소에 대 한 자세한 내용은 [CSDL에 대 한 BI 주석에 대 한 기술 참조](/analysis-services/csdlbi/technical-reference-for-bi-annotations-to-csdl)를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="4504b-151">For detailed information about individual elements in the CSDLBI annotations, see [Technical Reference for BI Annotations to CSDL](/analysis-services/csdlbi/technical-reference-for-bi-annotations-to-csdl).</span></span> <span data-ttu-id="4504b-152">핵심 CSDL 사양에 대 한 자세한 내용은 [csdl V3 사양](https://docs.microsoft.com/ef/ef6/modeling/designer/advanced/edmx/csdl-spec)을 참조 하십시오.</span><span class="sxs-lookup"><span data-stu-id="4504b-152">For information about the core CSDL specification, see the [CSDL v3 Specification](https://docs.microsoft.com/ef/ef6/modeling/designer/advanced/edmx/csdl-spec).</span></span>  
+  
+  
+## <a name="see-also"></a><span data-ttu-id="4504b-153">참고 항목</span><span class="sxs-lookup"><span data-stu-id="4504b-153">See Also</span></span>  
+ <span data-ttu-id="4504b-154">[테이블 형식 개체 모델 이해](representation/understanding-tabular-object-model-at-levels-1050-through-1103.md) </span><span class="sxs-lookup"><span data-stu-id="4504b-154">[Understanding the Tabular Object Model](representation/understanding-tabular-object-model-at-levels-1050-through-1103.md) </span></span>  
+ <span data-ttu-id="4504b-155">[CSDLBI 개념](/analysis-services/csdlbi/csdlbi-concepts) </span><span class="sxs-lookup"><span data-stu-id="4504b-155">[CSDLBI Concepts](/analysis-services/csdlbi/csdlbi-concepts) </span></span>  
+ [<span data-ttu-id="4504b-156">테이블 형식 개체 모델 이해</span><span class="sxs-lookup"><span data-stu-id="4504b-156">Understanding the Tabular Object Model</span></span>](representation/understanding-tabular-object-model-at-levels-1050-through-1103.md)  
+  
+  

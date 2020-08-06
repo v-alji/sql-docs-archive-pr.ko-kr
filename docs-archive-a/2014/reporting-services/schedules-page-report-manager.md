@@ -1,0 +1,68 @@
+---
+title: 일정 페이지 (보고서 관리자) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+ms.assetid: ef19d96e-9f00-4434-950e-152dda9c1ced
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 02e31bc25473aad23ecd2654f74ee3e837e65b65
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87649376"
+---
+# <a name="schedules-page-report-manager"></a><span data-ttu-id="86c79-102">일정 페이지(보고서 관리자)</span><span class="sxs-lookup"><span data-stu-id="86c79-102">Schedules Page (Report Manager)</span></span>
+  <span data-ttu-id="86c79-103">일정 페이지를 사용하여 공유 일정을 작성, 수정, 삭제, 일시 중지 또는 다시 시작할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-103">Use the Schedules page to create, modify, delete, pause, or resume shared schedules.</span></span> <span data-ttu-id="86c79-104">공유 일정은 보고서, 구독 및 일정 정보를 사용하는 기타 프로세스와는 별도로 만들고 관리할 수 있는 명명된 일정입니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-104">A shared schedule is a named schedule that you can create and manage separately from reports, subscriptions, and other processes that consume schedule information.</span></span> <span data-ttu-id="86c79-105">다른 사용자가 제공하는 공유 일정을 선택할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-105">Users can select shared schedules that you provide.</span></span>  
+  
+ <span data-ttu-id="86c79-106">공유 일정을 삭제, 일시 중지 또는 다시 시작하려면 수정할 공유 일정 옆의 확인란을 선택하십시오.</span><span class="sxs-lookup"><span data-stu-id="86c79-106">To delete, pause, or resume a shared schedule, select the check box next to the shared schedule that you want to modify.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="86c79-107">이 기능은 일부 [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)]버전에서는 사용할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-107">This feature is not available in every edition of [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)].</span></span> <span data-ttu-id="86c79-108">버전에서 지원 되는 기능 목록은 [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] [SQL Server 2014 버전에서 지 원하는 기능](../../2014/getting-started/features-supported-by-the-editions-of-sql-server-2014.md)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="86c79-108">For a list of features that are supported by the editions of [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], see [Features Supported by the Editions of SQL Server 2014](../../2014/getting-started/features-supported-by-the-editions-of-sql-server-2014.md).</span></span>  
+  
+## <a name="navigation"></a><span data-ttu-id="86c79-109">탐색</span><span class="sxs-lookup"><span data-stu-id="86c79-109">Navigation</span></span>  
+ <span data-ttu-id="86c79-110">사용자 인터페이스(UI)에서 이 위치를 탐색하려면 다음 절차를 사용하십시오.</span><span class="sxs-lookup"><span data-stu-id="86c79-110">Use the following procedure to navigate to this location in the user interface (UI).</span></span>  
+  
+### <a name="to-open-the-schedules-page"></a><span data-ttu-id="86c79-111">일정 페이지를 열려면</span><span class="sxs-lookup"><span data-stu-id="86c79-111">To open the Schedules page</span></span>  
+  
+1.  <span data-ttu-id="86c79-112">보고서 관리자를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-112">Open Report Manager.</span></span>  
+  
+2.  <span data-ttu-id="86c79-113">페이지 맨 위에서 오른쪽 모퉁이에 있는 **사이트 설정**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-113">At the top of the page, in the right-hand corner, click **Site Settings**.</span></span> <span data-ttu-id="86c79-114">사이트의 일반 속성 페이지가 열립니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-114">This opens the General Properties page of the site.</span></span>  
+  
+3.  <span data-ttu-id="86c79-115">**일정** 탭을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-115">Select the **Schedules** tab.</span></span>  
+  
+## <a name="options"></a><span data-ttu-id="86c79-116">옵션</span><span class="sxs-lookup"><span data-stu-id="86c79-116">Options</span></span>  
+ <span data-ttu-id="86c79-117">**새 일정**</span><span class="sxs-lookup"><span data-stu-id="86c79-117">**New Schedule**</span></span>  
+ <span data-ttu-id="86c79-118">빈도 정보를 지정하는 데 사용되는 일정 페이지를 열려면 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-118">Click to open the Scheduling page, which is used to specify frequency information.</span></span>  
+  
+ <span data-ttu-id="86c79-119">**삭제**</span><span class="sxs-lookup"><span data-stu-id="86c79-119">**Delete**</span></span>  
+ <span data-ttu-id="86c79-120">공유 일정을 삭제하려면 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-120">Click to remove a shared schedule.</span></span>  
+  
+ <span data-ttu-id="86c79-121">**일시 중지**</span><span class="sxs-lookup"><span data-stu-id="86c79-121">**Pause**</span></span>  
+ <span data-ttu-id="86c79-122">공유 일정 실행을 임시 중지하려면 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-122">Click to stop a shared schedule from running temporarily.</span></span> <span data-ttu-id="86c79-123">일정을 일시 중지하면 구독 및 예약된 기타 프로세스가 실행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-123">Pausing a schedule prevents subscriptions and other scheduled processes from running.</span></span>  
+  
+ <span data-ttu-id="86c79-124">**다시 시작**</span><span class="sxs-lookup"><span data-stu-id="86c79-124">**Resume**</span></span>  
+ <span data-ttu-id="86c79-125">공유 일정을 다시 시작하려면 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-125">Click to reinstate a shared schedule.</span></span> <span data-ttu-id="86c79-126">일정이 일시 중지된 동안에 실행되도록 예약되었지만 실효된 프로세스는 실행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-126">Lapsed processes that were scheduled to run while the schedule was paused are not made up.</span></span>  
+  
+ <span data-ttu-id="86c79-127">**일정**</span><span class="sxs-lookup"><span data-stu-id="86c79-127">**Schedule**</span></span>  
+ <span data-ttu-id="86c79-128">현재 정의된 공유 일정을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-128">Shows the shared schedules that are currently defined.</span></span> <span data-ttu-id="86c79-129">빈도 정보를 보거나 편집하려면 공유 일정을 클릭하십시오.</span><span class="sxs-lookup"><span data-stu-id="86c79-129">Click a shared schedule to view or edit frequency information.</span></span>  
+  
+ <span data-ttu-id="86c79-130">**작성자**</span><span class="sxs-lookup"><span data-stu-id="86c79-130">**Creator**</span></span>  
+ <span data-ttu-id="86c79-131">공유 일정을 만든 사용자의 이름을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-131">Shows the name of the user who created the shared schedule.</span></span>  
+  
+ <span data-ttu-id="86c79-132">**마지막 실행, 다음 실행**</span><span class="sxs-lookup"><span data-stu-id="86c79-132">**Last Run, Next Run**</span></span>  
+ <span data-ttu-id="86c79-133">공유 일정이 마지막으로 실행된 시간과 다음에 실행될 시간을 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-133">Shows when the shared schedule was last run and when it will run next.</span></span>  
+  
+ <span data-ttu-id="86c79-134">**상태**</span><span class="sxs-lookup"><span data-stu-id="86c79-134">**Status**</span></span>  
+ <span data-ttu-id="86c79-135">공유 일정이 일시 중지된 상태인지 활성 상태인지 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="86c79-135">Shows whether a shared schedule is paused or active.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="86c79-136">참고 항목</span><span class="sxs-lookup"><span data-stu-id="86c79-136">See Also</span></span>  
+ <span data-ttu-id="86c79-137">[일정 만들기, 수정 및 삭제](subscriptions/create-modify-and-delete-schedules.md) </span><span class="sxs-lookup"><span data-stu-id="86c79-137">[Create, Modify, and Delete Schedules](subscriptions/create-modify-and-delete-schedules.md) </span></span>  
+ [<span data-ttu-id="86c79-138">보고서 관리자 F1 도움말</span><span class="sxs-lookup"><span data-stu-id="86c79-138">Report Manager F1 Help</span></span>](../../2014/reporting-services/report-manager-f1-help.md)  
+  
+  
