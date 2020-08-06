@@ -1,0 +1,42 @@
+---
+title: 2008 및 2008 R2 보고서 서버와 SharePoint 통합 | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+ms.assetid: d9f51c37-b071-45d0-baec-f82fa6db366f
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 0b12429a520a674f4bc3ec7626bb3885fc33c814
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87729019"
+---
+# <a name="sharepoint-integration-with-2008-and-2008-r2--report-servers"></a><span data-ttu-id="fb0aa-102">2008 및 2008 R2 보고서 서버와 SharePoint 통합</span><span class="sxs-lookup"><span data-stu-id="fb0aa-102">SharePoint Integration with 2008 and 2008 R2  Report Servers</span></span>
+  <span data-ttu-id="fb0aa-103">[!INCLUDE[ssCurrent](../includes/sscurrent-md.md)] 의 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] 릴리스에서는 SharePoint 모드가 SharePoint 공유 서비스를 기반으로 하는 아키텍처를 도입했습니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-103">The [!INCLUDE[ssCurrent](../includes/sscurrent-md.md)] release of [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] introduced a architecture where SharePoint mode is now based on a SharePoint Shared service.</span></span> <span data-ttu-id="fb0aa-104">새 기능에 대한 관리는 **서비스 관리** 및 **관리자 서비스 애플리케이션** 페이지의 SharePoint 중앙 관리에서 완료됩니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-104">Management of the new functionality is completed in SharePoint Central administration on the **Manage Services** and **Manager Service Applications** pages.</span></span> <span data-ttu-id="fb0aa-105">Sharepoint [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] 통합에 대 한 이전 아키텍처는 [!INCLUDE[ssCurrent](../includes/sscurrent-md.md)] [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] sharepoint 2010 제품용 추가 기능에서 계속 지원 되므로 sharepoint 2010을 이전 버전의 보고서 서버와 통합할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-105">The [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] previous architecture for SharePoint Integration is still supported with the [!INCLUDE[ssCurrent](../includes/sscurrent-md.md)] [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] add-in for SharePoint 2010 products so you can integrate SharePoint 2010 with previous versions of a report server.</span></span>  
+  
+ <span data-ttu-id="fb0aa-106">이전 아키텍처를 관리하는 데 사용되는 SharePoint 중앙 관리 페이지는 다음 위치에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-106">SharePoint Central Administration pages you would use to administer the older architecture are found in the following:</span></span>  
+  
+1.  <span data-ttu-id="fb0aa-107">SharePoint 중앙 관리에서 **일반 애플리케이션 설정**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-107">From SharePoint Central Administration click **General Application Settings**.</span></span>  
+  
+2.  <span data-ttu-id="fb0aa-108">**SQL Server Reporting Services(2008 및 2008 R2)** 그룹에는 이전 아키텍처에 대한 링크와 관리 페이지가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-108">The group **SQL Server Reporting Services (2008 and 2008 R2)** contains the links and management pages for the older architecture</span></span>  
+  
+## <a name="server-integration-architecture"></a><span data-ttu-id="fb0aa-109">서버 통합 아키텍처</span><span class="sxs-lookup"><span data-stu-id="fb0aa-109">Server Integration Architecture</span></span>  
+ <span data-ttu-id="fb0aa-110">보고서 서버를 SharePoint 제품 인스턴스와 통합하면 항목과 속성이 SharePoint 콘텐츠 데이터베이스에 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-110">When you integrate a report server with an instance of a SharePoint product, items and properties are stored in the SharePoint content databases.</span></span> <span data-ttu-id="fb0aa-111">이로 인해 콘텐츠가 저장, 보안 유지 및 액세스되는 방법에 영향을 주는 서버 기술이 더욱 폭넓게 통합됩니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-111">This provides a deeper level of integration between the server technologies that effects how content is stored, secured, and accessed.</span></span>  
+  
+ <span data-ttu-id="fb0aa-112">보고서 항목과 속성을 SharePoint 콘텐츠 데이터베이스에 저장하면 SharePoint 라이브러리에서 보고서 서버 콘텐츠 형식을 찾아보고, SharePoint 사이트에 호스팅되는 기타 비즈니스 문서에 대한 액세스를 제어하는 동일한 사용 권한 수준 및 인증 공급자를 사용하여 항목의 보안을 유지하고, 협업 및 문서 관리 기능을 사용하여 수정할 보고서를 체크 인 및 체크 아웃하고, 경고를 사용하여 항목의 변경 여부를 파악하고, 애플리케이션 내의 페이지와 사이트에서 보고서 뷰어 웹 파트를 포함하거나 사용자 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-112">Storing report items and properties in SharePoint content databases allows you to browse SharePoint libraries for report server content types, secure items using the same permission levels and authentication provider that controls access to other business documents hosted on a SharePoint site, use the collaboration and document management features to check reports in and out for modification, use alerts to find out if an item has changed, and embed or customize the Report Viewer Web part on pages and sites within the application.</span></span> <span data-ttu-id="fb0aa-113">SharePoint 사이트 내에서 권한이 충분한 경우 공유 데이터 원본에서 보고서 모델을 생성하고 보고서 작성기를 사용하여 보고서를 만들 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-113">If you have sufficient permissions within a SharePoint site, you can also generate report models from shared data sources and use Report Builder to create reports.</span></span>  
+  
+ <span data-ttu-id="fb0aa-114">보고서 서버는 계속해서 모든 데이터 처리, 렌더링 및 배달을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-114">The report server continues to provide all data processing, rendering, and delivery.</span></span> <span data-ttu-id="fb0aa-115">또한 스냅샷 및 보고서 기록에 대해 모든 예약된 보고서 처리를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-115">It also supports all scheduled report processing for snapshots and report history.</span></span> <span data-ttu-id="fb0aa-116">SharePoint 사이트에서 보고서를 열면 Report Server 엔드포인트가 보고서 서버에 연결되고, 세션을 만들고, 처리할 보고서를 준비하고, 데이터를 검색하고, 보고서를 보고서 레이아웃으로 병합하고, 이를 보고서 뷰어 웹 파트에 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-116">When you open a report from a SharePoint site, the Report Server endpoint connects to a report server, creates a session, prepares the report for processing, retrieves data, merges the report into the report layout, and displays it in the Report Viewer Web part.</span></span> <span data-ttu-id="fb0aa-117">보고서가 열려 있는 동안 보고서를 다른 애플리케이션 형식으로 내보내거나, 기본 숫자로 드릴하거나 관련 보고서를 클릭 방문하여 데이터와 상호 작용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-117">While the report is open, you can export it to different application formats, or interact with data by drilling into underlying numbers or clicking through to a related report.</span></span> <span data-ttu-id="fb0aa-118">내보내기 및 보고서 상호 작용 작업은 보고서 서버에서 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-118">Export and report interaction operations are performed on the report server.</span></span>  
+  
+ <span data-ttu-id="fb0aa-119">보고서 서버는 작업 및 데이터를 SharePoint와 동기화하고, 처리하는 파일에 대한 정보를 추적합니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-119">The report server synchronizes operations and data with SharePoint and tracks information about the files it processes.</span></span> <span data-ttu-id="fb0aa-120">보고서 서버 항목의 속성이나 설정을 수정하는 경우 변경 내용은 SharePoint 데이터베이스에 저장된 다음 보고서 서버에 내부 스토리지를 제공하는 보고서 서버 데이터베이스에 복사됩니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-120">When you modify properties or settings for any report server item, the change is stored in a SharePoint database and then copied to a report server database that provides internal storage to a report server.</span></span>  
+  
+## <a name="related-content"></a><span data-ttu-id="fb0aa-121">관련 내용</span><span class="sxs-lookup"><span data-stu-id="fb0aa-121">Related Content</span></span>  
+ [<span data-ttu-id="fb0aa-122">SharePoint에서 보고서 서버 및 파워 뷰 통합 사이트 모음 기능 활성화</span><span class="sxs-lookup"><span data-stu-id="fb0aa-122">Activate the Report Server and Power View Integration Features in SharePoint</span></span>](activate-the-report-server-and-power-view-integration-features-in-sharepoint.md)  
+ <span data-ttu-id="fb0aa-123">이전 릴리스의 보고서 서버와의 통합에 필요한 보고서 서버 기능을 활성화하는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="fb0aa-123">Describes how to activate the Report Server feature needed for integration with report servers from previous releases.</span></span>  
+  
+  

@@ -1,0 +1,76 @@
+---
+title: 서버 시작 옵션 구성(SQL Server 구성 관리자) | Microsoft Docs
+ms.custom: ''
+ms.date: 01/07/2016
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: configuration
+ms.topic: conceptual
+helpviewer_keywords:
+- parameters [SQL Server], startup options
+- SQL Server, startup options
+- single-user mode [SQL Server], starting in
+- startup options [SQL Server]
+- SQL Server services, setting startup options
+ms.assetid: 7a94643c-6460-4baf-bb31-0cb99eaf970d
+author: MikeRayMSFT
+ms.author: mikeray
+ms.openlocfilehash: 405a96208c774a6326a69cf9826a14ca3552eae1
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87729796"
+---
+# <a name="configure-server-startup-options-sql-server-configuration-manager"></a><span data-ttu-id="4e188-102">서버 시작 옵션 구성(SQL Server 구성 관리자)</span><span class="sxs-lookup"><span data-stu-id="4e188-102">Configure Server Startup Options (SQL Server Configuration Manager)</span></span>
+  <span data-ttu-id="4e188-103">이 항목에서는 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager를 사용하여 [!INCLUDE[ssDE](../../includes/ssde-md.md)]이 [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)]에서 시작될 때마다 사용할 시작 옵션을 구성하는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-103">This topic describes how to configure startup options that will be used every time the [!INCLUDE[ssDE](../../includes/ssde-md.md)] starts in [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] by using [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager.</span></span> <span data-ttu-id="4e188-104">시작 옵션 목록에 대한 자세한 내용은 [데이터베이스 엔진 서비스 시작 옵션](database-engine-service-startup-options.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="4e188-104">For a list of startup options, see [Database Engine Service Startup Options](database-engine-service-startup-options.md).</span></span>  
+  
+##  <a name="before-you-begin"></a><a name="BeforeYouBegin"></a> <span data-ttu-id="4e188-105">시작하기 전에</span><span class="sxs-lookup"><span data-stu-id="4e188-105">Before You Begin</span></span>  
+  
+### <a name="limitations-and-restrictions"></a><span data-ttu-id="4e188-106">제한 사항</span><span class="sxs-lookup"><span data-stu-id="4e188-106">Limitations and Restrictions</span></span>  
+ [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] <span data-ttu-id="4e188-107">구성 관리자는 시작 매개 변수를 레지스트리에 씁니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-107">Configuration Manager writes startup parameters to the registry.</span></span> <span data-ttu-id="4e188-108">이러한 매개 변수는 다음에 [!INCLUDE[ssDE](../../includes/ssde-md.md)]을 시작할 때 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-108">They take effect upon the next startup of the [!INCLUDE[ssDE](../../includes/ssde-md.md)].</span></span>  
+  
+ <span data-ttu-id="4e188-109">클러스터의 활성 서버에서 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 가 온라인 상태일 때 변경해야 하며, 이러한 변경 내용은 [!INCLUDE[ssDE](../../includes/ssde-md.md)] 을 다시 시작하면 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-109">On a cluster, changes must be made on the active server when [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is online, and will take effect when the [!INCLUDE[ssDE](../../includes/ssde-md.md)] is restarted.</span></span> <span data-ttu-id="4e188-110">다른 노드의 시작 옵션에 대한 레지스트리 업데이트는 다음 장애 조치(Failover) 시 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-110">The registry update of the startup options on the other node will occur upon the next failover.</span></span>  
+  
+###  <a name="security"></a><a name="Security"></a> <span data-ttu-id="4e188-111">보안</span><span class="sxs-lookup"><span data-stu-id="4e188-111">Security</span></span>  
+  
+####  <a name="permissions"></a><a name="Permissions"></a> <span data-ttu-id="4e188-112">권한</span><span class="sxs-lookup"><span data-stu-id="4e188-112">Permissions</span></span>  
+ <span data-ttu-id="4e188-113">레지스트리에서 관련 항목을 변경할 수 있는 사용자만 서버 시작 옵션을 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-113">Configuring server startup options is restricted to users who can change the related entries in the registry.</span></span> <span data-ttu-id="4e188-114">해당되는 사용자는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-114">This includes the following users.</span></span>  
+  
+-   <span data-ttu-id="4e188-115">로컬 Administrators 그룹의 멤버</span><span class="sxs-lookup"><span data-stu-id="4e188-115">Members of the local administrators group.</span></span>  
+  
+-   <span data-ttu-id="4e188-116">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]에서 사용되는 도메인 계정( [!INCLUDE[ssDE](../../includes/ssde-md.md)] 이 도메인 계정에서 실행하도록 구성된 경우)</span><span class="sxs-lookup"><span data-stu-id="4e188-116">The domain account that is used by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], if the [!INCLUDE[ssDE](../../includes/ssde-md.md)] is configured to run under a domain account.</span></span>  
+  
+##  <a name="using-sql-server-configuration-manager"></a><a name="SSMSProcedure"></a> <span data-ttu-id="4e188-117">SQL Server 구성 관리자 사용</span><span class="sxs-lookup"><span data-stu-id="4e188-117">Using SQL Server Configuration Manager</span></span>  
+  
+#### <a name="to-configure-startup-options"></a><span data-ttu-id="4e188-118">시작 옵션을 구성하려면</span><span class="sxs-lookup"><span data-stu-id="4e188-118">To configure startup options</span></span>  
+  
+1.  <span data-ttu-id="4e188-119">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 구성 관리자에서 **SQL Server 서비스**를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-119">In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager, click **SQL Server Services**.</span></span>  
+  
+    > [!NOTE]  
+    >  <span data-ttu-id="4e188-120">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 구성 관리자는 독립 실행형 프로그램이 아니라 [!INCLUDE[msCoName](../../includes/msconame-md.md)] Management Console 프로그램용 스냅인이므로 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 구성 관리자는 최신 버전의 Windows에서 애플리케이션으로 표시되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-120">Because [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager is a snap-in for the [!INCLUDE[msCoName](../../includes/msconame-md.md)] Management Console program and not a stand-alone program, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager does not appear as an application in newer versions of Windows.</span></span>  
+    >   
+    >  -   <span data-ttu-id="4e188-121">**Windows 10**:</span><span class="sxs-lookup"><span data-stu-id="4e188-121">**Windows 10**:</span></span>  
+    >          <span data-ttu-id="4e188-122">Configuration Manager를 열려면 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] **시작 페이지**에서 sqlservermanager12.msc (의 경우)를 입력 [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-122">To open [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager, on the **Start Page**, type SQLServerManager12.msc (for [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)]).</span></span> <span data-ttu-id="4e188-123">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 이전 버전의 경우 12를 더 작은 수로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-123">For previous versions of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] replace 12 with a smaller number.</span></span> <span data-ttu-id="4e188-124">SQLServerManager12.msc를 클릭하면 구성 관리자가 열립니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-124">Clicking SQLServerManager12.msc opens the Configuration Manager.</span></span> <span data-ttu-id="4e188-125">Configuration Manager를 시작 페이지나 작업 표시줄에 고정 하려면 Sqlservermanager12.msc를 마우스 오른쪽 단추로 클릭 한 다음 **파일 위치 열기**를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-125">To pin the Configuration Manager to the Start Page or Task Bar, right-click SQLServerManager12.msc, and then click **Open file location**.</span></span> <span data-ttu-id="4e188-126">Windows 파일 탐색기에서 Sqlservermanager12.msc를 마우스 오른쪽 단추로 클릭 한 다음 **시작 화면에 고정** 또는 **작업 표시줄에 고정**을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-126">In the Windows File Explorer, right-click SQLServerManager12.msc, and then click **Pin to Start** or **Pin to taskbar**.</span></span>  
+    > -   <span data-ttu-id="4e188-127">**Windows 8**:</span><span class="sxs-lookup"><span data-stu-id="4e188-127">**Windows 8**:</span></span>  
+    >          <span data-ttu-id="4e188-128">Configuration Manager를 열려면 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] **검색** 참의 **앱**아래에 \*\*SQLServerManager \<version> \*\* 를 입력 한 `SQLServerManager12.msc` 다음 **enter**키를 누릅니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-128">To open [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager, in the **Search** charm, under **Apps**, type **SQLServerManager\<version>.msc** such as `SQLServerManager12.msc`, and then press **Enter**.</span></span>  
+  
+2.  <span data-ttu-id="4e188-129">오른쪽 창에서 **SQL Server (***<instance_name>***)** 을 마우스 오른쪽 단추로 클릭 한 다음 **속성**을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-129">In the right pane, right-click **SQL Server (***<instance_name>***)**, and then click **Properties**.</span></span>  
+  
+3.  <span data-ttu-id="4e188-130">**시작 매개 변수** 탭의 **시작 매개 변수 지정** 상자에 매개 변수를 입력하고 **추가**를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-130">On the **Startup Parameters** tab, in the **Specify a startup parameter** box, type the parameter, and then click **Add**.</span></span>  
+  
+     <span data-ttu-id="4e188-131">예를 들어 단일 사용자 모드로 시작 하려면 `-m` **시작 매개 변수 지정** 상자에를 입력 한 다음 **추가**를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-131">For example, to start in single-user mode, type `-m` in the **Specify a startup parameter** box and then click **Add**.</span></span> <span data-ttu-id="4e188-132">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 를 단일 사용자 모드로 다시 시작할 경우 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 에이전트를 중지합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-132">(When you restart [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] in single-user mode, stop the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent.</span></span> <span data-ttu-id="4e188-133">그렇지 않으면 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 에이전트가 먼저 연결되므로 두 번째 사용자로 연결하지 못합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-133">Otherwise, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent might connect first and prevent you from connecting as a second user.)</span></span>  
+  
+4.  [!INCLUDE[clickOK](../../includes/clickok-md.md)]  
+  
+5.  <span data-ttu-id="4e188-134">[!INCLUDE[ssDE](../../includes/ssde-md.md)]을 다시 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-134">Restart the [!INCLUDE[ssDE](../../includes/ssde-md.md)].</span></span>  
+  
+    > [!WARNING]  
+    >  <span data-ttu-id="4e188-135">단일 사용자 모드 사용을 완료 한 후 시작 매개 변수 상자의 `-m` **기존 매개 변수** 상자에서 매개 변수를 선택 하 고 **제거**를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-135">After you are finished using single-user mode, in the Startup Parameters box, select the `-m` parameter in the **Existing Parameters** box, and then click **Remove**.</span></span> <span data-ttu-id="4e188-136">그런 후에 [!INCLUDE[ssDE](../../includes/ssde-md.md)] 을 다시 시작하여 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 를 일반 다중 사용자 모드로 복원합니다.</span><span class="sxs-lookup"><span data-stu-id="4e188-136">Restart the [!INCLUDE[ssDE](../../includes/ssde-md.md)] to restore [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the typical multi-user mode.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="4e188-137">참고 항목</span><span class="sxs-lookup"><span data-stu-id="4e188-137">See Also</span></span>  
+ <span data-ttu-id="4e188-138">[단일 사용자 모드로 SQL Server 시작](start-sql-server-in-single-user-mode.md) </span><span class="sxs-lookup"><span data-stu-id="4e188-138">[Start SQL Server in Single-User Mode](start-sql-server-in-single-user-mode.md) </span></span>  
+ <span data-ttu-id="4e188-139">[시스템 관리자가 잠겨 있을 때 SQL Server에 연결](connect-to-sql-server-when-system-administrators-are-locked-out.md) </span><span class="sxs-lookup"><span data-stu-id="4e188-139">[Connect to SQL Server When System Administrators Are Locked Out](connect-to-sql-server-when-system-administrators-are-locked-out.md) </span></span>  
+ [<span data-ttu-id="4e188-140">SQL Server 에이전트 서비스 시작, 중지 또는 일시 중지</span><span class="sxs-lookup"><span data-stu-id="4e188-140">Start, Stop, or Pause the SQL Server Agent Service</span></span>](../../ssms/agent/start-stop-or-pause-the-sql-server-agent-service.md)  
+  
+  
