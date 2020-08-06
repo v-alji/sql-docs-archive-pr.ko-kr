@@ -1,0 +1,76 @@
+---
+title: 변경 내용 추적 그룹에 특성 추가(Master Data Services) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: master-data-services
+ms.topic: conceptual
+helpviewer_keywords:
+- change tracking groups [Master Data Services]
+- attributes [Master Data Services], change tracking groups
+- change tracking groups [Master Data Services], adding attributes
+ms.assetid: e153eb5f-70ca-4c6f-89d8-1f937ed3917d
+author: lrtoyou1223
+ms.author: lle
+ms.openlocfilehash: c8a13dad3ca886668c96c1886f8cd238d9adad9f
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87660663"
+---
+# <a name="add-attributes-to-a-change-tracking-group-master-data-services"></a><span data-ttu-id="920c3-102">변경 내용 추적 그룹에 특성 추가(Master Data Services)</span><span class="sxs-lookup"><span data-stu-id="920c3-102">Add Attributes to a Change Tracking Group (Master Data Services)</span></span>
+  <span data-ttu-id="920c3-103">[!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)]에서 특성 값의 변경 내용을 추적하려는 경우 변경 내용 추적 그룹에 특성을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-103">In [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)], add attributes to a change tracking group when you want to track changes to the attribute's values.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="920c3-104">변경 내용 추적 그룹에 특성을 추가한 후에는 특성이 [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] 데이터베이스에서 변경될 때 특성에 플래그가 지정됩니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-104">After you add an attribute to a change tracking group, when values for the attribute change, the attribute is flagged as changed in the [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] database.</span></span> <span data-ttu-id="920c3-105">변경 내용에 따라 동작을 수행할 비즈니스 규칙을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-105">Create a business rule to take action based on the change.</span></span>  
+  
+## <a name="prerequisites"></a><span data-ttu-id="920c3-106">사전 요구 사항</span><span class="sxs-lookup"><span data-stu-id="920c3-106">Prerequisites</span></span>  
+ <span data-ttu-id="920c3-107">이 절차를 수행하려면</span><span class="sxs-lookup"><span data-stu-id="920c3-107">To perform this procedure:</span></span>  
+  
+-   <span data-ttu-id="920c3-108">**시스템 관리** 기능 영역에 액세스할 수 있는 권한이 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-108">You must have permission to access the **System Administration** functional area.</span></span>  
+  
+-   <span data-ttu-id="920c3-109">모델 관리자여야 합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-109">You must be a model administrator.</span></span> <span data-ttu-id="920c3-110">자세한 내용은 [관리자 &#40;MDS(Master Data Services)&#41;](administrators-master-data-services.md)를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="920c3-110">For more information, see [Administrators &#40;Master Data Services&#41;](administrators-master-data-services.md).</span></span>  
+  
+-   <span data-ttu-id="920c3-111">변경 내용 추적 그룹에 추가할 특성이 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-111">Attributes must exist to add to the change tracking group.</span></span> <span data-ttu-id="920c3-112">자세한 내용은 [텍스트 특성 만들기&#40;Master Data Services&#41;](../../2014/master-data-services/create-a-text-attribute-master-data-services.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="920c3-112">For more information, see [Create a Text Attribute &#40;Master Data Services&#41;](../../2014/master-data-services/create-a-text-attribute-master-data-services.md).</span></span>  
+  
+### <a name="to-add-attributes-to-a-change-tracking-group"></a><span data-ttu-id="920c3-113">변경 내용 추적 그룹에 특성을 추가하려면</span><span class="sxs-lookup"><span data-stu-id="920c3-113">To add attributes to a change tracking group</span></span>  
+  
+1.  <span data-ttu-id="920c3-114">[!INCLUDE[ssMDSmdm](../includes/ssmdsmdm-md.md)]에서 **시스템 관리**를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-114">In [!INCLUDE[ssMDSmdm](../includes/ssmdsmdm-md.md)], click **System Administration**.</span></span>  
+  
+2.  <span data-ttu-id="920c3-115">**모델 탐색기** 페이지의 메뉴 모음에서 **관리** 를 가리키고 **엔터티**를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-115">On the **Model Explorer** page, from the menu bar, point to **Manage** and click **Entities**.</span></span>  
+  
+3.  <span data-ttu-id="920c3-116">**엔터티 유지 관리** 페이지의 **모델** 목록에서 모델을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-116">On the **Entity Maintenance** page, from the **Model** list, select a model.</span></span>  
+  
+4.  <span data-ttu-id="920c3-117">특성 값을 추적하려는 엔터티의 행을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-117">Select the row for the entity that you want to track attribute values for.</span></span>  
+  
+5.  <span data-ttu-id="920c3-118">**선택한 엔터티 편집**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-118">Click **Edit selected entity**.</span></span>  
+  
+6.  <span data-ttu-id="920c3-119">**엔터티 편집** 페이지에서</span><span class="sxs-lookup"><span data-stu-id="920c3-119">On the **Edit Entity** page:</span></span>  
+  
+    -   <span data-ttu-id="920c3-120">리프 멤버에 대 한 특성인 경우 **리프 특성** 창에서 특성을 선택 하 고 **리프 특성 편집**을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-120">If the attribute is for leaf members, in the **Leaf attributes** pane, select the attribute and click **Edit leaf attribute**.</span></span>  
+  
+    -   <span data-ttu-id="920c3-121">통합 멤버에 대 한 특성인 경우 **통합 특성** 창에서 특성을 선택 하 고 **통합 특성 편집**을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-121">If the attribute is for consolidated members, in the **Consolidated attributes** pane, select the attribute and click **Edit consolidated attribute**.</span></span>  
+  
+    -   <span data-ttu-id="920c3-122">컬렉션에 대 한 특성인 경우 **컬렉션 특성** 창에서 특성을 선택 하 고 **컬렉션 특성 편집**을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-122">If the attribute is for collections, in the **Collection attributes** pane, select the attribute and click **Edit collection attribute**.</span></span>  
+  
+7.  <span data-ttu-id="920c3-123">**변경 내용 추적 설정** 확인란을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-123">Select the **Enable change tracking** check box.</span></span>  
+  
+8.  <span data-ttu-id="920c3-124">**변경 내용 추적 그룹** 상자에 그룹의 번호를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-124">In the **Change tracking group** box, type a number for the group.</span></span>  
+  
+9. <span data-ttu-id="920c3-125">**특성 저장**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-125">Click **Save attribute**.</span></span>  
+  
+10. <span data-ttu-id="920c3-126">**엔터티 유지 관리** 페이지에서 **엔터티 저장**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-126">On the **Entity Maintenance** page, click **Save entity**.</span></span>  
+  
+11. <span data-ttu-id="920c3-127">그룹에 포함할 모든 특성에 대해 이 절차를 반복합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-127">Repeat this procedure for all attributes you want to include in the group.</span></span> <span data-ttu-id="920c3-128">그룹의 각 특성에 대해 동일한 변경 내용 추적 그룹 번호를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="920c3-128">Use the same change tracking group number for each attribute in the group.</span></span>  
+  
+## <a name="next-steps"></a><span data-ttu-id="920c3-129">다음 단계</span><span class="sxs-lookup"><span data-stu-id="920c3-129">Next Steps</span></span>  
+  
+-   [<span data-ttu-id="920c3-130">특성 값 변경 기반 동작 시작&#40;Master Data Services&#41;</span><span class="sxs-lookup"><span data-stu-id="920c3-130">Initiate Actions Based on Attribute Value Changes &#40;Master Data Services&#41;</span></span>](../../2014/master-data-services/initiate-actions-based-on-attribute-value-changes-master-data-services.md)  
+  
+## <a name="see-also"></a><span data-ttu-id="920c3-131">참고 항목</span><span class="sxs-lookup"><span data-stu-id="920c3-131">See Also</span></span>  
+ <span data-ttu-id="920c3-132">[텍스트 특성 &#40;MDS(Master Data Services)를 만듭니다&#41;](../../2014/master-data-services/create-a-text-attribute-master-data-services.md) </span><span class="sxs-lookup"><span data-stu-id="920c3-132">[Create a Text Attribute &#40;Master Data Services&#41;](../../2014/master-data-services/create-a-text-attribute-master-data-services.md) </span></span>  
+ [<span data-ttu-id="920c3-133">도메인 기반 특성 만들기&#40;Master Data Services&#41;</span><span class="sxs-lookup"><span data-stu-id="920c3-133">Create a Domain-Based Attribute &#40;Master Data Services&#41;</span></span>](../../2014/master-data-services/create-a-domain-based-attribute-master-data-services.md)  
+  
+  

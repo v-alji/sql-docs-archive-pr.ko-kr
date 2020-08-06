@@ -1,0 +1,94 @@
+---
+title: 데이터베이스 엔진 액세스에 대한 Windows 방화벽 구성 | Microsoft Docs
+ms.custom: ''
+ms.date: 06/22/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: configuration
+ms.topic: conceptual
+helpviewer_keywords:
+- connections [SQL Server], firewall systems
+- firewall systems, [Database Engine]
+- security [SQL Server], firewalls
+ms.assetid: 0093b43c-c6b5-4574-9b30-3a0e91e1a1f9
+author: MikeRayMSFT
+ms.author: mikeray
+ms.openlocfilehash: f76eecb4dd48f3e7f54cad79953773f8432f416e
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87661367"
+---
+# <a name="configure-a-windows-firewall-for-database-engine-access"></a><span data-ttu-id="0ab1e-102">데이터베이스 엔진 액세스에 대한 Windows 방화벽 구성</span><span class="sxs-lookup"><span data-stu-id="0ab1e-102">Configure a Windows Firewall for Database Engine Access</span></span>
+  <span data-ttu-id="0ab1e-103">이 항목에서는 SQL Server 구성 관리자를 사용하여 [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] 에서 데이터베이스 엔진 액세스에 대한 Windows 방화벽을 구성하는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-103">This topic describes how to configure a Windows firewall for Database Engine access in [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] by using SQL Server Configuration Manager.</span></span> <span data-ttu-id="0ab1e-104">방화벽 시스템은 컴퓨터 리소스에 대한 무단 액세스를 방지합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-104">Firewall systems help prevent unauthorized access to computer resources.</span></span> <span data-ttu-id="0ab1e-105">방화벽을 통해 [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] 인스턴스에 액세스하려면 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 를 실행하는 컴퓨터에서 액세스를 허용하도록 방화벽을 구성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-105">To access an instance of the [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] through a firewall, you must configure the firewall on the computer running [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to allow access.</span></span>  
+  
+ <span data-ttu-id="0ab1e-106">기본 Windows 방화벽 설정 방법과 [!INCLUDE[ssDE](../../includes/ssde-md.md)], Analysis Services, Reporting Services 및 Integration Services에 영향을 주는 TCP 포트에 대한 설명은 [SQL Server 액세스를 허용하도록 Windows 방화벽 구성](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-106">For more information about the default Windows firewall settings, and a description of the TCP ports that affect the [!INCLUDE[ssDE](../../includes/ssde-md.md)], Analysis Services, Reporting Services, and Integration Services, see [Configure the Windows Firewall to Allow SQL Server Access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md).</span></span> <span data-ttu-id="0ab1e-107">사용할 수 있는 방화벽 시스템은 여러 가지가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-107">There are many firewall systems available.</span></span> <span data-ttu-id="0ab1e-108">사용 중인 시스템에 해당하는 설명은 방화벽 설명서를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-108">For information specific to your system, see the firewall documentation.</span></span>  
+  
+ <span data-ttu-id="0ab1e-109">액세스를 허용하는 주요 단계는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-109">The principal steps to allow access are:</span></span>  
+  
+1.  <span data-ttu-id="0ab1e-110">특정 TCP/IP 포트를 사용하도록 [!INCLUDE[ssDE](../../includes/ssde-md.md)] 을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-110">Configure the [!INCLUDE[ssDE](../../includes/ssde-md.md)] to use a specific TCP/IP port.</span></span> <span data-ttu-id="0ab1e-111">[!INCLUDE[ssDE](../../includes/ssde-md.md)] 의 기본 인스턴스에서는 포트 1433을 사용하지만 이 포트는 변경할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-111">The default instance of the [!INCLUDE[ssDE](../../includes/ssde-md.md)] uses port 1433, but that can be changed.</span></span> <span data-ttu-id="0ab1e-112">[!INCLUDE[ssDE](../../includes/ssde-md.md)] 에서 사용하는 포트는 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 오류 로그에 나열됩니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-112">The port used by the [!INCLUDE[ssDE](../../includes/ssde-md.md)] is listed in the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log.</span></span> <span data-ttu-id="0ab1e-113">[!INCLUDE[ssExpress](../../includes/ssexpress-md.md)] 인스턴스, [!INCLUDE[ssEW](../../includes/ssew-md.md)] 및 [!INCLUDE[ssDE](../../includes/ssde-md.md)]의 명명된 인스턴스에서는 동적 포트를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-113">Instances of [!INCLUDE[ssExpress](../../includes/ssexpress-md.md)], [!INCLUDE[ssEW](../../includes/ssew-md.md)], and named instances of the [!INCLUDE[ssDE](../../includes/ssde-md.md)] use dynamic ports.</span></span> <span data-ttu-id="0ab1e-114">특정 포트를 사용하도록 이러한 인스턴스를 구성하려면 [특정 TCP 포트로 수신하도록 서버 구성&#40;SQL Server 구성 관리자&#41;](configure-a-server-to-listen-on-a-specific-tcp-port.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-114">To configure these instances to use a specific port, see [Configure a Server to Listen on a Specific TCP Port &#40;SQL Server Configuration Manager&#41;](configure-a-server-to-listen-on-a-specific-tcp-port.md).</span></span>  
+  
+2.  <span data-ttu-id="0ab1e-115">권한 있는 사용자 또는 컴퓨터에 해당 포트에 대한 액세스를 허용하도록 방화벽을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-115">Configure the firewall to allow access to that port for authorized users or computers.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="0ab1e-116">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Browser 서비스를 사용하면 사용자가 포트 번호를 몰라도 포트 1433에서 수신하지 않는 [!INCLUDE[ssDE](../../includes/ssde-md.md)] 인스턴스에 연결할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-116">The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Browser service lets users connect to instances of the [!INCLUDE[ssDE](../../includes/ssde-md.md)] that are not listening on port 1433, without knowing the port number.</span></span> <span data-ttu-id="0ab1e-117">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Browser를 사용하려면 UDP 포트 1434를 열어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-117">To use [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Browser, you must open UDP port 1434.</span></span> <span data-ttu-id="0ab1e-118">가장 안전한 환경으로 승격하려면 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Browser 서비스를 중지하고 해당 포트 번호를 사용하여 연결하도록 클라이언트를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-118">To promote the most secure environment, leave the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Browser service stopped, and configure clients to connect using the port number.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="0ab1e-119">기본적으로 [!INCLUDE[msCoName](../../includes/msconame-md.md)] Windows에서는 포트 1433을 닫아 인터넷 컴퓨터가 사용자 컴퓨터의 기본 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 인스턴스에 연결할 수 없도록 하는 Windows 방화벽을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-119">By default, [!INCLUDE[msCoName](../../includes/msconame-md.md)] Windows enables the Windows Firewall, which closes port 1433 to prevent Internet computers from connecting to a default instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] on your computer.</span></span> <span data-ttu-id="0ab1e-120">포트 1433을 다시 열 때까지 TCP/IP를 사용하여 기본 인스턴스에 연결할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-120">Connections to the default instance using TCP/IP are not possible unless you reopen port 1433.</span></span> <span data-ttu-id="0ab1e-121">Windows 방화벽 구성을 위한 기본적인 단계는 다음 절차에서 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-121">The basic steps to configure the Windows firewall are provided in the following procedures.</span></span> <span data-ttu-id="0ab1e-122">자세한 내용은 Windows 설명서를 참조하십시오.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-122">For more information, see the Windows documentation.</span></span>  
+  
+ <span data-ttu-id="0ab1e-123">고정 포트에서 수신하도록 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 를 구성하고 포트를 여는 대신 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 실행 파일(Sqlservr.exe)을 차단된 프로그램의 예외로 표시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-123">As an alternative to configuring [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to listen on a fixed port and opening the port, you can list the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] executable (Sqlservr.exe) as an exception to the blocked programs.</span></span> <span data-ttu-id="0ab1e-124">동적 포트를 계속 사용하려는 경우 이 방법을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-124">Use this method when you want to continue to use dynamic ports.</span></span> <span data-ttu-id="0ab1e-125">이렇게 하면 하나의 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 인스턴스에만 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-125">Only one instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] can be accessed in this way.</span></span>  
+  
+ <span data-ttu-id="0ab1e-126">**항목 내용**</span><span class="sxs-lookup"><span data-stu-id="0ab1e-126">**In This Topic**</span></span>  
+  
+-   <span data-ttu-id="0ab1e-127">**시작하기 전 주의 사항:**</span><span class="sxs-lookup"><span data-stu-id="0ab1e-127">**Before you begin:**</span></span>  
+  
+     [<span data-ttu-id="0ab1e-128">보안</span><span class="sxs-lookup"><span data-stu-id="0ab1e-128">Security</span></span>](#Security)  
+  
+-   <span data-ttu-id="0ab1e-129">**데이터베이스 엔진 액세스에 대한 Windows 방화벽을 구성하려면:**</span><span class="sxs-lookup"><span data-stu-id="0ab1e-129">**To configure a Windows Firewall for Database Engine access, using:**</span></span>  
+  
+     [<span data-ttu-id="0ab1e-130">SQL Server 구성 관리자</span><span class="sxs-lookup"><span data-stu-id="0ab1e-130">SQL Server Configuration Manager</span></span>](#SSMSProcedure)  
+  
+## <a name="before-you-begin"></a><span data-ttu-id="0ab1e-131">시작하기 전에</span><span class="sxs-lookup"><span data-stu-id="0ab1e-131">Before You Begin</span></span>  
+  
+###  <a name="security"></a><a name="Security"></a> <span data-ttu-id="0ab1e-132">보안</span><span class="sxs-lookup"><span data-stu-id="0ab1e-132">Security</span></span>  
+ <span data-ttu-id="0ab1e-133">방화벽의 포트를 열면 서버가 악의적인 공격에 노출될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-133">Opening ports in your firewall can leave your server exposed to malicious attacks.</span></span> <span data-ttu-id="0ab1e-134">포트를 열기 전에 방화벽 시스템을 잘 이해해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-134">Make sure that you understand firewall systems before you open ports.</span></span> <span data-ttu-id="0ab1e-135">자세한 내용은 [Security Considerations for a SQL Server Installation](../../sql-server/install/security-considerations-for-a-sql-server-installation.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-135">For more information, see [Security Considerations for a SQL Server Installation](../../sql-server/install/security-considerations-for-a-sql-server-installation.md)</span></span>  
+  
+##  <a name="using-sql-server-configuration-manager"></a><a name="SSMSProcedure"></a> <span data-ttu-id="0ab1e-136">SQL Server 구성 관리자 사용</span><span class="sxs-lookup"><span data-stu-id="0ab1e-136">Using SQL Server Configuration Manager</span></span>  
+ <span data-ttu-id="0ab1e-137">Windows Vista, Windows 7 및 Windows Server 2008에 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-137">Applies to Windows Vista, Windows 7, and Windows Server 2008</span></span>  
+  
+ <span data-ttu-id="0ab1e-138">다음 절차에서는 고급 보안이 설정된 Windows 방화벽 MMC(Microsoft Management Console) 스냅인을 사용하여 Windows 방화벽을 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-138">The following procedures configure the Windows Firewall by using the Windows Firewall with Advanced Security Microsoft Management Console (MMC) snap-in.</span></span> <span data-ttu-id="0ab1e-139">고급 보안이 설정된 Windows 방화벽은 현재 프로필만 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-139">The Windows Firewall with Advanced Security only configures the current profile.</span></span> <span data-ttu-id="0ab1e-140">고급 보안이 포함된 Windows 방화벽에 대한 자세한 내용은 [SQL Server 액세스를 허용하도록 Windows 방화벽 구성](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-140">For more information about the Windows Firewall with Advanced Security, see [Configure the Windows Firewall to Allow SQL Server Access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md)</span></span>  
+  
+#### <a name="to-open-a-port-in-the-windows-firewall-for-tcp-access"></a><span data-ttu-id="0ab1e-141">Windows 방화벽에서 TCP 액세스용 포트를 열려면</span><span class="sxs-lookup"><span data-stu-id="0ab1e-141">To open a port in the Windows firewall for TCP access</span></span>  
+  
+1.  <span data-ttu-id="0ab1e-142">**시작** 메뉴에서 **실행**을 클릭한 다음 **WF.msc**를 입력하고 **확인**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-142">On the **Start** menu, click **Run**, type **WF.msc**, and then click **OK**.</span></span>  
+  
+2.  <span data-ttu-id="0ab1e-143">**고급 보안이 포함된 Windows 방화벽**의 왼쪽 창에서 **인바운드 규칙**을 마우스 오른쪽 단추로 클릭한 다음 작업 창에서 **새 규칙** 을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-143">In the **Windows Firewall with Advanced Security**, in the left pane, right-click **Inbound Rules**, and then click **New Rule** in the action pane.</span></span>  
+  
+3.  <span data-ttu-id="0ab1e-144">**규칙 유형** 대화 상자에서 **포트**를 선택한 다음 **다음**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-144">In the **Rule Type** dialog box, select **Port**, and then click **Next**.</span></span>  
+  
+4.  <span data-ttu-id="0ab1e-145">**프로토콜 및 포트** 대화 상자에서 **TCP**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-145">In the **Protocol and Ports** dialog box, select **TCP**.</span></span> <span data-ttu-id="0ab1e-146">**특정 로컬 포트**를 선택한 다음 인스턴스의 포트 번호를 입력 합니다. 예를 들어 [!INCLUDE[ssDE](../../includes/ssde-md.md)] 기본 인스턴스의 포트 번호를 입력 합니다 `1433` .</span><span class="sxs-lookup"><span data-stu-id="0ab1e-146">Select **Specific local ports**, and then type the port number of the instance of the [!INCLUDE[ssDE](../../includes/ssde-md.md)], such as `1433` for the default instance.</span></span> <span data-ttu-id="0ab1e-147">**다음**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-147">Click **Next**.</span></span>  
+  
+5.  <span data-ttu-id="0ab1e-148">**동작** 대화 상자에서 **연결 허용**을 선택한 다음 **다음**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-148">In the **Action** dialog box, select **Allow the connection**, and then click **Next**.</span></span>  
+  
+6.  <span data-ttu-id="0ab1e-149">**프로필** 대화 상자에서 [!INCLUDE[ssDE](../../includes/ssde-md.md)]에 연결할 때의 컴퓨터 연결 환경을 설명하는 프로필을 선택한 다음 **다음**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-149">In the **Profile** dialog box, select any profiles that describe the computer connection environment when you want to connect to the [!INCLUDE[ssDE](../../includes/ssde-md.md)], and then click **Next**.</span></span>  
+  
+7.  <span data-ttu-id="0ab1e-150">**이름** 대화 상자에서 이 규칙의 이름 및 설명을 입력한 후 **마침**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-150">In the **Name** dialog box, type a name and description for this rule, and then click **Finish**.</span></span>  
+  
+#### <a name="to-open-access-to-sql-server-when-using-dynamic-ports"></a><span data-ttu-id="0ab1e-151">동적 포트 사용 시 SQL Server에 대한 액세스를 열려면</span><span class="sxs-lookup"><span data-stu-id="0ab1e-151">To open access to SQL Server when using dynamic ports</span></span>  
+  
+1.  <span data-ttu-id="0ab1e-152">**시작** 메뉴에서 **실행**을 클릭한 다음 **WF.msc**를 입력하고 **확인**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-152">On the **Start** menu, click **Run**, type **WF.msc**, and then click **OK**.</span></span>  
+  
+2.  <span data-ttu-id="0ab1e-153">**고급 보안이 포함된 Windows 방화벽**의 왼쪽 창에서 **인바운드 규칙**을 마우스 오른쪽 단추로 클릭한 다음 작업 창에서 **새 규칙** 을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-153">In the **Windows Firewall with Advanced Security**, in the left pane, right-click **Inbound Rules**, and then click **New Rule** in the action pane.</span></span>  
+  
+3.  <span data-ttu-id="0ab1e-154">**규칙 유형** 대화 상자에서 **프로그램**을 선택한 다음 **다음**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-154">In the **Rule Type** dialog box, select **Program**, and then click **Next**.</span></span>  
+  
+4.  <span data-ttu-id="0ab1e-155">**프로그램** 대화 상자에서 **다음 프로그램 경로**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-155">In the **Program** dialog box, select **This program path**.</span></span> <span data-ttu-id="0ab1e-156">**찾아보기**를 클릭하여 방화벽을 통해 액세스할 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 인스턴스를 찾은 다음 **열기**를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-156">Click **Browse**, and navigate to the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] that you want to access through the firewall, and then click **Open**.</span></span> <span data-ttu-id="0ab1e-157">기본적으로 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 는 **C:\PROGRAM Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Binn\Sqlservr.exe**에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-157">By default, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is at **C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Binn\Sqlservr.exe**.</span></span> <span data-ttu-id="0ab1e-158">**다음**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-158">Click **Next**.</span></span>  
+  
+5.  <span data-ttu-id="0ab1e-159">**동작** 대화 상자에서 **연결 허용**을 선택한 다음 **다음**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-159">In the **Action** dialog box, select **Allow the connection**, and then click **Next**.</span></span>  
+  
+6.  <span data-ttu-id="0ab1e-160">**프로필** 대화 상자에서 [!INCLUDE[ssDE](../../includes/ssde-md.md)]에 연결할 때의 컴퓨터 연결 환경을 설명하는 프로필을 선택한 다음 **다음**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-160">In the **Profile** dialog box, select any profiles that describe the computer connection environment when you want to connect to the [!INCLUDE[ssDE](../../includes/ssde-md.md)], and then click **Next**.</span></span>  
+  
+7.  <span data-ttu-id="0ab1e-161">**이름** 대화 상자에서 이 규칙의 이름 및 설명을 입력한 후 **마침**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="0ab1e-161">In the **Name** dialog box, type a name and description for this rule, and then click **Finish**.</span></span>  
+  
+  

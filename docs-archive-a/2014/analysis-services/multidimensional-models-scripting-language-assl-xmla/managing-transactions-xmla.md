@@ -1,0 +1,62 @@
+---
+title: 트랜잭션 관리 (XMLA) | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: reference
+helpviewer_keywords:
+- XML for Analysis, transactions
+- XMLA, transactions
+- explicit transactions [XMLA]
+- implicit transactions
+- transactions [XML for Analysis]
+- rolling back transactions, XMLA
+- reference counts [XML for Analysis]
+- committing transactions
+- starting transactions
+ms.assetid: f5112e01-82f8-4870-bfb7-caa00182c999
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: bff1c60addd25b222905e33bc33e77dd85e88803
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87660183"
+---
+# <a name="managing-transactions-xmla"></a><span data-ttu-id="2558f-102">트랜잭션 관리(XMLA)</span><span class="sxs-lookup"><span data-stu-id="2558f-102">Managing Transactions (XMLA)</span></span>
+  <span data-ttu-id="2558f-103">인스턴스로 전송 되는 모든 XML for Analysis (XMLA) 명령은 [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] 현재 암시적 또는 명시적 세션의 트랜잭션 컨텍스트 내에서 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-103">Every XML for Analysis (XMLA) command sent to an instance of [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] runs within the context of a transaction on the current implicit or explicit session.</span></span> <span data-ttu-id="2558f-104">이러한 각 트랜잭션을 관리 하려면 [BeginTransaction](https://docs.microsoft.com/bi-reference/xmla/xml-elements-commands/begintransaction-element-xmla), [Committransaction](https://docs.microsoft.com/bi-reference/xmla/xml-elements-commands/committransaction-element-xmla)및 [RollbackTransaction](https://docs.microsoft.com/bi-reference/xmla/xml-elements-commands/rollbacktransaction-element-xmla) 명령을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-104">To manage each of these transactions, you use the [BeginTransaction](https://docs.microsoft.com/bi-reference/xmla/xml-elements-commands/begintransaction-element-xmla), [CommitTransaction](https://docs.microsoft.com/bi-reference/xmla/xml-elements-commands/committransaction-element-xmla), and [RollbackTransaction](https://docs.microsoft.com/bi-reference/xmla/xml-elements-commands/rollbacktransaction-element-xmla) commands.</span></span> <span data-ttu-id="2558f-105">이러한 명령을 사용하여 암시적 또는 명시적 트랜잭션을 만들거나 트랜잭션 참조 횟수를 변경하거나 트랜잭션을 시작, 커밋 또는 롤백할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-105">By using these commands, you can create implicit or explicit transactions, change the transaction reference count, as well as start, commit, or roll back transactions.</span></span>  
+  
+## <a name="implicit-and-explicit-transactions"></a><span data-ttu-id="2558f-106">암시적 트랜잭션 및 명시적 트랜잭션</span><span class="sxs-lookup"><span data-stu-id="2558f-106">Implicit and Explicit Transactions</span></span>  
+ <span data-ttu-id="2558f-107">트랜잭션은 암시적이거나 명시적입니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-107">A transaction is either implicit or explicit:</span></span>  
+  
+ <span data-ttu-id="2558f-108">**암시적 트랜잭션**</span><span class="sxs-lookup"><span data-stu-id="2558f-108">**Implicit transaction**</span></span>  
+ [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]<span data-ttu-id="2558f-109">*implicit* `BeginTransaction` 명령이 트랜잭션 시작을 지정 하지 않는 경우 XMLA 명령에 대 한 암시적 트랜잭션을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-109">creates an *implicit* transaction for an XMLA command if the `BeginTransaction` command does not specify the start of a transaction.</span></span> [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]<span data-ttu-id="2558f-110">는 명령이 성공하는 경우 항상 암시적 트랜잭션을 커밋하고 명령이 실패하는 경우 암시적 트랜잭션을 롤백합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-110">always commits an implicit transaction if the command succeeds, and rolls back an implicit transaction if the command fails.</span></span>  
+  
+ <span data-ttu-id="2558f-111">**명시적 트랜잭션**</span><span class="sxs-lookup"><span data-stu-id="2558f-111">**Explicit transaction**</span></span>  
+ [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]<span data-ttu-id="2558f-112">명령이 트랜잭션의 시작 인 경우 *명시적* 트랜잭션을 만듭니다 `BeginTransaction` .</span><span class="sxs-lookup"><span data-stu-id="2558f-112">creates an *explicit* transaction if the `BeginTransaction` command starts of a transaction.</span></span> <span data-ttu-id="2558f-113">그러나 [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]는 `CommitTransaction` 명령이 전송된 경우에만 명시적 트랜잭션을 커밋하고 `RollbackTransaction` 명령이 전송된 경우에는 명시적 트랜잭션을 롤백합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-113">However, [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] only commits an explicit transaction if a `CommitTransaction` command is sent, and rolls back an explicit transaction if a `RollbackTransaction` command is sent.</span></span>  
+  
+ <span data-ttu-id="2558f-114">또한 활성 트랜잭션이 완료되기 전에 현재 세션이 끝나면 [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]는 암시적 트랜잭션과 명시적 트랜잭션을 모두 롤백합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-114">In addition, [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] rolls back both implicit and explicit transactions if the current session ends before the active transaction completes.</span></span>  
+  
+## <a name="transactions-and-reference-counts"></a><span data-ttu-id="2558f-115">트랜잭션 및 참조 횟수</span><span class="sxs-lookup"><span data-stu-id="2558f-115">Transactions and Reference Counts</span></span>  
+ [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]<span data-ttu-id="2558f-116">는 각 세션의 트랜잭션 참조 횟수를 유지 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-116">maintains a transaction reference count for each session.</span></span> <span data-ttu-id="2558f-117">그러나 세션별로 하나의 활성 트랜잭션만 유지 관리되는 경우 [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]는 중첩된 트랜잭션을 지원하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-117">However, [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] does not support nested transactions in that only one active transaction is maintained per session.</span></span> <span data-ttu-id="2558f-118">현재 세션에 활성 트랜잭션이 없는 경우 트랜잭션 참조 횟수가 0으로 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-118">If the current session does not have an active transaction, the transaction reference count is set to zero.</span></span>  
+  
+ <span data-ttu-id="2558f-119">즉, 각 `BeginTransaction` 명령은 참조 횟수를 1씩 늘리고 각 `CommitTransaction` 명령은 참조 횟수를 1씩 줄입니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-119">In other words, each `BeginTransaction` command increments the reference count by one, while each `CommitTransaction` command decrements the reference count by one.</span></span> <span data-ttu-id="2558f-120">`CommitTransaction` 명령에서 트랜잭션 횟수를 0으로 설정하면 [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]는 트랜잭션을 커밋합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-120">If a `CommitTransaction` command sets the transaction count to zero, [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] commits the transaction.</span></span>  
+  
+ <span data-ttu-id="2558f-121">그러나 `RollbackTransaction` 명령은 현재 트랜잭션 참조 횟수 값에 관계없이 활성 트랜잭션을 롤백합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-121">However, the `RollbackTransaction` command rolls back the active transaction regardless of the current value of the transaction reference count.</span></span> <span data-ttu-id="2558f-122">즉, 단일 `RollbackTransaction` 명령은 `BeginTransaction` 명령 또는 `CommitTransaction` 명령을 보낸 횟수에 관계없이 활성 트랜잭션을 롤백하며, 트랜잭션 참조 횟수를 0으로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-122">In other words, a single `RollbackTransaction` command rolls back the active transaction, no matter how many `BeginTransaction` commands or `CommitTransaction` commands were sent, and sets the transaction reference count to zero.</span></span>  
+  
+## <a name="beginning-a-transaction"></a><span data-ttu-id="2558f-123">트랜잭션 시작</span><span class="sxs-lookup"><span data-stu-id="2558f-123">Beginning a Transaction</span></span>  
+ <span data-ttu-id="2558f-124">`BeginTransaction` 명령은 현재 세션에서 명시적 트랜잭션을 시작하고 현재 세션의 트랜잭션 참조 횟수를 1씩 늘립니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-124">The `BeginTransaction` command begins an explicit transaction on the current session and increments the transaction reference count for the current session by one.</span></span> <span data-ttu-id="2558f-125">이후의 모든 명령은 충분한 `CommitTransaction` 명령을 보내 활성 트랜잭션을 커밋하거나 단일 `RollbackTransaction` 명령을 보내 활성 트랜잭션을 롤백할 때까지 활성 트랜잭션 내에 있는 것으로 간주됩니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-125">All subsequent commands are considered to be within the active transaction, until either enough `CommitTransaction` commands are sent to commit the active transaction or a single `RollbackTransaction` command is sent to roll back the active transaction.</span></span>  
+  
+## <a name="committing-a-transaction"></a><span data-ttu-id="2558f-126">트랜잭션 커밋</span><span class="sxs-lookup"><span data-stu-id="2558f-126">Committing a Transaction</span></span>  
+ <span data-ttu-id="2558f-127">`CommitTransaction` 명령은 `BeginTransaction` 명령이 현재 세션에서 실행된 후 실행되는 명령 결과를 커밋합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-127">The `CommitTransaction` command commits the results of commands that are run after the `BeginTransaction` command was run on the current session.</span></span> <span data-ttu-id="2558f-128">각 `CommitTransaction` 명령은 세션의 활성 트랜잭션 참조 횟수를 줄입니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-128">Each `CommitTransaction` command decrements the reference count for active transactions on a session.</span></span> <span data-ttu-id="2558f-129">`CommitTransaction` 명령이 참조 횟수를 0으로 설정하면 [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]는 활성 트랜잭션을 커밋합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-129">If a `CommitTransaction` command sets the reference count to zero, [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] commits the active transaction.</span></span> <span data-ttu-id="2558f-130">활성 트랜잭션이 없는 경우, 즉 현재 세션의 트랜잭션 참조 횟수가 이미 0으로 설정되어 있는 경우에는 `CommitTransaction` 명령에서 오류가 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-130">If there is no active transaction (in other words, the transaction reference count for the current session is already set to zero), a `CommitTransaction` command results in an error.</span></span>  
+  
+## <a name="rolling-back-a-transaction"></a><span data-ttu-id="2558f-131">트랜잭션 롤백</span><span class="sxs-lookup"><span data-stu-id="2558f-131">Rolling Back a Transaction</span></span>  
+ <span data-ttu-id="2558f-132">`RollbackTransaction` 명령은 현재 세션에서 `BeginTransaction` 명령이 실행된 후 수행되는 명령 결과를 롤백합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-132">The `RollbackTransaction` command rolls back the results of commands that are run after the `BeginTransaction` command was run on the current session.</span></span> <span data-ttu-id="2558f-133">`RollbackTransaction` 명령은 현재 트랜잭션 참조 횟수에 관계없이 활성 트랜잭션을 롤백하고 트랜잭션 참조 횟수를 0으로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-133">The `RollbackTransaction` command rolls back the active transaction, regardless of the current transaction reference count, and sets the transaction reference count to zero.</span></span> <span data-ttu-id="2558f-134">활성 트랜잭션이 없는 경우, 즉 현재 세션의 트랜잭션 참조 횟수가 이미 0으로 설정되어 있는 경우에는 `RollbackTransaction` 명령에서 오류가 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="2558f-134">If there is no active transaction (in other words, the transaction reference count for the current session is already set to zero), a `RollbackTransaction` command results in an error.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="2558f-135">참고 항목</span><span class="sxs-lookup"><span data-stu-id="2558f-135">See Also</span></span>  
+ [<span data-ttu-id="2558f-136">Analysis Services에서 XMLA를 사용하여 개발</span><span class="sxs-lookup"><span data-stu-id="2558f-136">Developing with XMLA in Analysis Services</span></span>](developing-with-xmla-in-analysis-services.md)  
+  
+  
