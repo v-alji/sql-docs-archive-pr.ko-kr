@@ -1,0 +1,62 @@
+---
+title: 도메인 관리 | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: data-quality-services
+ms.topic: conceptual
+ms.assetid: c5ab71a3-0dac-45b1-be8e-93bf7e0e03ce
+author: lrtoyou1223
+ms.author: lle
+ms.openlocfilehash: 67f58df490bca5a811442fb33805ceb546de92d0
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87647259"
+---
+# <a name="managing-a-domain"></a><span data-ttu-id="f089e-102">도메인 관리</span><span class="sxs-lookup"><span data-stu-id="f089e-102">Managing a Domain</span></span>
+  <span data-ttu-id="f089e-103">이 항목에서는 DQS( [!INCLUDE[ssDQSnoversion](../includes/ssdqsnoversion-md.md)] )에서 도메인을 사용하는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-103">This topic describes the use of domains in [!INCLUDE[ssDQSnoversion](../includes/ssdqsnoversion-md.md)] (DQS).</span></span> <span data-ttu-id="f089e-104">도메인은 분석할 데이터 원본의 특정 필드에 있는 데이터를 의미 체계에 따라 표현한 것입니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-104">A domain contains a semantic representation of the data in a specific field in the data source that is to be analyzed.</span></span> <span data-ttu-id="f089e-105">도메인은 사용자가 데이터 원본에 대해 만드는 기술 자료의 일부이며, 샘플 데이터 원본을 분석하거나 데이터를 가져와 구축한 정보는 기술 자료에 정의된 도메인에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-105">A domain is part of the knowledge base that you create for a data source, and the knowledge that you build up by analyzing a sample data source, or importing data, is added to the domains defined in the knowledge base.</span></span> <span data-ttu-id="f089e-106">이러한 도메인의 정보는 나중에 데이터 품질 프로젝트에서 정리 및 일치를 수행할 때 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-106">The knowledge in those domains is later used to perform cleansing and matching in a data quality project.</span></span> <span data-ttu-id="f089e-107">도메인은 Data Quality Services에서 모든 작업의 핵심에 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-107">Domains are at the core of all activities in Data Quality Services.</span></span>  
+  
+ <span data-ttu-id="f089e-108">도메인은 데이터 원본 필드에 매핑되고 기술 자료 검색, 도메인 관리 및 일치 작업에서 채워집니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-108">A domain is mapped to a data source field, and is populated in the knowledge discovery, domain management, and matching activities.</span></span> <span data-ttu-id="f089e-109">데이터 원본의 데이터와 보고서의 출력 데이터를 로드하는 방법은 도메인 속성에 정의됩니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-109">How you load data from the data source and output data in a report is defined in domain properties.</span></span> <span data-ttu-id="f089e-110">참조 데이터 공급자를 사용하여 데이터를 정리할 경우 단일 도메인이나 복합 도메인에 참조 데이터 서비스를 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-110">When you use a reference data provider to cleanse data, you attach a reference data service to a single or composite domain.</span></span> <span data-ttu-id="f089e-111">도메인의 데이터에 적용할 규칙을 만들고 도메인의 용어 기반 관계를 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-111">You create rules to be applied to your data in a domain, and you can create term-based relations for a domain.</span></span> <span data-ttu-id="f089e-112">도메인의 데이터를 보고 수정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-112">You can view and correct data in the domain.</span></span>  
+  
+ <span data-ttu-id="f089e-113">또한 각각 공통 데이터에 대한 정보가 포함된 두 개 이상의 개별 도메인으로 구성되는 복합 도메인을 만들 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-113">You can also create a composite domain that is comprised of two or more individual domains that each contains knowledge about common data.</span></span> <span data-ttu-id="f089e-114">자세한 내용은 [복합 도메인 관리](../../2014/data-quality-services/managing-a-composite-domain.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="f089e-114">For more information, see [Managing a Composite Domain](../../2014/data-quality-services/managing-a-composite-domain.md).</span></span>  
+  
+## <a name="domain-properties"></a><span data-ttu-id="f089e-115">도메인 속성</span><span class="sxs-lookup"><span data-stu-id="f089e-115">Domain Properties</span></span>  
+ <span data-ttu-id="f089e-116">도메인을 만들 때 원본 데이터에서 도메인을 채우는 방법과 도메인 값을 출력하는 방법에 대해 다음과 같은 옵션을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-116">When you create a domain, you have the following options for how to populate the domain from the source data and how to output the domain values.</span></span> <span data-ttu-id="f089e-117">자세한 내용은 [도메인 속성 설정](../../2014/data-quality-services/set-domain-properties.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="f089e-117">For more information, see [Set Domain Properties](../../2014/data-quality-services/set-domain-properties.md).</span></span>  
+  
+-   <span data-ttu-id="f089e-118">도메인을 채우는 데 사용할 데이터 형식을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-118">Select the type of the data that you populate the domain with.</span></span> <span data-ttu-id="f089e-119">각 도메인 데이터 형식에 대해 지원되는 데이터 형식에 대한 자세한 내용은 [DQS 도메인에 대해 지원되는 SQL Server 및 SSIS 데이터 형식](../../2014/data-quality-services/supported-sql-server-and-ssis-data-types-for-dqs-domains.md)을 참조하십시오.</span><span class="sxs-lookup"><span data-stu-id="f089e-119">For information about data types supported for each domain data type, see [Supported SQL Server and SSIS Data Types for DQS Domains](../../2014/data-quality-services/supported-sql-server-and-ssis-data-types-for-dqs-domains.md).</span></span>  
+  
+-   <span data-ttu-id="f089e-120">동의어가 아닌 선행 값만 도메인에서 출력되도록 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-120">Specify that only leading values, not their synonyms, will be output from the domain.</span></span>  
+  
+-   <span data-ttu-id="f089e-121">도메인 값이 데이터 형식에 따라 특정 형식으로 출력되도록 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-121">Specify that domain values be output in a certain format, depending on the data type.</span></span>  
+  
+-   <span data-ttu-id="f089e-122">데이터 형식이 문자열인 경우 데이터 원본에서 도메인으로 문자열이 로드될 때 특수 문자를 제거하여 문자열을 정규화할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-122">If the data type is a string, you can normalize the string by removing special characters when the string is loaded from the data source into the domain.</span></span>  
+  
+-   <span data-ttu-id="f089e-123">데이터 형식이 문자열인 경우 DQS 맞춤법 검사기를 실행하여 문자열의 구문, 맞춤법 및 문장 구조를 검사하고 잠재적 오류가 있으면 **도메인 관리** 의 **도메인 값**페이지에 표시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-123">If the data type is a string, you can run the DQS Speller to check the syntax, spelling, and sentence structure of the string, and indicate any potential errors in the **Domain Values** page of **Domain Management**.</span></span> <span data-ttu-id="f089e-124">여기에는 맞춤법 검사기가 실행될 때 사용할 언어를 지정하는 과정이 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-124">This includes specifying the language that the Speller will run in.</span></span>  
+  
+-   <span data-ttu-id="f089e-125">데이터 형식이 문자열인 경우 문자열에서 구문 오류가 발생하지 않을 것이라 판단되면 DQS에서 구문 오류를 식별하지 않도록 지정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-125">If the data type is a string, you can specify that DQS not identify syntax errors when you know that syntax errors will not occur in strings.</span></span>  
+  
+## <a name="in-this-section"></a><span data-ttu-id="f089e-126">섹션 내용</span><span class="sxs-lookup"><span data-stu-id="f089e-126">In This Section</span></span>  
+ <span data-ttu-id="f089e-127">도메인을 사용하면 다음과 같은 작업을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f089e-127">Using a domain enables you to do the following:</span></span>  
+  
+|||  
+|-|-|  
+|<span data-ttu-id="f089e-128">특정 데이터 형식의 데이터 필드를 의미 체계에 따라 표현, 도메인을 채우는 방법 지정, 도메인의 출력 형식 지정</span><span class="sxs-lookup"><span data-stu-id="f089e-128">Create a semantic representation for a data field with a specific data type, specify how the domain is populated, and format the output of the domain</span></span>|[<span data-ttu-id="f089e-129">도메인 만들기</span><span class="sxs-lookup"><span data-stu-id="f089e-129">Create a Domain</span></span>](../../2014/data-quality-services/create-a-domain.md)|  
+|<span data-ttu-id="f089e-130">도메인을 다른 도메인에 연결하여 동일한 설정 및 값 공유</span><span class="sxs-lookup"><span data-stu-id="f089e-130">Link a domain to another domain, enabling it to share the same settings and values</span></span>|[<span data-ttu-id="f089e-131">연결된 도메인 만들기</span><span class="sxs-lookup"><span data-stu-id="f089e-131">Create a Linked Domain</span></span>](../../2014/data-quality-services/create-a-linked-domain.md)|  
+|<span data-ttu-id="f089e-132">단일 또는 복합 도메인에 참조 데이터 서비스 연결</span><span class="sxs-lookup"><span data-stu-id="f089e-132">Attach a reference data service to a single or composite domain</span></span>|[<span data-ttu-id="f089e-133">참조 데이터에 도메인 또는 복합 도메인 연결</span><span class="sxs-lookup"><span data-stu-id="f089e-133">Attach a Domain or Composite Domain to Reference Data</span></span>](../../2014/data-quality-services/attach-a-domain-or-composite-domain-to-reference-data.md)|  
+|<span data-ttu-id="f089e-134">기술 자료의 값 변경 또는 보강</span><span class="sxs-lookup"><span data-stu-id="f089e-134">Change or augment the values in a knowledge base</span></span>|[<span data-ttu-id="f089e-135">도메인 값 변경</span><span class="sxs-lookup"><span data-stu-id="f089e-135">Change Domain Values</span></span>](../../2014/data-quality-services/change-domain-values.md)|  
+|<span data-ttu-id="f089e-136">유효성 검사 및 표준화 규칙 사용</span><span class="sxs-lookup"><span data-stu-id="f089e-136">Use validation and standardization rules</span></span>|[<span data-ttu-id="f089e-137">도메인 규칙 만들기</span><span class="sxs-lookup"><span data-stu-id="f089e-137">Create a Domain Rule</span></span>](../../2014/data-quality-services/create-a-domain-rule.md)|  
+|<span data-ttu-id="f089e-138">관계를 사용하여 도메인 값에 포함된 용어 수정</span><span class="sxs-lookup"><span data-stu-id="f089e-138">Use relations to correct a term that is part of a value in a domain</span></span>|[<span data-ttu-id="f089e-139">용어 기반 관계 만들기</span><span class="sxs-lookup"><span data-stu-id="f089e-139">Create Term-Based Relations</span></span>](../../2014/data-quality-services/create-term-based-relations.md)|  
+|<span data-ttu-id="f089e-140">도메인 관리 작업 완료, 닫기 또는 취소</span><span class="sxs-lookup"><span data-stu-id="f089e-140">Complete, close, or cancel the domain management activity</span></span>|[<span data-ttu-id="f089e-141">도메인 관리 작업 종료</span><span class="sxs-lookup"><span data-stu-id="f089e-141">End the Domain Management Activity</span></span>](../../2014/data-quality-services/end-the-domain-management-activity.md)|  
+  
+## <a name="related-tasks"></a><span data-ttu-id="f089e-142">관련 작업</span><span class="sxs-lookup"><span data-stu-id="f089e-142">Related Tasks</span></span>  
+  
+|<span data-ttu-id="f089e-143">태스크 설명</span><span class="sxs-lookup"><span data-stu-id="f089e-143">Task Description</span></span>|<span data-ttu-id="f089e-144">항목</span><span class="sxs-lookup"><span data-stu-id="f089e-144">Topic</span></span>|  
+|----------------------|-----------|  
+|<span data-ttu-id="f089e-145">기술 자료 검색을 실행하고 대화식으로 정보를 관리하여 기술 자료 구축</span><span class="sxs-lookup"><span data-stu-id="f089e-145">Building a knowledge base by running knowledge discovery and interactively managing knowledge</span></span>|[<span data-ttu-id="f089e-146">기술 자료 구축</span><span class="sxs-lookup"><span data-stu-id="f089e-146">Building a Knowledge Base</span></span>](../../2014/data-quality-services/building-a-knowledge-base.md)|  
+|<span data-ttu-id="f089e-147">기술 자료로 정보 가져오기 또는 기술 자료에서 정보 내보내기</span><span class="sxs-lookup"><span data-stu-id="f089e-147">Importing knowledge into, or exporting it from, a knowledge base.</span></span>|[<span data-ttu-id="f089e-148">기술 자료 가져오기 및 내보내기</span><span class="sxs-lookup"><span data-stu-id="f089e-148">Importing and Exporting Knowledge</span></span>](../../2014/data-quality-services/importing-and-exporting-knowledge.md)|  
+|<span data-ttu-id="f089e-149">복합 도메인 만들기 및 단일 도메인에 정보 추가</span><span class="sxs-lookup"><span data-stu-id="f089e-149">Creating a composite domain, and adding knowledge to the domain.</span></span>|[<span data-ttu-id="f089e-150">복합 도메인 관리</span><span class="sxs-lookup"><span data-stu-id="f089e-150">Managing a Composite Domain</span></span>](../../2014/data-quality-services/managing-a-composite-domain.md)|  
+  
+  
