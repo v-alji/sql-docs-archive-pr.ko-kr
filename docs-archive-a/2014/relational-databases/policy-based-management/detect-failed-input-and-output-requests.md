@@ -1,0 +1,31 @@
+---
+title: 실패 한 입력 출력 요청 검색 | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: security
+ms.topic: conceptual
+helpviewer_keywords:
+- Best Practices [Database Engine]
+ms.assetid: 85373b2e-d9fe-42ef-9653-6e22fe5ecab0
+author: MikeRayMSFT
+ms.author: mikeray
+ms.openlocfilehash: 6b3cdc219de06592924ca74cad33ed0027963ac3
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87728208"
+---
+# <a name="detect-failed-input-output-request"></a><span data-ttu-id="f8d6b-102">실패 한 입력 출력 요청 검색</span><span class="sxs-lookup"><span data-stu-id="f8d6b-102">Detect Failed Input Output Request</span></span>
+  <span data-ttu-id="f8d6b-103">이 규칙은 시스템 이벤트 로그에서 EventId 50을 검사합니다.</span><span class="sxs-lookup"><span data-stu-id="f8d6b-103">This rule checks the system event log for EventId 50.</span></span> <span data-ttu-id="f8d6b-104">이 오류는 실패한 I/O 요청으로 인해 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="f8d6b-104">This error is caused by a failed I/O request.</span></span>  
+  
+## <a name="best-practices-recommendations"></a><span data-ttu-id="f8d6b-105">최선의 구현 방법 권장 사항</span><span class="sxs-lookup"><span data-stu-id="f8d6b-105">Best Practices Recommendations</span></span>  
+ <span data-ttu-id="f8d6b-106">이 오류를 해결하는 방법은 다음 [!INCLUDE[msCoName](../../includes/msconame-md.md)] 기술 자료 문서를 참조하십시오.</span><span class="sxs-lookup"><span data-stu-id="f8d6b-106">Review the following [!INCLUDE[msCoName](../../includes/msconame-md.md)] Knowledge Base articles for more information about how to troubleshoot this error:</span></span>  
+  
+-   [<span data-ttu-id="f8d6b-107">Microsoft 기술 자료 문서 311081</span><span class="sxs-lookup"><span data-stu-id="f8d6b-107">Microsoft Knowledge Base article 311081</span></span>](https://go.microsoft.com/fwlink/?linkid=117744)  
+  
+-   [<span data-ttu-id="f8d6b-108">Microsoft 기술 자료 문서 885688</span><span class="sxs-lookup"><span data-stu-id="f8d6b-108">Microsoft Knowledge Base article 885688</span></span>](https://go.microsoft.com/fwlink/?linkid=117745)  
+  
+  

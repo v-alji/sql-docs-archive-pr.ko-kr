@@ -1,0 +1,41 @@
+---
+title: SQL Server Management Studio | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: ssms
+ms.topic: conceptual
+ms.assetid: 66a6b7b1-de6a-4161-82bd-98ded486947b
+author: stevestein
+ms.author: sstein
+ms.openlocfilehash: 45f88d160f080e7692c30c2456ba9a332ed03585
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87732236"
+---
+# <a name="sql-server-management-studio"></a><span data-ttu-id="d6216-102">SQL Server Management Studio</span><span class="sxs-lookup"><span data-stu-id="d6216-102">SQL Server Management Studio</span></span>
+  [!INCLUDE[ssManStudioFull](../includes/ssmanstudiofull-md.md)]<span data-ttu-id="d6216-103">는 SQL Server 인프라를 관리하기 위한 통합 환경입니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-103">is an integrated environment for managing your SQL Server infrastructure.</span></span> [!INCLUDE[ssManStudio](../includes/ssmanstudio-md.md)]<span data-ttu-id="d6216-104">는 SQL Server 인스턴스를 구성, 모니터링 및 관리하는 도구를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-104">provides tools to configure, monitor, and administer instances of SQL Server.</span></span> <span data-ttu-id="d6216-105">또한 데이터 계층 구성 요소(예: 애플리케이션에 사용되는 데이터 웨어하우스 및 데이터베이스)를 배포, 모니터링 및 업그레이드하는 도구와 쿼리 및 스크립트를 작성하는 도구를 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-105">It also provides tools to deploy, monitor, and upgrade the data-tier components, such as databases and data warehouses used by your applications, and to build queries and scripts.</span></span>  
+  
+## <a name="benefits-of-sql-server-management-studio"></a><span data-ttu-id="d6216-106">SQL Server Management Studio의 이점</span><span class="sxs-lookup"><span data-stu-id="d6216-106">Benefits of SQL Server Management Studio</span></span>  
+ [!INCLUDE[ssManStudioFull](../includes/ssmanstudiofull-md.md)]<span data-ttu-id="d6216-107">는 간편한 그래픽 인터페이스를 다양한 스크립팅 기능과 결합하는 포괄적인 SQL Server 개체 관리 유틸리티입니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-107">is a comprehensive utility for managing SQL Server objects that combines an easy-to-use graphical interface with rich scripting capabilities.</span></span> [!INCLUDE[ssManStudio](../includes/ssmanstudio-md.md)]<span data-ttu-id="d6216-108">를 사용하여 [!INCLUDE[ssDE](../includes/ssde-md.md)], [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)], [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)] 및 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)]를 관리할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-108">can be used to manage [!INCLUDE[ssDE](../includes/ssde-md.md)], [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)], [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)], and [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)].</span></span>  
+  
+## <a name="sql-server-management-studio-components"></a><span data-ttu-id="d6216-109">SQL Server Management Studio 구성 요소</span><span class="sxs-lookup"><span data-stu-id="d6216-109">SQL Server Management Studio Components</span></span>  
+  
+|<span data-ttu-id="d6216-110">Description</span><span class="sxs-lookup"><span data-stu-id="d6216-110">Description</span></span>|<span data-ttu-id="d6216-111">항목</span><span class="sxs-lookup"><span data-stu-id="d6216-111">Topic</span></span>|  
+|-----------------|-----------|  
+|<span data-ttu-id="d6216-112">[!INCLUDE[ssManStudio](../includes/ssmanstudio-md.md)]를 사용하여 수행하는 바로 가기 키 사용자 지정, 속성 페이지 보기 등과 같은 일반적인 태스크에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-112">Describes common tasks performed by using [!INCLUDE[ssManStudio](../includes/ssmanstudio-md.md)], such as customizing keyboard shortcuts and viewing property pages.</span></span>|[<span data-ttu-id="d6216-113">SQL Server Management Studio 사용</span><span class="sxs-lookup"><span data-stu-id="d6216-113">Use SQL Server Management Studio</span></span>](../database-engine/use-sql-server-management-studio.md)|  
+|<span data-ttu-id="d6216-114">**개체 탐색기** 를 사용하여 하나 이상의 [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)]인스턴스에서 모든 개체를 보고 관리하는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-114">Describes using **Object Explorer** to view and manage all of the objects in one or more instances of [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)].</span></span>|[<span data-ttu-id="d6216-115">개체 탐색기</span><span class="sxs-lookup"><span data-stu-id="d6216-115">Object Explorer</span></span>](object/object-explorer.md)|  
+|<span data-ttu-id="d6216-116">**템플릿 탐색기** 를 사용하여 쿼리 및 스크립트 개발 속도를 단축하기 위해 사용할 수 있는 상용구 텍스트 파일을 작성 및 관리하는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-116">Describes how to use **Template Explorer** to build and manage files of boilerplate text that can be used to speed the development of queries and scripts.</span></span>|[<span data-ttu-id="d6216-117">템플릿 탐색기</span><span class="sxs-lookup"><span data-stu-id="d6216-117">Template Explorer</span></span>](template/template-explorer.md)|  
+|<span data-ttu-id="d6216-118">사용되지 않는 **솔루션 탐색기** 를 사용하여 쿼리 및 스크립트와 같은 관리 항목을 관리하는 데 사용되는 프로젝트를 작성하는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-118">Describes how to use the deprecated **Solution Explorer** to build projects used to manage administration items such as scripts and queries.</span></span>|[<span data-ttu-id="d6216-119">솔루션 탐색기</span><span class="sxs-lookup"><span data-stu-id="d6216-119">Solution Explorer</span></span>](solution/solution-explorer.md)|  
+|<span data-ttu-id="d6216-120">[!INCLUDE[ssManStudio](../includes/ssmanstudio-md.md)] 를 [!INCLUDE[ssDE](../includes/ssde-md.md)] 및 [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)]인스턴스에 연결하는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-120">Describes how to connect [!INCLUDE[ssManStudio](../includes/ssmanstudio-md.md)] to instances of the [!INCLUDE[ssDE](../includes/ssde-md.md)] and [!INCLUDE[ssASnoversion](../includes/ssasnoversion-md.md)].</span></span>|[<span data-ttu-id="d6216-121">서버 연결에 대한 F1 도움말&#40;SQL Server Management Studio&#41;</span><span class="sxs-lookup"><span data-stu-id="d6216-121">F1 Help for Server Connections &#40;SQL Server Management Studio&#41;</span></span>](f1-help/f1-help-for-server-connections-sql-server-management-studio.md)|  
+|<span data-ttu-id="d6216-122">[!INCLUDE[ssManStudio](../includes/ssmanstudio-md.md)]에 포함된 비주얼 디자인 도구를 사용하는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-122">Describes how to use the visual design tools included in [!INCLUDE[ssManStudio](../includes/ssmanstudio-md.md)].</span></span>|[<span data-ttu-id="d6216-123">Visual Database Tools</span><span class="sxs-lookup"><span data-stu-id="d6216-123">Visual Database Tools</span></span>](visual-db-tools/visual-database-tools.md)|  
+|<span data-ttu-id="d6216-124">[!INCLUDE[ssManStudio](../includes/ssmanstudio-md.md)] 언어 편집기를 사용하여 쿼리와 스크립트를 대화식으로 작성 및 디버깅하는 방법에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="d6216-124">Describes how to use the [!INCLUDE[ssManStudio](../includes/ssmanstudio-md.md)] language editors to interactively build and debug queries and scripts.</span></span>|[<span data-ttu-id="d6216-125">쿼리 및 텍스트 편집기&#40;SQL Server Management Studio&#41;</span><span class="sxs-lookup"><span data-stu-id="d6216-125">Query and Text Editors &#40;SQL Server Management Studio&#41;</span></span>](../relational-databases/scripting/query-and-text-editors-sql-server-management-studio.md)|  
+  
+## <a name="see-also"></a><span data-ttu-id="d6216-126">참고 항목</span><span class="sxs-lookup"><span data-stu-id="d6216-126">See Also</span></span>  
+ <span data-ttu-id="d6216-127">[자습서: SQL Server Management Studio](tutorials/tutorial-sql-server-management-studio.md) </span><span class="sxs-lookup"><span data-stu-id="d6216-127">[Tutorial: SQL Server Management Studio](tutorials/tutorial-sql-server-management-studio.md) </span></span>  
+ [<span data-ttu-id="d6216-128">자습서: Transact-SQL 문 작성</span><span class="sxs-lookup"><span data-stu-id="d6216-128">Tutorial: Writing Transact-SQL Statements</span></span>](../t-sql/tutorial-writing-transact-sql-statements.md)  
+  
+  

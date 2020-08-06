@@ -1,0 +1,32 @@
+---
+title: 고가용성 지원 | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: integration-services
+ms.topic: conceptual
+ms.assetid: 2e0f6d3f-0536-46d9-8630-835e199515bf
+author: chugugrace
+ms.author: chugu
+ms.openlocfilehash: 3075b300061b3d87b12a7cb3c4363b5e218f34d6
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87728620"
+---
+# <a name="high-availability-support"></a><span data-ttu-id="19d36-102">고가용성 지원</span><span class="sxs-lookup"><span data-stu-id="19d36-102">High Availability Support</span></span>
+  <span data-ttu-id="19d36-103">Oracle CDC Service는 고가용성을 위해 디자인되었습니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-103">The CDC Service for Oracle is designed for high availability.</span></span> <span data-ttu-id="19d36-104">다음 기능은 일부 고가용성 지원을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-104">The following features provide part of the high availability support:</span></span>  
+  
+-   <span data-ttu-id="19d36-105">Oracle CDC Service는 파일 리소스(로컬 또는 기타 방식)를 사용하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-105">The CDC Service for Oracle does not use any file resource (local or otherwise).</span></span> <span data-ttu-id="19d36-106">전체 상태는 대상 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 인스턴스에 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-106">Its entire state is stored in the target [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance.</span></span> <span data-ttu-id="19d36-107">그러면 서비스가 실행되는 컴퓨터에 장애가 발생할 경우 동일한 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 인스턴스를 사용하는 다른 컴퓨터에서 서비스를 쉽게 시작할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-107">This makes it easy to start the service on a different computer that uses the same [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance if the computer the service runs on fails.</span></span> <span data-ttu-id="19d36-108">복구 시간을 줄이기 위해 긴 또는 장기 실행되는 Oracle 트랜잭션은 대상 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]의 준비 테이블에 유지되므로 장애(또는 서비스 다시 시작) 후에 많은 트랜잭션 로그를 다시 검색할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-108">To reduce recovery time, long or long-running Oracle transactions are kept in a staging table in the target [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], preventing the need to re-scan many Oracle transaction logs following a failure (or service restart).</span></span>  
+  
+-   <span data-ttu-id="19d36-109">Oracle CDC Service는 클러스터형 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 인스턴스를 사용할 수 있으므로 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 인스턴스가 다른 클러스터 노드로 장애 조치된 후 복구할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-109">The CDC Service for Oracle can use clustered [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instances so it can recover after the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance fails over to another cluster node.</span></span> <span data-ttu-id="19d36-110">Oracle CDC Service 컴퓨터 관리자가 Oracle CDC Service를 만들 때 연결 정보를 클러스터형 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 인스턴스에 지정하면 됩니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-110">The Oracle CDC Service Computer Administrator only needs to specify the connection information to the clustered [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance when creating an Oracle CDC Service.</span></span>  
+  
+-   <span data-ttu-id="19d36-111">Oracle CDC Service는 [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)]**AlwaysOn** 데이터베이스 미러링 기능을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-111">The CDC Service for Oracle can use the [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)]**AlwaysOn** database mirroring feature.</span></span> <span data-ttu-id="19d36-112">이 기능을 지원하려면 MSXDBCDC 및 모든 CDC 데이터베이스가 동일한 가용성 그룹에 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-112">This support requires that the MSXDBCDC and all the CDC databases are in the same availability group.</span></span> <span data-ttu-id="19d36-113">또한 Oracle CDC Service 컴퓨터 관리자가 해당 **AlwaysOn** 연결 정보를 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 가용성 그룹에 지정해야 합니다(예: 연결 속성 `Failover_Partner and Network=dbmssocn`).</span><span class="sxs-lookup"><span data-stu-id="19d36-113">It also requires the Oracle CDC Service Computer Administrator to specify the appropriate **AlwaysOn** connection information to the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] availability group (for example, the connection properties `Failover_Partner and Network=dbmssocn`).</span></span> <span data-ttu-id="19d36-114">그러면 CDC Service는 장애 조치(failover) 후 데이터베이스의 보조 복제에서 처리를 자동으로 재개할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-114">This allows the CDC service to automatically resume processing on a secondary replication of the databases following a failover.</span></span>  
+  
+-   <span data-ttu-id="19d36-115">Windows 장애 조치(failover) 클러스터에서( [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]와 함께 또는 따로) Oracle CDC Service를 구성할 수 있으므로 간단하게 장애 조치를 수행하고 CDC 처리를 클러스터로 대체할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-115">The CDC Service for Oracle can be configured as a generic service resource on a Windows failover cluster (along with, or separate from [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]), making it simple to fail over and fall back CDC processing with the cluster.</span></span> <span data-ttu-id="19d36-116">장애 조치(failover) 클러스터에서 Oracle CDC Service를 리소스로 구성하려면 시스템 관리자가 장애 조치(failover) 클러스터의 각 노드에서 Oracle CDC Service를 일반 서비스 리소스로 설정해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-116">To configure the CDC Service for Oracle as a resource in a failover cluster, the system administrator must set the CDC Service for Oracle as a Generic Service Resource on each node on the failover cluster.</span></span>  
+  
+-   <span data-ttu-id="19d36-117">Oracle CDC Service는 Oracle RAC 노드 중 하나가 중지되는 경우에도 Oracle 데이터베이스와 통신하여 로그를 처리할 수 있는 Oracle RAC를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="19d36-117">The CDC Service for Oracle supports Oracle RAC, which allows it to communicate with the Oracle database and process logs even when one of the Oracle RAC nodes is down.</span></span>  
+  
+  
