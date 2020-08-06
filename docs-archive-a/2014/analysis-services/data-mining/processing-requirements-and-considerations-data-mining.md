@@ -1,0 +1,93 @@
+---
+title: 처리 요구 사항 및 고려 사항 (데이터 마이닝) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+helpviewer_keywords:
+- data mining [Analysis Services], objects
+- mining structures [Analysis Services], processing
+- mining models [Analysis Services], processing
+ms.assetid: f7331261-6f1c-4986-b2c7-740f4b92ca44
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: f4b3f00692e58a55063a7d6bf4887dbee36df68c
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87734603"
+---
+# <a name="processing-requirements-and-considerations-data-mining"></a><span data-ttu-id="30d04-102">처리 요구 사항 및 고려 사항(데이터 마이닝)</span><span class="sxs-lookup"><span data-stu-id="30d04-102">Processing Requirements and Considerations (Data Mining)</span></span>
+  <span data-ttu-id="30d04-103">이 항목에서는 데이터 마이닝 개체를 처리할 때 유의해야 할 몇 가지 기술적 고려 사항에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-103">This topic describes some technical considerations to keep in mind when processing data mining objects.</span></span> <span data-ttu-id="30d04-104">처리의 정의와 처리가 데이터 마이닝에 적용되는 방식에 대한 일반적인 설명은 [데이터 마이닝 개체 처리](processing-data-mining-objects.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="30d04-104">For a general explanation of what processing is, and how it applies to data mining, see [Processing Data Mining Objects](processing-data-mining-objects.md).</span></span>  
+  
+ [<span data-ttu-id="30d04-105">관계형 저장소에 대한 쿼리</span><span class="sxs-lookup"><span data-stu-id="30d04-105">Queries on Relational Store</span></span>](#bkmk_QueryReqs)  
+  
+ [<span data-ttu-id="30d04-106">마이닝 구조 처리</span><span class="sxs-lookup"><span data-stu-id="30d04-106">Processing Mining Structures</span></span>](#bkmk_ProcessStructures)  
+  
+ [<span data-ttu-id="30d04-107">마이닝 모델 처리</span><span class="sxs-lookup"><span data-stu-id="30d04-107">Processing Mining Models</span></span>](#bkmk_ProcessModels)  
+  
+##  <a name="queries-on-the-relational-store-during-processing"></a><a name="bkmk_QueryReqs"></a> <span data-ttu-id="30d04-108">처리 중의 관계형 저장소에 대한 쿼리</span><span class="sxs-lookup"><span data-stu-id="30d04-108">Queries on the Relational Store during Processing</span></span>  
+ <span data-ttu-id="30d04-109">데이터 마이닝에는 원본 데이터 쿼리, 원시 통계 확인, 마이닝 모델 학습을 위한 모델 정의 및 알고리즘 사용의 세 가지 단계가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-109">For data mining, there are three phases to processing: querying the source data, determining raw statistics, and using the model definition and algorithm to train the mining model.</span></span>  
+  
+ <span data-ttu-id="30d04-110">[!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] 서버는 원시 데이터를 제공하는 데이터베이스에 대해 쿼리를 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-110">The [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] server issues queries to the database that provides the raw data.</span></span> <span data-ttu-id="30d04-111">이 데이터베이스는 [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] 의 인스턴스일 수도 있고 이전 버전의 SQL Server 데이터베이스 엔진일 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-111">This database might be an instance of [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] or an earlier version of the SQL Server database engine.</span></span> <span data-ttu-id="30d04-112">데이터 마이닝 구조를 처리할 때 원본의 데이터는 마이닝 구조로 전송되고 디스크에 압축된 새 형식으로 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-112">When you process a data mining structure, the data in the source is transferred to the mining structure and persisted on disk in a new, compressed format.</span></span> <span data-ttu-id="30d04-113">데이터 원본의 모든 열이 처리되는 것은 아니고, 마이닝 구조에 포함되어 있으며 바인딩에 의해 정의된 열만 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-113">Not every column in the data source is processed: only the columns that are included in the mining structure, as defined by the bindings.</span></span>  
+  
+ <span data-ttu-id="30d04-114">[!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] 는 이 데이터를 사용하여 모든 데이터 및 분할된 열의 인덱스를 작성하고 연속 열에 대한 별도의 인덱스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-114">Using this data, [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] builds an index of all data and discretized columns, and creates a separate index for continuous columns.</span></span> <span data-ttu-id="30d04-115">중첩 테이블당 하나의 쿼리가 실행되어 인덱스를 만들고, 중첩 테이블당 또 하나의 추가 쿼리가 생성되어 각 중첩 테이블과 사례 테이블 쌍 간의 관계를 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-115">One query is issued for each nested table to create the index, and an additional query per nested table is generated to process relationships between each pair of a nested table and case table.</span></span> <span data-ttu-id="30d04-116">여러 개의 쿼리를 만드는 이유는 특수 내부 다차원 데이터 저장소를 처리하기 위해서입니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-116">The reason for creating multiple queries is to process a special internal multidimensional data store.</span></span> <span data-ttu-id="30d04-117">`DatabaseConnectionPoolMax` 서버 속성을 설정하여 [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)]가 관계형 저장소에 보내는 쿼리의 수를 제한할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-117">You can limit the number of queries that [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] sends to the relational store by setting the server property, `DatabaseConnectionPoolMax`.</span></span> <span data-ttu-id="30d04-118">자세한 내용은 [OLAP Properties](../server-properties/olap-properties.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="30d04-118">For more information, see [OLAP Properties](../server-properties/olap-properties.md).</span></span>  
+  
+ <span data-ttu-id="30d04-119">모델을 처리할 때 모델은 데이터 원본에서 데이터를 다시 읽지 않고 대신 마이닝 구조에서 데이터의 요약을 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-119">When you process the model, the model does not reread the data from the data source, but instead gets the summary of the data from the mining structure.</span></span> <span data-ttu-id="30d04-120">캐시된 인덱스와 함께 만든 큐브를 사용하여 사례 데이터가 캐시되면 서버는 모델 학습을 위한 독립 스레드를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-120">Using the cube that was created, together with the cached index and case data has been cached, the server creates independent threads to train the models.</span></span>  
+  
+ <span data-ttu-id="30d04-121">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]병렬 모델 처리를 지 원하는 버전에 대 한 자세한 내용은 [SQL Server 2012 버전에서 지 원하는 기능](https://go.microsoft.com/fwlink/?linkid=232473) 을 참조 하세요 https://go.microsoft.com/fwlink/?linkid=232473) .</span><span class="sxs-lookup"><span data-stu-id="30d04-121">For more information about the editions of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] that support Parallel Model Processing, see [Features Supported by the Editions of SQL Server 2012](https://go.microsoft.com/fwlink/?linkid=232473) (https://go.microsoft.com/fwlink/?linkid=232473).</span></span>  
+  
+##  <a name="processing-mining-structures"></a><a name="bkmk_ProcessStructures"></a> <span data-ttu-id="30d04-122">마이닝 구조 처리</span><span class="sxs-lookup"><span data-stu-id="30d04-122">Processing Mining Structures</span></span>  
+ <span data-ttu-id="30d04-123">모든 종속 모델과 함께 또는 따로 마이닝 구조를 처리할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-123">A mining structure can be processed together with all dependent models, or separately.</span></span> <span data-ttu-id="30d04-124">일부 모델이 처리하는 데 오랜 시간이 소요될 것으로 예상되어 해당 작업을 지연시키려는 경우 마이닝 구조를 모델과 따로 처리하는 것이 유용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-124">Processing a mining structure separately from models can be useful when some models are expected to take a long time to process and you want to defer that operation.</span></span>  
+  
+ <span data-ttu-id="30d04-125">자세한 내용은 [Process a Mining Structure](process-a-mining-structure.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="30d04-125">For more information, see [Process a Mining Structure](process-a-mining-structure.md).</span></span>  
+  
+ <span data-ttu-id="30d04-126">하드 디스크 공간을 절약하려는 경우 [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] 에서 마이닝 구조 캐시를 로컬로 유지한다는 사실에 유념하십시오.</span><span class="sxs-lookup"><span data-stu-id="30d04-126">If you are concerned about conserving hard disk space, note that [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] retains mining structure caches locally.</span></span> <span data-ttu-id="30d04-127">즉, Analysis Services에서는 모든 학습 데이터를 로컬 하드 디스크에 씁니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-127">That is, it writes out all the training data to your local hard disk.</span></span> <span data-ttu-id="30d04-128">데이터를 캐시하지 않으려면 마이닝 구조의 <xref:Microsoft.AnalysisServices.MiningStructureCacheMode> 속성을 `ClearAfterProcessing`으로 변경하면 됩니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-128">If you do not want the data cached, you can change the default by setting the <xref:Microsoft.AnalysisServices.MiningStructureCacheMode> property on the mining structure to `ClearAfterProcessing`.</span></span> <span data-ttu-id="30d04-129">이렇게 하면 모델이 처리된 후 캐시가 삭제됩니다. 단, 이 경우 마이닝 구조에서 드릴스루도 해제됩니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-129">This will destroy the cache after models are processed; however, it will also disable drillthrough on the mining structure.</span></span> <span data-ttu-id="30d04-130">자세한 내용은 [드릴스루 쿼리&#40;데이터 마이닝&#41;](drillthrough-queries-data-mining.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="30d04-130">For more information, see [Drillthrough Queries &#40;Data Mining&#41;](drillthrough-queries-data-mining.md).</span></span>  
+  
+ <span data-ttu-id="30d04-131">또한 캐시를 지우면 홀드아웃 테스트 집합도 사용할 수 없게 되고 테스트 집합 파티션의 정의도 지워집니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-131">Also, if you clear the cache, you will not be able to use the holdout test set, if you defined one, and the definition of the test set partition will be lost.</span></span> <span data-ttu-id="30d04-132">홀드아웃 테스트 집합에 대한 자세한 내용은 [데이터 집합 학습 및 테스트](training-and-testing-data-sets.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="30d04-132">For more information about holdout test sets, see [Training and Testing Data Sets](training-and-testing-data-sets.md).</span></span>  
+  
+##  <a name="processing-mining-models"></a><a name="bkmk_ProcessModels"></a> <span data-ttu-id="30d04-133">마이닝 모델 처리</span><span class="sxs-lookup"><span data-stu-id="30d04-133">Processing Mining Models</span></span>  
+ <span data-ttu-id="30d04-134">마이닝 모델을 관련 마이닝 구조와 따로 처리하거나, 구조를 기반으로 하는 모든 모델을 구조와 함께 처리할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-134">You can process a mining model separately from its associated mining structure, or you can process all models that are based on the structure, together with the structure.</span></span>  
+  
+ <span data-ttu-id="30d04-135">자세한 내용은 [마이닝 모델 처리](process-a-mining-model.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="30d04-135">For more information, see [Process a Mining Model](process-a-mining-model.md).</span></span>  
+  
+ <span data-ttu-id="30d04-136">하지만 [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)] 및 [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]에서는 구조와 함께 처리할 마이닝 모델을 다중 선택할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-136">However, in [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)] and [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], you cannot multiselect mining models to process with the structure.</span></span> <span data-ttu-id="30d04-137">처리되는 모델을 제어해야 하는 경우 모델을 개별적으로 선택하거나 XMLA 또는 DMX을 사용하여 모델을 직렬로 처리해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-137">If you need to control which models are processed, you must select them individually, or use XMLA or DMX to process models serially.</span></span>  
+  
+## <a name="when-reprocessing-is-required"></a><span data-ttu-id="30d04-138">다시 처리가 필요한 경우</span><span class="sxs-lookup"><span data-stu-id="30d04-138">When Reprocessing is Required</span></span>  
+ <span data-ttu-id="30d04-139">정의한 [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] 모델을 사용하려면 먼저 해당 모델을 처리해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-139">You must process the [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] models that you define before you can start to work with them.</span></span> <span data-ttu-id="30d04-140">또한 마이닝 모델 구조를 변경하거나, 학습 데이터를 업데이트하거나, 기존 마이닝 모델을 변경하거나, 새 마이닝 모델을 구조에 추가할 때마다 마이닝 모델을 다시 처리해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-140">You must also reprocess the mining models whenever you change the mining model structure, update the training data, change an existing mining model, or add a new mining model to the structure.</span></span>  
+  
+ <span data-ttu-id="30d04-141">이러한 시나리오에서는 마이닝 모델도 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-141">Mining models are also processed in these scenarios:</span></span>  
+  
+ <span data-ttu-id="30d04-142">**프로젝트 배포**: 프로젝트 설정 및 프로젝트의 현재 상태에 따라 프로젝트를 배포할 때 프로젝트의 마이닝 모델은 대개 전체적으로 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-142">**Deployment of a project**: Depending on the project settings and the current state of the project, the mining models in the project are typically processed in full when the project is deployed.</span></span>  
+  
+ <span data-ttu-id="30d04-143">[!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] 서버에 이전에 처리한 버전이 있고 구조에 대한 이후 변경 내용이 없지 않으면 배포 시작 시 처리가 자동으로 시작됩니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-143">When you initiate deployment, processing starts automatically, unless there is a previously processed version on the [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] server and there have been no structural changes.</span></span> <span data-ttu-id="30d04-144">드롭다운 목록에서 **솔루션 배포** 를 선택하거나 F5 키를 눌러 프로젝트를 배포할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-144">You can deploy a project by selecting **Deploy solution** from the drop-down list or by pressing the F5 key.</span></span> <span data-ttu-id="30d04-145">이 문서의 설명에 따라 Azure Automation Hybrid Runbook Worker를 제거할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-145">You can</span></span>  
+  
+ <span data-ttu-id="30d04-146">마이닝 모델이 배포되는 방식을 제어하는 [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] 배포 속성을 설정하는 방법은 [데이터 마이닝 솔루션 배포](deployment-of-data-mining-solutions.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="30d04-146">For more information about how to set [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] deployment properties that control how mining models are deployed, see [Deployment of Data Mining Solutions](deployment-of-data-mining-solutions.md).</span></span>  
+  
+ <span data-ttu-id="30d04-147">**마이닝 모델 이동**: EXPORT 명령을 사용하여 마이닝 모델을 이동하는 경우 모델에 데이터를 제공할 것으로 예상되는 마이닝 구조의 이름이 포함된 모델의 정의만 내보내집니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-147">**Moving a mining model**: When you move a mining model by using the EXPORT command, only the definition of the model is exported, which includes the name of the mining structure that is expected to provide data to the model.</span></span>  
+  
+ <span data-ttu-id="30d04-148">EXPORT 및 IMPORT 명령을 사용하는 다음 시나리오에 대한 다시 처리 요구 사항은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-148">Reprocessing requirements for the following scenarios using the EXPORT and IMPORT commands:</span></span>  
+  
+-   <span data-ttu-id="30d04-149">마이닝 구조가 대상 인스턴스에 있고 마이닝 구조가 처리되지 않은 상태입니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-149">The mining structure exists on the target instance and the mining structure is in an unprocessed state.</span></span>  
+  
+     <span data-ttu-id="30d04-150">구조와 모델을 모두 다시 처리해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-150">Both the structure and model must be reprocessed.</span></span>  
+  
+-   <span data-ttu-id="30d04-151">마이닝 구조가 대상 인스턴스에 있고 마이닝 구조가 처리되었습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-151">The mining structure exists on the target instance and the mining structure has been processed.</span></span> <span data-ttu-id="30d04-152">마이닝 모델만 내보냈습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-152">Only the mining model was exported.</span></span>  
+  
+     <span data-ttu-id="30d04-153">처리하지 않고 모델을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-153">The model can be used without processing.</span></span>  
+  
+-   <span data-ttu-id="30d04-154">WITH DEENDENCIES 키워드를 사용하여 마이닝 구조 정의도 내보냈습니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-154">The mining structure definition was also exported by using the WITH DEENDENCIES keyword.</span></span>  
+  
+     <span data-ttu-id="30d04-155">구조와 모델을 모두 다시 처리해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="30d04-155">Both the structure and model must be reprocessed.</span></span>  
+  
+ <span data-ttu-id="30d04-156">자세한 내용은 [데이터 마이닝 개체 내보내기 및 가져오기](export-and-import-data-mining-objects.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="30d04-156">For more information, see [Export and Import Data Mining Objects](export-and-import-data-mining-objects.md).</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="30d04-157">참고 항목</span><span class="sxs-lookup"><span data-stu-id="30d04-157">See Also</span></span>  
+ <span data-ttu-id="30d04-158">[마이닝 구조 &#40;Analysis Services 데이터 마이닝&#41;](mining-structures-analysis-services-data-mining.md) </span><span class="sxs-lookup"><span data-stu-id="30d04-158">[Mining Structures &#40;Analysis Services - Data Mining&#41;](mining-structures-analysis-services-data-mining.md) </span></span>  
+ <span data-ttu-id="30d04-159">[마이닝 구조 &#40;Analysis Services 데이터 마이닝&#41;](mining-structures-analysis-services-data-mining.md) </span><span class="sxs-lookup"><span data-stu-id="30d04-159">[Mining Structures &#40;Analysis Services - Data Mining&#41;](mining-structures-analysis-services-data-mining.md) </span></span>  
+ [<span data-ttu-id="30d04-160">다차원 모델 개체 처리</span><span class="sxs-lookup"><span data-stu-id="30d04-160">Multidimensional Model Object Processing</span></span>](../multidimensional-models/processing-a-multidimensional-model-analysis-services.md)  
+  
+  

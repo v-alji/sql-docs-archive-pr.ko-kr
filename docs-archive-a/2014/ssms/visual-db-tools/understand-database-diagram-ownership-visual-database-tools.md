@@ -1,0 +1,40 @@
+---
+title: 데이터베이스 다이어그램 소유권 이해(Visual Database Tools) | Microsoft 문서
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: ssms
+ms.topic: conceptual
+f1_keywords:
+- vdt.diagnostic.CannotOpenWithInvalidOwner
+helpviewer_keywords:
+- diagrams [SQL Server], ownership
+- database diagrams [SQL Server], ownership
+- owners [SQL Server], database diagrams
+ms.assetid: 4a27a48e-c4ef-4017-82b8-0cac4d0bbcac
+author: stevestein
+ms.author: sstein
+ms.openlocfilehash: 21d0f6f006328d8843bbbe12ee066a8564fb722a
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87734840"
+---
+# <a name="understand-database-diagram-ownership-visual-database-tools"></a><span data-ttu-id="837a7-102">데이터베이스 다이어그램 소유권 이해(Visual Database Tools)</span><span class="sxs-lookup"><span data-stu-id="837a7-102">Understand Database Diagram Ownership (Visual Database Tools)</span></span>
+  <span data-ttu-id="837a7-103">데이터베이스 다이어그램 디자이너를 사용하려면 먼저 db_owner 역할( [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 데이터베이스의 역할)의 멤버로 설정하여 다이어그램에 대한 액세스를 제어해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="837a7-103">To use Database Diagram Designer it must first be set up by a member of the db_owner role (a role of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] databases) to control access to diagrams.</span></span> <span data-ttu-id="837a7-104">각 다이어그램에는 반드시 한 명의 소유자(다이어그램을 만든 사용자)가 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="837a7-104">Each diagram has one and only one owner, the user who created it.</span></span> <span data-ttu-id="837a7-105">다이어그램 설정에 대 한 자세한 내용은 [Visual Database Tools&#41;&#40;데이터베이스 다이어그램 디자이너 설정 ](visual-database-tools.md)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="837a7-105">For more information on setting up diagramming see [Set Up Database Diagram Designer &#40;Visual Database Tools&#41;](visual-database-tools.md).</span></span>  
+  
+ <span data-ttu-id="837a7-106">다이어그램 소유권과 관련하여 유의할 점은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="837a7-106">Some points to keep in mind about diagram ownership:</span></span>  
+  
+-   <span data-ttu-id="837a7-107">데이터베이스에 대한 액세스 권한이 있는 사용자는 누구든지 다이어그램을 만들 수 있지만, 일단 작성된 다이어그램은 db_owner 역할의 멤버와 다이어그램 작성자만 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="837a7-107">Although any user with access to a database can create a diagram, once the diagram has been created, the only users who can see it are the diagram's creator and any member of the db_owner role.</span></span>  
+  
+-   <span data-ttu-id="837a7-108">다이어그램의 소유권은 db_owner 역할이 있는 멤버에게만 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="837a7-108">Ownership of diagrams can only be transferred to members of the db_owner role.</span></span> <span data-ttu-id="837a7-109">다이어그램 소유권을 전달하려면 이전 소유자가 데이터베이스에서 제거된 상태여야 합니다.</span><span class="sxs-lookup"><span data-stu-id="837a7-109">This is only possible if the previous owner of the diagram has been removed from the database.</span></span>  
+  
+-   <span data-ttu-id="837a7-110">다이어그램의 소유자가 데이터베이스에서 제거된 후에도 db_owner 역할을 가진 멤버가 해당 다이어그램을 열려고 시도할 때까지 이 다이어그램은 데이터베이스에 유지됩니다.</span><span class="sxs-lookup"><span data-stu-id="837a7-110">If the owner of a diagram has been removed from the database, the diagram will remain in the database until a member of the db_owner role attempts to open it.</span></span> <span data-ttu-id="837a7-111">db_owner 멤버는 이러한 다이어그램을 열려고 시도할 때 다이어그램의 소유권을 계승할지 여부를 선택할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="837a7-111">At that point the db_owner member can choose to take over ownership of the diagram.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="837a7-112">참고 항목</span><span class="sxs-lookup"><span data-stu-id="837a7-112">See Also</span></span>  
+ <span data-ttu-id="837a7-113">[Visual Database Tools를 &#40;데이터베이스 다이어그램 작업&#41;](work-with-database-diagrams-visual-database-tools.md) </span><span class="sxs-lookup"><span data-stu-id="837a7-113">[Work with Database Diagrams &#40;Visual Database Tools&#41;](work-with-database-diagrams-visual-database-tools.md) </span></span>  
+ [<span data-ttu-id="837a7-114">데이터베이스 다이어그램 디자이너 설정&#40;Visual Database Tools&#41;</span><span class="sxs-lookup"><span data-stu-id="837a7-114">Set Up Database Diagram Designer &#40;Visual Database Tools&#41;</span></span>](visual-database-tools.md)  
+  
+  

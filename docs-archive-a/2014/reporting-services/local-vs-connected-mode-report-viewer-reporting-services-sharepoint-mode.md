@@ -1,0 +1,88 @@
+---
+title: 보고서 뷰어의 로컬 모드 및 연결 된 모드 보고서 (SharePoint 모드의 Reporting Services) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+ms.assetid: a230a9bb-6046-401f-b5e5-53ff6edf2264
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 805be8722a38252a9a44797b5e59d2136bc83d6b
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87736128"
+---
+# <a name="local-mode-vs-connected-mode-reports-in-the-report-viewer-reporting-services-in-sharepoint-mode"></a><span data-ttu-id="960b0-102">보고서 뷰어의 로컬 모드와 연결 모드 보고서 비교(SharePoint 모드의 Reporting Services)</span><span class="sxs-lookup"><span data-stu-id="960b0-102">Local Mode vs. Connected Mode Reports in the Report Viewer (Reporting Services in SharePoint Mode)</span></span>
+  [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)]<span data-ttu-id="960b0-103">보고서는 *로컬 모드* 또는 보고서 서버를 활용 하는 *연결 된 모드*에서 실행 되도록 구성할 수 있습니다 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="960b0-103">reports can be configure to run in either *local mode* or *connected mode*, which leverages a [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] report server.</span></span> <span data-ttu-id="960b0-104">데이터 확장 프로그램에서 로컬 모드 보고를 지원하는 경우 이제 보고서 뷰어를 사용하여 SharePoint에서 직접 보고서를 렌더링할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-104">Instead, you can use the Report Viewer to directly render reports from SharePoint when the data extension supports local mode reporting.</span></span> <span data-ttu-id="960b0-105">이 방법을 *로컬 모드*라고 합니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-105">This approach is called *local mode*.</span></span> <span data-ttu-id="960b0-106">[!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)]의 이전 버전에서는 보고서 뷰어 컨트롤로 보고서를 렌더링하려면 SharePoint 팜을 사용하여 SharePoint 모드로 구성된 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] 보고서 서버에 연결해야 했습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-106">In previous versions of [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)], the SharePoint farm was required to be connected to a [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] report server configured in SharePoint mode so the Report Viewer control could render reports.</span></span> <span data-ttu-id="960b0-107">이 방법을 *원격 모드* 또는 *연결된 모드*라고 합니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-107">This approach is called *remote mode* or *connected mode*.</span></span>  
+  
+ <span data-ttu-id="960b0-108">*로컬 모드* 에는 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] 보고서 서버가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-108">In *local mode* there is no [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] report server.</span></span> <span data-ttu-id="960b0-109">SharePoint 제품용 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] 추가 기능을 설치해야 하지만 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] 보고서 서버는 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-109">You must install the [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] add-in for SharePoint products, but no [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] report server is required.</span></span> <span data-ttu-id="960b0-110">로컬 모드에서는 사용자가 보고서를 볼 수 있지만 구독, 데이터 경고 등과 같은 서버 쪽 기능에 액세스할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-110">With Local mode, users can view reports but will not have access to server side features such as subscriptions and data alerts.</span></span>  
+  
+||  
+|-|  
+|<span data-ttu-id="960b0-111">**[!INCLUDE[applies](../includes/applies-md.md)]**  [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)]SharePoint 모드</span><span class="sxs-lookup"><span data-stu-id="960b0-111">**[!INCLUDE[applies](../includes/applies-md.md)]**  [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] SharePoint mode</span></span>|  
+  
+ <span data-ttu-id="960b0-112">**항목 내용**</span><span class="sxs-lookup"><span data-stu-id="960b0-112">**In this topic:**</span></span>  
+  
+-   [<span data-ttu-id="960b0-113">로컬 모드 및 연결된 모드, 지원되는 확장 프로그램</span><span class="sxs-lookup"><span data-stu-id="960b0-113">Local mode vs connected mode and supported extensions</span></span>](#bkmk_local_vs_connected)  
+  
+-   [<span data-ttu-id="960b0-114">SharePoint 2013를 사용 하 여 로컬 모드 및 Access Services 구성</span><span class="sxs-lookup"><span data-stu-id="960b0-114">Configure Local Mode and Access Services with SharePoint 2013</span></span>](#bkmk_local_mode_sharepoint2013)  
+  
+-   [<span data-ttu-id="960b0-115">SharePoint 2010를 사용 하 여 로컬 모드 보고 구성</span><span class="sxs-lookup"><span data-stu-id="960b0-115">Configure Local Mode Reporting with SharePoint 2010</span></span>](#bkmk_local_mode_sharepoint2010)  
+  
+##  <a name="local-mode-vs-connected-mode-and-supported-extensions"></a><a name="bkmk_local_vs_connected"></a><span data-ttu-id="960b0-116">로컬 모드와 연결 된 모드 및 지원 되는 확장</span><span class="sxs-lookup"><span data-stu-id="960b0-116">Local mode vs connected mode and supported extensions</span></span>  
+ <span data-ttu-id="960b0-117">**로컬 모드:** 로컬 모드를 지원하는 데이터 확장 프로그램이 있는 경우 보고서 뷰어가 SharePoint의 보고서를 바로 렌더링합니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-117">**Local mode:** When you have a data extension that supports local mode, the Report Viewer directly renders reports from SharePoint.</span></span> <span data-ttu-id="960b0-118">*로컬 모드* 에는 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] 보고서 서버가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-118">In *local mode* there is no [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] report server.</span></span> <span data-ttu-id="960b0-119">SharePoint 제품용 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] 추가 기능을 설치해야 하지만 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] 보고서 서버는 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-119">You must install the [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] add-in for SharePoint products, but no [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] report server is required.</span></span> <span data-ttu-id="960b0-120">로컬 모드에서는 사용자가 보고서를 볼 수 있지만 구독, 데이터 경고 등의 서버 쪽 기능에는 액세스할 수 **없습니다** .</span><span class="sxs-lookup"><span data-stu-id="960b0-120">With Local mode, users can view reports but will **not** have access to server side features such as subscriptions and data alerts.</span></span>  
+  
+ <span data-ttu-id="960b0-121">**원격 모드**라고도 하는 *연결된 모드* 는 보고서 뷰어 컨트롤로 보고서를 렌더링하려면 SharePoint 팜에 연결된 SharePoint 모드의 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] 보고서 서버가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-121">**Connected mode**, also called *remote mode* requires a [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] report server in SharePoint mode, connected to the SharePoint farm so the Report Viewer control could render reports..</span></span>  
+  
+ <span data-ttu-id="960b0-122">아래에는 로컬 모드 보고를 지원하는 데이터 처리 확장 프로그램이 나열되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-122">The following is a list of the data processing extensions that support local mode reporting:</span></span>  
+  
+-   [!INCLUDE[msCoName](../includes/msconame-md.md)] <span data-ttu-id="960b0-123">Access 2010 보고서 확장 프로그램.</span><span class="sxs-lookup"><span data-stu-id="960b0-123">Access 2010 reporting extension.</span></span> <span data-ttu-id="960b0-124">Access Services에 대한 자세한 내용은 [SQL Reporting Services와 함께 Access Services 사용: SQL Server 2008 R2 Reporting Services 추가 기능 설치(SharePoint Server 2010)](https://go.microsoft.com/fwlink/?LinkId=192686)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="960b0-124">For more information on Access Services, see [Use Access Services with SQL Reporting Services: Installing SQL Server 2008 R2 Reporting Services Add-In (SharePoint Server 2010)](https://go.microsoft.com/fwlink/?LinkId=192686).</span></span>  
+  
+-   <span data-ttu-id="960b0-125">[!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] SharePoint 목록 데이터 확장 프로그램.</span><span class="sxs-lookup"><span data-stu-id="960b0-125">The [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] SharePoint list data extension.</span></span> <span data-ttu-id="960b0-126">SharePoint 목록 데이터 확장 프로그램에 대한 자세한 내용은 [Reporting Services&#40;SSRS&#41;에서 지원하는 데이터 원본](create-deploy-and-manage-mobile-and-paginated-reports.md)</span><span class="sxs-lookup"><span data-stu-id="960b0-126">For more information on the SharePoint List Data Extension, see [Data Sources Supported by Reporting Services &#40;SSRS&#41;](create-deploy-and-manage-mobile-and-paginated-reports.md)</span></span>  
+  
+ <span data-ttu-id="960b0-127">로컬 모드를 지원하는 사용자 지정 데이터 처리 확장 프로그램을 개발할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-127">Custom data processing extensions can also be developed to support local mode.</span></span> <span data-ttu-id="960b0-128">자세한 내용은 [Implementing a Data Processing Extension](extensions/data-processing/implementing-a-data-processing-extension.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="960b0-128">For more information, see [Implementing a Data Processing Extension](extensions/data-processing/implementing-a-data-processing-extension.md).</span></span>  
+  
+ <span data-ttu-id="960b0-129">로컬 모드에서는 포함된 데이터 원본이나 .rsds 파일의 공유 데이터 원본이 있는 보고서를 렌더링할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-129">Local mode supports rendering reports that have an embedded data source or a shared data source from an .rsds file.</span></span> <span data-ttu-id="960b0-130">그러나 보고서나 이와 연결된 데이터 원본을 관리할 수는 없습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-130">However, you cannot manage the report or its associated data source.</span></span> <span data-ttu-id="960b0-131">관리하려고 하는 경우 로컬 모드에서는 지원되지 않는다는 오류가 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-131">If you try to do this, you will receive an error that this is not supported in local mode.</span></span> <span data-ttu-id="960b0-132">SharePoint 사이트에서 데이터 원본을 관리하는 것은 연결된 모드에서만 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-132">Managing data sources in the SharePoint site is supported in only connected mode.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="960b0-133">이전 버전과 마찬가지로 사용자 이름 및 암호를 .rsds 파일에 포함할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-133">As with previous versions, you cannot embed user names and passwords in the .rsds file.</span></span>  
+  
+##  <a name="configure-local-mode-and-access-services-with-sharepoint-2013"></a><a name="bkmk_local_mode_sharepoint2013"></a><span data-ttu-id="960b0-134">SharePoint 2013를 사용 하 여 로컬 모드 및 Access Services 구성</span><span class="sxs-lookup"><span data-stu-id="960b0-134">Configure Local Mode and Access Services with SharePoint 2013</span></span>  
+ <span data-ttu-id="960b0-135">기존 Access 2010 웹 데이터베이스 및 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] 로컬 모드를 지원하도록 SharePoint 2013 팜을 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-135">You can configure your SharePoint 2013 farm to support existing Access 2010 web databases and [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] local mode.</span></span> <span data-ttu-id="960b0-136">자세한 내용은 [SharePoint Server 2013에서 웹 데이터베이스에 대한 Access Services 2010 설정 및 구성](https://technet.microsoft.com/library/ee748653\(office.15\).aspx)을 참조하십시오.</span><span class="sxs-lookup"><span data-stu-id="960b0-136">For more information, see [Set up and configure Access Services 2010 for web databases in SharePoint Server 2013](https://technet.microsoft.com/library/ee748653\(office.15\).aspx).</span></span>  
+  
+ <span data-ttu-id="960b0-137">SharePoint 2013에 대한 새 Access 웹 데이터베이스를 만들 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-137">It is not possible to create new Access web databases for SharePoint 2013.</span></span> <span data-ttu-id="960b0-138">Access 2013에서는 Access에서 빌드되는 새로운 유형의 데이터베이스인 *Access 웹 앱* 을 사용한 다음 웹 브라우저에서 SharePoint 앱으로 다른 사용자와 공유합니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-138">Access 2013 uses a new type of database, *Access web app* that you build in Access, then use and share with others as a SharePoint app in a web browser.</span></span>  
+  
+ <span data-ttu-id="960b0-139">자세한 내용은 다음 항목을 참조하십시오.</span><span class="sxs-lookup"><span data-stu-id="960b0-139">For more information, see the following.</span></span>  
+  
+-   <span data-ttu-id="960b0-140">[Access 2013의 새로운 기능](https://office.microsoft.com/access-help/what-s-new-in-access-2013-HA102809500.aspx) ( https://office.microsoft.com/access-help/what-s-new-in-access-2013-HA102809500.aspx) .</span><span class="sxs-lookup"><span data-stu-id="960b0-140">[What's new in Access 2013](https://office.microsoft.com/access-help/what-s-new-in-access-2013-HA102809500.aspx) (https://office.microsoft.com/access-help/what-s-new-in-access-2013-HA102809500.aspx).</span></span>  
+  
+-   <span data-ttu-id="960b0-141">[액세스 앱에 대 한 기본 작업](https://office.microsoft.com/access-help/basic-tasks-for-an-access-app-HA102840210.aspx?CTT=5&origin=HA102809500) ( https://office.microsoft.com/access-help/basic-tasks-for-an-access-app-HA102840210.aspx?CTT=5&origin=HA102809500) .</span><span class="sxs-lookup"><span data-stu-id="960b0-141">[Basic tasks for an Access app](https://office.microsoft.com/access-help/basic-tasks-for-an-access-app-HA102840210.aspx?CTT=5&origin=HA102809500) (https://office.microsoft.com/access-help/basic-tasks-for-an-access-app-HA102840210.aspx?CTT=5&origin=HA102809500).</span></span>  
+  
+##  <a name="configure-local-mode-reporting-with-sharepoint-2010"></a><a name="bkmk_local_mode_sharepoint2010"></a><span data-ttu-id="960b0-142">SharePoint 2010를 사용 하 여 로컬 모드 보고 구성</span><span class="sxs-lookup"><span data-stu-id="960b0-142">Configure Local Mode Reporting with SharePoint 2010</span></span>  
+ <span data-ttu-id="960b0-143">로컬 모드를 사용하려면 ASP.NET 세션 상태가 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-143">Local mode requires ASP.NET session state.</span></span> <span data-ttu-id="960b0-144">Access Services를 설치하면 ASP.NET 세션 상태가 활성화됩니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-144">The installation of Access services will enable ASP.Net sessions state.</span></span> <span data-ttu-id="960b0-145">PowerShell을 사용하여 활성화할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-145">You can also enable using PowerShell.</span></span>  
+  
+1.  <span data-ttu-id="960b0-146">SharePoint 2010 관리 셸을 엽니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-146">Open the SharePoint 2010 Management Shell.</span></span>  
+  
+2.  <span data-ttu-id="960b0-147">다음 명령을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-147">Type the following command:</span></span>  
+  
+    ```  
+    - Enable-SPSessionStateService  
+    ```  
+  
+3.  <span data-ttu-id="960b0-148">메시지가 표시되면 데이터베이스의 이름을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-148">When prompted, type the name of your database.</span></span>  
+  
+4.  <span data-ttu-id="960b0-149">IIS를 다시 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="960b0-149">Perform an IIS reset.</span></span>  
+  
+ <span data-ttu-id="960b0-150">자세한 내용은 [SQL Reporting Services와 함께 Access Services 사용: SQL Server 2008 R2 Reporting Services 추가 기능 설치(SharePoint Server 2010)](https://go.microsoft.com/fwlink/?LinkId=192686) 및 [Enable-SPSessionStateService](https://technet.microsoft.com/library/ff607857\(v=office.15\).aspx)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="960b0-150">For more information, see [Use Access Services with SQL Reporting Services: Installing SQL Server 2008 R2 Reporting Services Add-In (SharePoint Server 2010)](https://go.microsoft.com/fwlink/?LinkId=192686) and [Enable-SPSessionStateService](https://technet.microsoft.com/library/ff607857\(v=office.15\).aspx).</span></span>  
+  
+## <a name="connected-mode"></a><span data-ttu-id="960b0-151">연결된 모드</span><span class="sxs-lookup"><span data-stu-id="960b0-151">Connected mode</span></span>  
+ <span data-ttu-id="960b0-152">연결 된 모드에서 ADS 확장을 사용 하는 방법에 대 한 최신 정보는 [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] [SharePoint 사이트의 Access Services 보고서에서 데이터 확장 프로그램 ' ADS '의 오류 표시](https://social.technet.microsoft.com/wiki/contents/articles/25298.access-services-report-in-sharepoint-site-shows-error-in-data-extension-ads.aspx)를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="960b0-152">For the latest information on using ADS extension with [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] connected mode, see [Access Services Report in SharePoint Site shows error in data extension 'ADS'](https://social.technet.microsoft.com/wiki/contents/articles/25298.access-services-report-in-sharepoint-site-shows-error-in-data-extension-ads.aspx).</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="960b0-153">참고 항목</span><span class="sxs-lookup"><span data-stu-id="960b0-153">See Also</span></span>  
+ [<span data-ttu-id="960b0-154">Reporting Services&#40;SSRS&#41;에서 지원하는 데이터 원본</span><span class="sxs-lookup"><span data-stu-id="960b0-154">Data Sources Supported by Reporting Services &#40;SSRS&#41;</span></span>](create-deploy-and-manage-mobile-and-paginated-reports.md)  
+  

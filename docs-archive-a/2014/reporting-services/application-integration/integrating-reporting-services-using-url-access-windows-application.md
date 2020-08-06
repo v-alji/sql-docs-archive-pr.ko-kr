@@ -1,0 +1,123 @@
+---
+title: Windows 애플리케이션에서 URL 액세스 사용 | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services
+ms.topic: reference
+helpviewer_keywords:
+- Windows applications [Reporting Services]
+- Web Browser controls [Reporting Services]
+- Windows Forms [Reporting Services]
+- browser controls [Reporting Services]
+- URL access [Reporting Services], Windows applications
+ms.assetid: a4b222e5-0cbd-409c-92c4-046a674db8ac
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 8f8b901481b1d6fcc3cdd8626b43cd3a69174c1a
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87735128"
+---
+# <a name="using-url-access-in-a-windows-application"></a><span data-ttu-id="6e0fb-102">Windows 애플리케이션에서 URL 액세스 사용</span><span class="sxs-lookup"><span data-stu-id="6e0fb-102">Using URL Access in a Windows Application</span></span>
+  <span data-ttu-id="6e0fb-103">보고서 서버에 대한 URL 액세스는 웹 환경에 최적화되어 있지만, URL 액세스를 사용하여 [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] 보고서를 [!INCLUDE[msCoName](../../includes/msconame-md.md)] Windows 애플리케이션에 포함시킬 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-103">Although URL access to a report server is optimized for a Web environment, you can also use URL access to embed [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] reports into a [!INCLUDE[msCoName](../../includes/msconame-md.md)] Windows application.</span></span> <span data-ttu-id="6e0fb-104">하지만 Windows Forms와 관련된 URL 액세스의 경우에는 웹 브라우저 기술을 사용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-104">However, URL access that involves Windows Forms still requires that you use Web browser technology.</span></span> <span data-ttu-id="6e0fb-105">URL 액세스 및 Windows Forms에서 다음과 같은 통합 시나리오를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-105">You can use the following integration scenarios with URL access and Windows Forms:</span></span>  
+  
+-   <span data-ttu-id="6e0fb-106">웹 브라우저를 프로그래밍 방식으로 시작하여 Windows Form 애플리케이션에서 보고서를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-106">Display a report from a Windows Form application by starting a Web browser programmatically.</span></span>  
+  
+-   <span data-ttu-id="6e0fb-107">Windows Form에서 <xref:System.Windows.Forms.WebBrowser> 컨트롤을 사용하여 보고서를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-107">Use the <xref:System.Windows.Forms.WebBrowser> control on a Windows Form to display a report.</span></span>  
+  
+## <a name="starting-internet-explorer-from-a-windows-form"></a><span data-ttu-id="6e0fb-108">Windows Form에서 Internet Explorer 시작</span><span class="sxs-lookup"><span data-stu-id="6e0fb-108">Starting Internet Explorer from a Windows Form</span></span>  
+ <span data-ttu-id="6e0fb-109"><xref:System.Diagnostics.Process> 클래스를 사용하여 컴퓨터에서 실행 중인 프로세스에 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-109">You can use the <xref:System.Diagnostics.Process> class to access a process that is running on a computer.</span></span> <span data-ttu-id="6e0fb-110"><xref:System.Diagnostics.Process>클래스는 [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] 응용 프로그램을 시작, 중지, 제어 및 모니터링 하는 데 유용한 구문입니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-110">The <xref:System.Diagnostics.Process> class is a useful [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] construct for starting, stopping, controlling, and monitoring applications.</span></span> <span data-ttu-id="6e0fb-111">보고서 서버 데이터베이스의 특정 보고서를 보려면 **IExplore** 프로세스를 시작하여 보고서에 대한 URL을 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-111">To view a specific report in your report server database, you can start the **IExplore** process, passing in the URL to the report.</span></span> <span data-ttu-id="6e0fb-112">다음 코드 예제를 사용하면 사용자가 Windows Form에서 단추를 클릭할 때 [!INCLUDE[msCoName](../../includes/msconame-md.md)] Internet Explorer를 시작하고 특정 보고서 URL을 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-112">The following code example can be used to start [!INCLUDE[msCoName](../../includes/msconame-md.md)] Internet Explorer and pass a specific report URL when the user clicks a button on a Windows Form.</span></span>  
+  
+```vb  
+Private Sub viewReportButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles viewReportButton.Click  
+   ' Build the URL access string based on values supplied by a user  
+   Dim url As String = serverUrlTextBox.Text + "?" & reportPathTextBox.Text & _  
+   "&rs:Command=Render" & "&rs:Format=HTML4.0"  
+  
+   ' If the user does not select the toolbar check box,  
+   ' turn the toolbar off in the HTML Viewer  
+   If toolbarCheckBox.Checked = False Then  
+      url += "&rc:Toolbar=False"  
+   End If  
+   ' load report in the Web browser  
+   Try  
+      System.Diagnostics.Process.Start("IExplore", url)  
+   Catch  
+      MessageBox.Show("The system could not start the specified report using Internet Explorer.", _  
+      "An error has occurred", MessageBoxButtons.OK, MessageBoxIcon.Error)  
+   End Try  
+End Sub 'viewReportButton_Click  
+```  
+  
+```csharp  
+// Sample click event for a Button control on a Windows Form  
+private void viewReportButton_Click(object sender, System.EventArgs e)  
+{  
+   // Build the URL access string based on values supplied by a user  
+   string url = serverUrlTextBox.Text + "?" + reportPathTextBox.Text +  
+      "&rs:Command=Render" + "&rs:Format=HTML4.0";  
+  
+   // If the user does not check the toolbar check box,  
+   // turn the toolbar off in the HTML Viewer  
+   if (toolbarCheckBox.Checked == false)  
+      url += "&rc:Toolbar=False";  
+  
+   // load report in the Web browser  
+   try  
+   {  
+      System.Diagnostics.Process.Start("IExplore", url);  
+   }  
+  
+   catch (Exception)  
+   {  
+      MessageBox.Show(  
+         "The system could not open the specified report using Internet Explorer.",   
+         "An error has occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);  
+   }  
+}  
+```  
+  
+## <a name="embedding-a-browser-control-on-a-windows-form"></a><span data-ttu-id="6e0fb-113">Windows Form에 브라우저 컨트롤 포함</span><span class="sxs-lookup"><span data-stu-id="6e0fb-113">Embedding a Browser Control on a Windows Form</span></span>  
+ <span data-ttu-id="6e0fb-114">보고서를 외부 웹 브라우저에서 보고 싶지 않으면 <xref:System.Windows.Forms.WebBrowser> 컨트롤을 사용하여 웹 브라우저를 Windows Form의 일부로 완벽하게 포함할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-114">If you do not want to view your report in an external Web browser, you can embed a Web browser seamlessly as part of your Windows Form using the <xref:System.Windows.Forms.WebBrowser> control.</span></span>  
+  
+###### <a name="to-add-the-webbrowser-control-to-your-windows-form"></a><span data-ttu-id="6e0fb-115">WebBrowser 컨트롤을 Windows Form에 추가하려면</span><span class="sxs-lookup"><span data-stu-id="6e0fb-115">To add the WebBrowser control to your Windows Form</span></span>  
+  
+1.  <span data-ttu-id="6e0fb-116">또는에서 새 Windows 응용 프로그램을 만듭니다 [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[csprcs](../../includes/csprcs-md.md)] [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[vbprvb](../../includes/vbprvb-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="6e0fb-116">Create a new Windows application in either [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[csprcs](../../includes/csprcs-md.md)] or [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[vbprvb](../../includes/vbprvb-md.md)].</span></span>  
+  
+2.  <span data-ttu-id="6e0fb-117">**도구 상자** 대화 상자에서 <xref:System.Windows.Forms.WebBrowser> 컨트롤을 찾습니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-117">Locate the <xref:System.Windows.Forms.WebBrowser> control in the **Toolbox** Dialog Box.</span></span>  
+  
+     <span data-ttu-id="6e0fb-118">**도구 상자**가 보이지 않을 경우 **보기** 메뉴 항목을 클릭하고 **도구 상자**를 선택하여 액세스할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-118">If the **Toolbox** is not visible you can access it by clicking the **View** menu item and selecting **Toolbox**.</span></span>  
+  
+3.  <span data-ttu-id="6e0fb-119"><xref:System.Windows.Forms.WebBrowser> 컨트롤을 Windows Form의 디자인 화면으로 끌어 놓습니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-119">Drag the <xref:System.Windows.Forms.WebBrowser>control onto the design surface of your Windows Form.</span></span>  
+  
+     <span data-ttu-id="6e0fb-120">이름이 webBrowser1인 <xref:System.Windows.Forms.WebBrowser> 컨트롤이 폼에 추가됩니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-120">The <xref:System.Windows.Forms.WebBrowser>control named webBrowser1 is added to the Form</span></span>  
+  
+ <span data-ttu-id="6e0fb-121">**Navigate** 메서드를 호출하여 <xref:System.Windows.Forms.WebBrowser> 컨트롤을 URL에 지정합니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-121">You direct the <xref:System.Windows.Forms.WebBrowser> control to a URL by calling its **Navigate** method.</span></span> <span data-ttu-id="6e0fb-122">다음 예에서 볼 수 있는 것처럼 런타임에 특정 URL 액세스 문자열을 <xref:System.Windows.Forms.WebBrowser> 컨트롤에 할당할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6e0fb-122">You can assign a specific URL access string to your <xref:System.Windows.Forms.WebBrowser> control at run time as shown in the following example.</span></span>  
+  
+```vb  
+Dim url As String = "http://localhost/reportserver?/" & _  
+                    "AdventureWorks2012 Sample Reports/" & _  
+                    "Company Sales&rs:Command=Render"  
+WebBrowser1.Navigate(url)  
+```  
+  
+```csharp  
+string url = "http://localhost/reportserver?/" +  
+             "AdventureWorks2012 Sample Reports/" +  
+             "Company Sales&rs:Command=Render";  
+webBrowser1.Navigate(url);  
+```  
+  
+## <a name="see-also"></a><span data-ttu-id="6e0fb-123">참고 항목</span><span class="sxs-lookup"><span data-stu-id="6e0fb-123">See Also</span></span>  
+ <span data-ttu-id="6e0fb-124">[응용 프로그램에 Reporting Services 통합](../application-integration/integrating-reporting-services-into-applications.md) </span><span class="sxs-lookup"><span data-stu-id="6e0fb-124">[Integrating Reporting Services into Applications](../application-integration/integrating-reporting-services-into-applications.md) </span></span>  
+ <span data-ttu-id="6e0fb-125">[URL 액세스를 사용 하 여 Reporting Services 통합](integrating-reporting-services-using-url-access.md) </span><span class="sxs-lookup"><span data-stu-id="6e0fb-125">[Integrating Reporting Services Using URL Access](integrating-reporting-services-using-url-access.md) </span></span>  
+ <span data-ttu-id="6e0fb-126">[SOAP를 사용 하 여 Reporting Services 통합](integrating-reporting-services-using-soap.md) </span><span class="sxs-lookup"><span data-stu-id="6e0fb-126">[Integrating Reporting Services Using SOAP](integrating-reporting-services-using-soap.md) </span></span>  
+ <span data-ttu-id="6e0fb-127">[ReportViewer 컨트롤을 사용 하 여 Reporting Services 통합](integrating-reporting-services-using-reportviewer-controls.md) </span><span class="sxs-lookup"><span data-stu-id="6e0fb-127">[Integrating Reporting Services Using the ReportViewer Controls](integrating-reporting-services-using-reportviewer-controls.md) </span></span>  
+ [<span data-ttu-id="6e0fb-128">URL 액세스&#40;SSRS&#41;</span><span class="sxs-lookup"><span data-stu-id="6e0fb-128">URL Access &#40;SSRS&#41;</span></span>](../url-access-ssrs.md)  
+  
+  
