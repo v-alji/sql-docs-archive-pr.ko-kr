@@ -1,0 +1,94 @@
+---
+title: 트리거 생성, 변경 및 제거 | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: ''
+ms.topic: reference
+helpviewer_keywords:
+- triggers [SMO]
+ms.assetid: 8ddbe23b-6e31-4f8e-8a70-17bd5072413e
+author: stevestein
+ms.author: sstein
+ms.openlocfilehash: c2cdd1573c488fbe7b2309f656cd6bf42e82a527
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87660447"
+---
+# <a name="creating-altering-and-removing-triggers"></a><span data-ttu-id="29719-102">트리거 생성, 변경 및 제거</span><span class="sxs-lookup"><span data-stu-id="29719-102">Creating, Altering, and Removing Triggers</span></span>
+  <span data-ttu-id="29719-103">SMO에서 트리거는 <xref:Microsoft.SqlServer.Management.Smo.Trigger> 개체를 사용하여 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="29719-103">In SMO, triggers are represented by using the <xref:Microsoft.SqlServer.Management.Smo.Trigger> object.</span></span> <span data-ttu-id="29719-104">트리거 [!INCLUDE[tsql](../../../includes/tsql-md.md)] 개체의 속성으로 실행 되는 트리거를 설정할 때 실행 되는 코드입니다 <xref:Microsoft.SqlServer.Management.Smo.Trigger.TextBody%2A> .</span><span class="sxs-lookup"><span data-stu-id="29719-104">The [!INCLUDE[tsql](../../../includes/tsql-md.md)] code that runs when the trigger that is fired is set by the <xref:Microsoft.SqlServer.Management.Smo.Trigger.TextBody%2A> property of the Trigger object.</span></span> <span data-ttu-id="29719-105"><xref:Microsoft.SqlServer.Management.Smo.Trigger> 개체의 다른 속성(예: <xref:Microsoft.SqlServer.Management.Smo.Trigger.Update%2A> 속성)을 사용하여 트리거 유형을 설정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="29719-105">The type of trigger is set by using other properties of the <xref:Microsoft.SqlServer.Management.Smo.Trigger> object, such as the <xref:Microsoft.SqlServer.Management.Smo.Trigger.Update%2A> property.</span></span> <span data-ttu-id="29719-106">Update 속성은 부모 테이블의 레코드 `UPDATE`에 의해 트리거 실행 여부를 지정하는 부울 값입니다.</span><span class="sxs-lookup"><span data-stu-id="29719-106">This is a Boolean property that specifies whether the trigger is fired by an `UPDATE` of records on the parent table.</span></span>  
+  
+ <span data-ttu-id="29719-107"><xref:Microsoft.SqlServer.Management.Smo.Trigger> 개체는 전통적인 DML(데이터 조작 언어) 트리거를 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="29719-107">The <xref:Microsoft.SqlServer.Management.Smo.Trigger> object represents traditional, data manipulation language (DML) triggers.</span></span> <span data-ttu-id="29719-108">[!INCLUDE[ssKatmai](../../../includes/sskatmai-md.md)] 이상 버전에서 DDL(데이터 정의 언어) 트리거도 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="29719-108">In [!INCLUDE[ssKatmai](../../../includes/sskatmai-md.md)] and later versions, data definition language (DDL) triggers are also supported.</span></span> <span data-ttu-id="29719-109">DDL 트리거는 <xref:Microsoft.SqlServer.Management.Smo.DatabaseDdlTrigger> 개체 및 <xref:Microsoft.SqlServer.Management.Smo.ServerDdlTrigger> 개체로 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="29719-109">DDL triggers are represented by the <xref:Microsoft.SqlServer.Management.Smo.DatabaseDdlTrigger> object and the <xref:Microsoft.SqlServer.Management.Smo.ServerDdlTrigger> object.</span></span>  
+  
+## <a name="example"></a><span data-ttu-id="29719-110">예제</span><span class="sxs-lookup"><span data-stu-id="29719-110">Example</span></span>  
+ [!INCLUDE[ssChooseProgEnv](../../../includes/sschooseprogenv-md.md)]  
+  
+## <a name="creating-altering-and-removing-a-trigger-in-visual-basic"></a><span data-ttu-id="29719-111">Visual Basic에서 트리거 생성, 변경 및 제거</span><span class="sxs-lookup"><span data-stu-id="29719-111">Creating, Altering, and Removing a Trigger in Visual Basic</span></span>  
+ <span data-ttu-id="29719-112">이 코드 예제는 `Sales`데이터베이스에서 [!INCLUDE[ssSampleDBnormal](../../../includes/sssampledbnormal-md.md)] 라는 기존 테이블에 업데이트 트리거를 만들고 삽입하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="29719-112">This code example shows how to create and insert an update trigger on an existing table, named `Sales`, in the [!INCLUDE[ssSampleDBnormal](../../../includes/sssampledbnormal-md.md)] database.</span></span> <span data-ttu-id="29719-113">이 트리거는 테이블이 업데이트되거나 새 레코드가 삽입될 때 미리 알림 메시지를 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="29719-113">The trigger sends a reminder message when the table is updated or a new record is inserted.</span></span>  
+  
+<!-- TODO: review snippet reference  [!CODE [SMO How to#SMO_VBTriggers1](SMO How to#SMO_VBTriggers1)]  -->  
+  
+## <a name="creating-altering-and-removing-a-trigger-in-visual-c"></a><span data-ttu-id="29719-114">Visual C#에서 트리거 생성, 변경 및 제거</span><span class="sxs-lookup"><span data-stu-id="29719-114">Creating, Altering, and Removing a Trigger in Visual C#</span></span>  
+ <span data-ttu-id="29719-115">이 코드 예제는 `Sales`데이터베이스에서 [!INCLUDE[ssSampleDBnormal](../../../includes/sssampledbnormal-md.md)] 라는 기존 테이블에 업데이트 트리거를 만들고 삽입하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="29719-115">This code example shows how to create and insert an update trigger on an existing table, named `Sales`, in the [!INCLUDE[ssSampleDBnormal](../../../includes/sssampledbnormal-md.md)] database.</span></span> <span data-ttu-id="29719-116">이 트리거는 테이블이 업데이트되거나 새 레코드가 삽입될 때 미리 알림 메시지를 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="29719-116">The trigger sends a reminder message when the table is updated or a new record is inserted.</span></span>  
+  
+```csharp
+{  
+            //Connect to the local, default instance of SQL Server.   
+            Server mysrv;  
+            mysrv = new Server();  
+            //Reference the AdventureWorks2012 database.   
+            Database mydb;  
+            mydb = mysrv.Databases["AdventureWorks2012"];  
+            //Declare a Table object variable and reference the Customer table.   
+            Table mytab;  
+            mytab = mydb.Tables["Customer", "Sales"];  
+            //Define a Trigger object variable by supplying the parent table, schema ,and name in the constructor.   
+            Trigger tr;  
+            tr = new Trigger(mytab, "Sales");  
+            //Set TextMode property to False, then set other properties to define the trigger.   
+            tr.TextMode = false;  
+            tr.Insert = true;  
+            tr.Update = true;  
+            tr.InsertOrder = ActivationOrder.First;  
+            string stmt;  
+            stmt = " RAISERROR('Notify Customer Relations',16,10) ";  
+            tr.TextBody = stmt;  
+            tr.ImplementationType = ImplementationType.TransactSql;  
+            //Create the trigger on the instance of SQL Server.   
+            tr.Create();  
+            //Remove the trigger.   
+            tr.Drop();  
+        }  
+```  
+  
+## <a name="creating-altering-and-removing-a-trigger-in-powershell"></a><span data-ttu-id="29719-117">PowerShell에서 트리거 생성, 변경 및 제거</span><span class="sxs-lookup"><span data-stu-id="29719-117">Creating, Altering, and Removing a Trigger in PowerShell</span></span>  
+ <span data-ttu-id="29719-118">이 코드 예제는 `Sales`데이터베이스에서 [!INCLUDE[ssSampleDBnormal](../../../includes/sssampledbnormal-md.md)] 라는 기존 테이블에 업데이트 트리거를 만들고 삽입하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="29719-118">This code example shows how to create and insert an update trigger on an existing table, named `Sales`, in the [!INCLUDE[ssSampleDBnormal](../../../includes/sssampledbnormal-md.md)] database.</span></span> <span data-ttu-id="29719-119">이 트리거는 테이블이 업데이트되거나 새 레코드가 삽입될 때 미리 알림 메시지를 보냅니다.</span><span class="sxs-lookup"><span data-stu-id="29719-119">The trigger sends a reminder message when the table is updated or a new record is inserted.</span></span>  
+  
+```powershell
+# Set the path context to the local, default instance of SQL Server and to the  
+#database tables in Adventureworks2012  
+CD \sql\localhost\default\databases\AdventureWorks2012\Tables\  
+  
+#Get reference to the trigger's target table  
+$mytab = Get-Item Sales.Customer  
+  
+# Define a Trigger object variable by supplying the parent table, schema ,and name in the constructor.  
+$tr = New-Object -TypeName Microsoft.SqlServer.Management.SMO.Trigger -argumentlist $mytab, "Sales"  
+  
+# Set TextMode property to False, then set other properties to define the trigger.
+$tr.TextMode = $false  
+$tr.Insert = $true  
+$tr.Update = $true  
+$tr.InsertOrder = [Microsoft.SqlServer.Management.SMO.Agent.ActivationOrder]::First  
+$tr.TextBody = " RAISERROR('Notify Customer Relations',16,10) "  
+$tr.ImplementationType = [Microsoft.SqlServer.Management.SMO.ImplementationType]::TransactSql  
+  
+# Create the trigger on the instance of SQL Server.
+$tr.Create()  
+  
+#Remove the trigger.
+$tr.Drop()  
+```  

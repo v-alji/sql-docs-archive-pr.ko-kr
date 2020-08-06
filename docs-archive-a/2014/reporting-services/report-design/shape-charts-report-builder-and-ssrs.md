@@ -1,0 +1,64 @@
+---
+title: 셰이프 차트(보고서 작성기 및 SSRS) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+ms.assetid: 4b8404c1-aa89-4350-8bd6-203bc0446ee4
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: c8940f23c0c2b1fdabadec62de4c214c98d60b1c
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87651483"
+---
+# <a name="shape-charts-report-builder-and-ssrs"></a><span data-ttu-id="767ee-102">셰이프 차트(보고서 작성기 및 SSRS)</span><span class="sxs-lookup"><span data-stu-id="767ee-102">Shape Charts (Report Builder and SSRS)</span></span>
+  <span data-ttu-id="767ee-103">세이프 차트에서는 값 데이터를 전체의 백분율로 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-103">A shape chart displays value data as percentages of a whole.</span></span> <span data-ttu-id="767ee-104">셰이프 차트는 집합의 서로 다른 값이 차지하는 비율을 비교하여 표시하는 데 주로 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-104">Shape charts are typically used to show proportional comparisons between different values in a set.</span></span> <span data-ttu-id="767ee-105">범주는 셰이프의 개별 세그먼트로 표현됩니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-105">Categories are represented by individual segments of the shape.</span></span> <span data-ttu-id="767ee-106">세그먼트의 크기는 값에 따라 결정됩니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-106">The size of the segment is determined by the value.</span></span> <span data-ttu-id="767ee-107">셰이프 차트는 원형 차트와 비슷하지만 범주를 가장 큰 것부터 가장 작은 것 순으로 정렬한다는 점에서 차이가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-107">Shape charts are similar in use to pie charts, except that they order categories from largest to smallest.</span></span>  
+  
+ <span data-ttu-id="767ee-108">깔대기형 차트에서는 값을 점점 감소하는 비율로 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-108">A funnel chart displays values as progressively decreasing proportions.</span></span> <span data-ttu-id="767ee-109">영역의 크기는 모든 값의 합계에 대한 계열 값의 비율로 결정됩니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-109">The size of the area is determined by the series value as a percentage of the total of all values.</span></span> <span data-ttu-id="767ee-110">예를 들어 웹 사이트 방문자 추세를 표시하는 데 깔대기형 차트를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-110">For example, you might use a funnel chart to display Web site visitor trends.</span></span> <span data-ttu-id="767ee-111">이 경우 홈 페이지 방문자 수가 가장 많았던 시점을 나타내는 제일 넓은 영역이 깔대기형 차트의 맨 위에 표시되고 다른 영역은 크기에 비례하여 그 아래 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-111">It is likely that the funnel chart will display a wide area at the top, indicating visitor page hits to the homepage, and the other areas will be proportionally smaller.</span></span> <span data-ttu-id="767ee-112">깔때기형 차트에 데이터를 추가하는 방법에 대한 자세한 내용은 [차트&#40;보고서 작성기 및 SSRS&#41;](charts-report-builder-and-ssrs.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="767ee-112">For more information about how to add data to a funnel chart, see [Charts &#40;Report Builder and SSRS&#41;](charts-report-builder-and-ssrs.md).</span></span>  
+  
+ <span data-ttu-id="767ee-113">다음 그림에서는 깔대기형 차트의 예를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-113">The following illustration shows an example of a funnel chart.</span></span>  
+  
+ <span data-ttu-id="767ee-114">![깔때기형 차트](../media/rs-funnelchart.gif "깔때기형 차트")</span><span class="sxs-lookup"><span data-stu-id="767ee-114">![Funnel chart](../media/rs-funnelchart.gif "Funnel chart")</span></span>  
+  
+> [!NOTE]  
+>  [!INCLUDE[ssRBRDDup](../../includes/ssrbrddup-md.md)]  
+  
+## <a name="variations"></a><span data-ttu-id="767ee-115">변형</span><span class="sxs-lookup"><span data-stu-id="767ee-115">Variations</span></span>  
+  
+-   <span data-ttu-id="767ee-116">**피라미드형**.</span><span class="sxs-lookup"><span data-stu-id="767ee-116">**Pyramid**.</span></span> <span data-ttu-id="767ee-117">피라미드형 차트에서는 차트가 피라미드 모양이 되도록 비례 데이터를 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-117">A pyramid chart displays proportional data so that the chart looks like a pyramid.</span></span>  
+  
+## <a name="data-considerations-for-shape-charts"></a><span data-ttu-id="767ee-118">셰이프 차트의 데이터 고려 사항</span><span class="sxs-lookup"><span data-stu-id="767ee-118">Data Considerations for Shape Charts</span></span>  
+  
+-   <span data-ttu-id="767ee-119">셰이프 차트는 시각적 효과가 뛰어나므로 보고서에 자주 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-119">Shape charts are popular in reports because of their visual impact.</span></span> <span data-ttu-id="767ee-120">그러나 셰이프 차트는 매우 단순한 종류의 차트이므로 데이터를 정확하게 표현하는 데 적합하지 않을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-120">However, shape charts are a very simplified chart type that may not best represent your data.</span></span> <span data-ttu-id="767ee-121">데이터를 집계하여 생성된 데이터 요소가 일곱 개 이하인 경우에만 셰이프 차트를 사용하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-121">Consider using a shape chart only once the data has been aggregated to seven data points or less.</span></span> <span data-ttu-id="767ee-122">일반적으로 셰이프 차트는 데이터 영역별로 범주를 하나만 표시하려는 경우에 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-122">In general, use the shape chart to display only one category per data region.</span></span>  
+  
+-   <span data-ttu-id="767ee-123">셰이프 차트에서는 각 데이터 그룹을 차트의 개별 세그먼트로 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-123">Shape charts display each data group as a separate segment of the chart.</span></span> <span data-ttu-id="767ee-124">적어도 한 개 이상의 데이터 필드와 한 개 이상의 범주 필드를 추가해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-124">You must add at least one data field and one category field.</span></span> <span data-ttu-id="767ee-125">셰이프 차트에 여러 개의 데이터 필드를 추가하면 셰이프 차트에서 두 데이터 필드가 동일한 차트에 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-125">If more than one data field is added to a shape chart, the shape chart will display both data fields in the same chart.</span></span>  
+  
+-   <span data-ttu-id="767ee-126">셰이프 차트는 백분율을 비례에 따라 정렬된 순서로 표시하는 데 가장 효과적입니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-126">Shape charts are most effective for showing proportional percentages in sorted order.</span></span> <span data-ttu-id="767ee-127">그러나 일관성을 유지하기 위해 이 차트에서는 기본적으로 데이터 세트의 값을 정렬하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-127">However, in order to maintain consistency, the chart does not sort the values in your dataset by default.</span></span> <span data-ttu-id="767ee-128">데이터를 깔때기형 또는 피라미드형으로 가장 정확하게 나타내려면 값을 내림차순으로 정렬하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-128">Consider ordering your values from highest to lowest to most accurately represent your data as a funnel or a pyramid.</span></span> <span data-ttu-id="767ee-129">자세한 내용은 [데이터 필터링, 그룹화 및 정렬&#40;보고서 작성기 및 SSRS&#41;](filter-group-and-sort-data-report-builder-and-ssrs.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="767ee-129">For more information, see [Filter, Group, and Sort Data &#40;Report Builder and SSRS&#41;](filter-group-and-sort-data-report-builder-and-ssrs.md).</span></span>  
+  
+-   <span data-ttu-id="767ee-130">Null이거나, 비어 있거나, 음수이거나, 0인 값은 비율을 계산하는 데 영향을 주지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-130">Null, empty, negative and zero values have no effect when calculating ratios.</span></span> <span data-ttu-id="767ee-131">따라서 이러한 값은 셰이프 차트에 표시되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-131">For this reason, these values are not shown on a shape chart.</span></span> <span data-ttu-id="767ee-132">이러한 유형의 값을 차트에서 시각적으로 표현하려면 셰이프 차트가 아닌 다른 차트 종류로 변경해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-132">If you want to visually indicate these types of values on your chart, change the chart type to be something other than a shape chart.</span></span> <span data-ttu-id="767ee-133">셰이프 차트가 아닌 차트에 빈 요소를 추가 하는 방법에 대 한 자세한 내용은 [차트에 빈 요소 추가 &#40;보고서 작성기 및 SSRS&#41;](add-empty-points-to-a-chart-report-builder-and-ssrs.md)를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="767ee-133">For more information about how to add empty points to a non-shape chart, see [Add Empty Points to the Chart &#40;Report Builder and SSRS&#41;](add-empty-points-to-a-chart-report-builder-and-ssrs.md).</span></span>  
+  
+-   <span data-ttu-id="767ee-134">사용자 지정 색상표를 사용하여 셰이프 차트의 색을 직접 정의하는 경우에는 쉽게 구분할 수 있는 고유한 색으로 각 데이터 요소를 강조 표시할 수 있도록 색상표에 다양한 색을 준비해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-134">If you are defining your own colors on a shape chart using a custom palette, be sure that you have enough colors in your palette to highlight each data point with its own unique color.</span></span> <span data-ttu-id="767ee-135">자세한 내용은 [차트에서 계열 색 서식 지정&#40;보고서 작성기 및 SSRS&#41;](formatting-series-colors-on-a-chart-report-builder-and-ssrs.md)을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-135">For more information, see [Formatting Series Colors on a Chart &#40;Report Builder and SSRS&#41;](formatting-series-colors-on-a-chart-report-builder-and-ssrs.md).</span></span>  
+  
+-   <span data-ttu-id="767ee-136">다른 모든 차트 종류와 달리 셰이프 차트에서는 개별 계열이 아니라 개별 데이터 요소를 범례에 표시합니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-136">Unlike all other chart types, a shape chart will display individual data points, and not individual series, in its legend.</span></span>  
+  
+-   <span data-ttu-id="767ee-137">깔대기형 차트에서는 값 및 범주 축 대한 설정이 무시됩니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-137">Settings for the value and category axis are ignored for funnel charts.</span></span> <span data-ttu-id="767ee-138">여러 범주나 계열 그룹이 있으면 차트 범례에 그룹 레이블이 표시됩니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-138">If you have multiple category or series groups, the group labels are displayed in the chart legend.</span></span>  
+  
+-   <span data-ttu-id="767ee-139">셰이프 차트 종류는 동일한 차트 영역의 다른 어떠한 차트 종류와도 결합할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-139">Shape chart types cannot be combined with any other chart type in the same chart area.</span></span> <span data-ttu-id="767ee-140">셰이프 차트에 표시된 데이터를 서로 비교하여 표시하려는 경우 데이터가 다른 종류의 차트에 표시되어 있으면 둘째 차트 영역을 추가해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-140">If you have to show comparisons between data displayed on a shape chart, and data displayed on another chart type, you will need to add a second chart area.</span></span>  
+  
+-   <span data-ttu-id="767ee-141">3차원 효과를 추가하면 셰이프 차트 종류의 전반적인 모양을 크게 향상시킬 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-141">Adding 3-D effects significantly improves the overall appearance of a shape chart type.</span></span>  
+  
+-   <span data-ttu-id="767ee-142">원형 및 도넛형 차트에 그리기 스타일을 추가로 적용하여 시각적 효과를 높일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="767ee-142">You can apply additional drawing styles to pie and doughnut charts for increased visual impact.</span></span> <span data-ttu-id="767ee-143">자세한 내용은 [차트에서 계열 색 서식 지정&#40;보고서 작성기 및 SSRS&#41;](formatting-series-colors-on-a-chart-report-builder-and-ssrs.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="767ee-143">See [Formatting Series Colors on a Chart &#40;Report Builder and SSRS&#41;](formatting-series-colors-on-a-chart-report-builder-and-ssrs.md) for more information.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="767ee-144">참고 항목</span><span class="sxs-lookup"><span data-stu-id="767ee-144">See Also</span></span>  
+ <span data-ttu-id="767ee-145">[차트 &#40;보고서 작성기 및 SSRS&#41;](charts-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="767ee-145">[Charts &#40;Report Builder and SSRS&#41;](charts-report-builder-and-ssrs.md) </span></span>  
+ <span data-ttu-id="767ee-146">[보고서 작성기 및 SSRS&#41;&#40;차트 서식 지정](formatting-a-chart-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="767ee-146">[Formatting a Chart &#40;Report Builder and SSRS&#41;](formatting-a-chart-report-builder-and-ssrs.md) </span></span>  
+ <span data-ttu-id="767ee-147">[차트의 빈 데이터 요소 및 Null 데이터 요소 &#40;보고서 작성기 및 SSRS&#41;](empty-and-null-data-points-in-charts-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="767ee-147">[Empty and Null Data Points in Charts &#40;Report Builder and SSRS&#41;](empty-and-null-data-points-in-charts-report-builder-and-ssrs.md) </span></span>  
+ [<span data-ttu-id="767ee-148">원형 차트&#40;보고서 작성기 및 SSRS&#41;</span><span class="sxs-lookup"><span data-stu-id="767ee-148">Pie Charts &#40;Report Builder and SSRS&#41;</span></span>](pie-charts-report-builder-and-ssrs.md)  
+  
+  

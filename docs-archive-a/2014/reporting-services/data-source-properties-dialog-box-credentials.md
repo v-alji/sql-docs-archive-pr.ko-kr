@@ -1,0 +1,53 @@
+---
+title: 데이터 원본 속성 대화 상자, 자격 증명 | Microsoft Docs
+ms.custom: ''
+ms.date: 06/14/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+f1_keywords:
+- sql12.rtp.rptdesigner.datasourceproperties.credentials.f1
+- "10100"
+ms.assetid: 14c3eeb6-d37b-4fda-967b-43afcdb48119
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 491da16e6cd38db54c4d27bd8497ca7fdfaae5b6
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87651543"
+---
+# <a name="data-source-properties-dialog-box-credentials"></a><span data-ttu-id="226fb-102">데이터 원본 속성 대화 상자, 자격 증명</span><span class="sxs-lookup"><span data-stu-id="226fb-102">Data Source Properties Dialog Box, Credentials</span></span>
+  <span data-ttu-id="226fb-103">**데이터 원본 속성** 대화 상자의 **자격 증명** 을 선택하여 보고서의 데이터 원본에 연결하는 데 사용할 자격 증명을 표시하고 수정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-103">Select **Credentials** on the **Data Source Properties** dialog box to display and modify credentials to connect to a data source in the report.</span></span> <span data-ttu-id="226fb-104">사용자가 제공하는 자격 증명은 데이터 원본에 액세스하고 보고서를 미리 보기 위해 데이터의 복사본을 캐시하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-104">The credentials that you provide are used to access the data source and to cache a copy of the data for previewing reports.</span></span> <span data-ttu-id="226fb-105">미리 보기 데이터 캐시 방법에 대한 자세한 내용은 [보고서 미리 보기](reports/previewing-reports.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="226fb-105">For more information about how preview data is cached, see [Previewing Reports](reports/previewing-reports.md).</span></span> <span data-ttu-id="226fb-106">자격 증명에 대한 자세한 내용은 [보고서 데이터 원본에 대한 자격 증명 및 연결 정보 지정](report-data/specify-credential-and-connection-information-for-report-data-sources.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="226fb-106">For more information about credentials, see [Specify Credential and Connection Information for Report Data Sources](report-data/specify-credential-and-connection-information-for-report-data-sources.md).</span></span>  
+  
+## <a name="options"></a><span data-ttu-id="226fb-107">옵션</span><span class="sxs-lookup"><span data-stu-id="226fb-107">Options</span></span>  
+ <span data-ttu-id="226fb-108">**Windows 인증 사용(통합 보안)**</span><span class="sxs-lookup"><span data-stu-id="226fb-108">**Use Windows Authentication (integrated security)**</span></span>  
+ <span data-ttu-id="226fb-109">Windows 인증을 사용하려면 이 옵션을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-109">Select this option to use Windows Authentication.</span></span>  
+  
+ <span data-ttu-id="226fb-110">**이 사용자 이름 및 암호 사용**</span><span class="sxs-lookup"><span data-stu-id="226fb-110">**Use this user name and password**</span></span>  
+ <span data-ttu-id="226fb-111">특정 사용자 이름 및 암호를 제공하려면 이 옵션을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-111">Select this option to provide a specific user name and password.</span></span> <span data-ttu-id="226fb-112">공유 데이터 원본의 경우 보고서 서버 프로젝트를 대상 서버에 게시하면 사용자 이름과 암호가 데이터베이스에 대해 저장된 자격 증명으로 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-112">For shared data sources: when you publish the report server project to the target server, the user name and password are saved as the stored credentials for the database.</span></span> <span data-ttu-id="226fb-113">사용자 이름과 암호를 Windows 자격 증명으로 사용하려는 경우 대상 서버에서 게시된 공유 데이터 원본에 대한 속성을 편집할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-113">If you want to use the user name and password as Windows credentials, you can edit the properties for the published shared data source on the target server.</span></span> <span data-ttu-id="226fb-114">자세한 내용은 [공유 데이터 원본 만들기, 삭제 또는 수정&#40;보고서 관리자&#41;](../../2014/reporting-services/create-delete-or-modify-a-shared-data-source-report-manager.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="226fb-114">For more information, see [Create, Delete, or Modify a Shared Data Source &#40;Report Manager&#41;](../../2014/reporting-services/create-delete-or-modify-a-shared-data-source-report-manager.md).</span></span>  
+  
+ <span data-ttu-id="226fb-115">**사용자 이름**</span><span class="sxs-lookup"><span data-stu-id="226fb-115">**User name**</span></span>  
+ <span data-ttu-id="226fb-116">데이터 원본에 로그인할 때 사용할 사용자 이름을 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-116">Type a user name to log in to the data source.</span></span>  
+  
+ <span data-ttu-id="226fb-117">**암호**</span><span class="sxs-lookup"><span data-stu-id="226fb-117">**Password**</span></span>  
+ <span data-ttu-id="226fb-118">데이터 원본에 로그인할 때 사용할 암호를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-118">Type a password to log in to the data source.</span></span>  
+  
+ <span data-ttu-id="226fb-119">**자격 증명 확인**</span><span class="sxs-lookup"><span data-stu-id="226fb-119">**Prompt for credentials**</span></span>  
+ <span data-ttu-id="226fb-120">보고서 실행 시 자격 증명을 요청하려면 이 옵션을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-120">Select this option to prompt for credentials when the report is run.</span></span>  
+  
+ <span data-ttu-id="226fb-121">**프롬프트 문자열 입력**</span><span class="sxs-lookup"><span data-stu-id="226fb-121">**Enter prompt string**</span></span>  
+ <span data-ttu-id="226fb-122">데이터 원본에 대한 로그인 자격 증명을 제공하도록 사용자에게 표시할 메시지를 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-122">Type a sentence to instruct the user to provide login credentials for the data source.</span></span>  
+  
+ <span data-ttu-id="226fb-123">**자격 증명 없음**</span><span class="sxs-lookup"><span data-stu-id="226fb-123">**No credentials**</span></span>  
+ <span data-ttu-id="226fb-124">데이터 원본에 대해 자격 증명을 사용하지 않으려면 이 옵션을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-124">Select this option to provide no credentials for the data source.</span></span> <span data-ttu-id="226fb-125">이 옵션은 데이터 원본이 자격 증명을 허용하지 않거나 다른 방법으로 자격 증명을 전달하는 경우에만 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="226fb-125">This option only works if the data source does not accept credentials or if you are passing credentials some other way.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="226fb-126">참고 항목</span><span class="sxs-lookup"><span data-stu-id="226fb-126">See Also</span></span>  
+ <span data-ttu-id="226fb-127">[데이터 원본 속성 대화 상자, 일반](../../2014/reporting-services/data-source-properties-dialog-box-general.md) </span><span class="sxs-lookup"><span data-stu-id="226fb-127">[Data Source Properties Dialog Box, General](../../2014/reporting-services/data-source-properties-dialog-box-general.md) </span></span>  
+ <span data-ttu-id="226fb-128">[보고서 데이터 원본에 대한 자격 증명 및 연결 정보 지정](report-data/specify-credential-and-connection-information-for-report-data-sources.md) </span><span class="sxs-lookup"><span data-stu-id="226fb-128">[Specify Credential and Connection Information for Report Data Sources](report-data/specify-credential-and-connection-information-for-report-data-sources.md) </span></span>  
+ [<span data-ttu-id="226fb-129">보고서 서비스의 데이터 연결, 데이터 원본 및 연결 문자열</span><span class="sxs-lookup"><span data-stu-id="226fb-129">Data Connections, Data Sources, and Connection Strings in Reporting Services</span></span>](../../2014/reporting-services/data-connections-data-sources-and-connection-strings-in-reporting-services.md)  
+  
+  
