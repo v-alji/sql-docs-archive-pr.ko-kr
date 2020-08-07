@@ -1,0 +1,48 @@
+---
+title: 스크립트 태스크에서 결과 반환 | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: integration-services
+ms.topic: reference
+dev_langs:
+- VB
+helpviewer_keywords:
+- Script task [Integration Services], status information
+- ExecutionValue property
+- status information [Integration Services]
+- TaskResult property
+- SSIS Script task, status information
+ms.assetid: ac06805b-c2db-44bd-af5c-5a0debe36dd7
+author: chugugrace
+ms.author: chugu
+ms.openlocfilehash: bef3e93644377f715b5ad24e0a53df053197a03a
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87731887"
+---
+# <a name="returning-results-from-the-script-task"></a><span data-ttu-id="a7df6-102">스크립트 태스크에서 결과 반환</span><span class="sxs-lookup"><span data-stu-id="a7df6-102">Returning Results from the Script Task</span></span>
+  <span data-ttu-id="a7df6-103">스크립트 태스크에서는 <xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.TaskResult%2A>와 선택적 <xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.ExecutionValue%2A> 속성을 사용하여 스크립트 태스크가 완료된 후 워크플로의 경로를 확인하는 데 사용할 수 있는 상태 정보를 [!INCLUDE[ssISnoversion](../../../includes/ssisnoversion-md.md)] 런타임에 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="a7df6-103">The Script task uses the <xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.TaskResult%2A> and the optional <xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.ExecutionValue%2A> properties to return status information to the [!INCLUDE[ssISnoversion](../../../includes/ssisnoversion-md.md)] runtime that can be used to determine the path of the workflow after the Script task has finished.</span></span>  
+  
+## <a name="taskresult"></a><span data-ttu-id="a7df6-104">TaskResult</span><span class="sxs-lookup"><span data-stu-id="a7df6-104">TaskResult</span></span>  
+ <span data-ttu-id="a7df6-105"><xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.TaskResult%2A> 속성은 태스크가 성공했는지 여부를 보고합니다.</span><span class="sxs-lookup"><span data-stu-id="a7df6-105">The <xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.TaskResult%2A> property reports whether the task succeeded or failed.</span></span> <span data-ttu-id="a7df6-106">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="a7df6-106">For example:</span></span>  
+  
+ `Dts.TaskResult = ScriptResults.Success`  
+  
+## <a name="executionvalue"></a><span data-ttu-id="a7df6-107">ExecutionValue</span><span class="sxs-lookup"><span data-stu-id="a7df6-107">ExecutionValue</span></span>  
+ <span data-ttu-id="a7df6-108"><xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.ExecutionValue%2A> 속성은 선택적으로 스크립트 태스크의 성공 여부에 대한 추가 정보를 수량화하거나 제공하는 사용자 정의 개체를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="a7df6-108">The <xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.ExecutionValue%2A> property optionally returns a user-defined object that quantifies or provides more information about the success or failure of the Script task.</span></span> <span data-ttu-id="a7df6-109">예를 들어 FTP 태스크는 <xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.ExecutionValue%2A> 속성을 사용하여 전송된 파일 수를 반환하고,</span><span class="sxs-lookup"><span data-stu-id="a7df6-109">For example, the FTP task uses the <xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.ExecutionValue%2A> property to return the number of files transferred.</span></span> <span data-ttu-id="a7df6-110">SQL 실행 태스크는 태스크의 영향을 받은 행 수를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="a7df6-110">The Execute SQL task returns the number of rows affected by the task.</span></span> <span data-ttu-id="a7df6-111"><xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.ExecutionValue%2A>를 사용하여 워크플로의 경로를 확인할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a7df6-111">The <xref:Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptObjectModel.ExecutionValue%2A> can also be used to determine the path of the workflow.</span></span> <span data-ttu-id="a7df6-112">다음은 그 예입니다.</span><span class="sxs-lookup"><span data-stu-id="a7df6-112">For example:</span></span>  
+  
+ `Dim rowsAffected as Integer`  
+  
+ `...`  
+  
+ `rowsAffected = 1000`  
+  
+ `Dts.ExecutionValue = rowsAffected`  
+  
+<span data-ttu-id="a7df6-113">![Integration Services 아이콘 (작은 아이콘)](../../media/dts-16.gif "Integration Services 아이콘(작은 아이콘)")  **은 최신 상태로 유지 Integration Services**</span><span class="sxs-lookup"><span data-stu-id="a7df6-113">![Integration Services icon (small)](../../media/dts-16.gif "Integration Services icon (small)")  **Stay Up to Date with Integration Services**</span></span><br /> <span data-ttu-id="a7df6-114">Microsoft의 최신 다운로드, 문서, 예제 및 비디오와 커뮤니티에서 선택된 솔루션을 보려면 MSDN의 [!INCLUDE[ssISnoversion](../../../includes/ssisnoversion-md.md)] 페이지를 방문하세요.</span><span class="sxs-lookup"><span data-stu-id="a7df6-114">For the latest downloads, articles, samples, and videos from Microsoft, as well as selected solutions from the community, visit the [!INCLUDE[ssISnoversion](../../../includes/ssisnoversion-md.md)] page on MSDN:</span></span><br /><br /> [<span data-ttu-id="a7df6-115">MSDN의 Integration Services 페이지를 방문하세요.</span><span class="sxs-lookup"><span data-stu-id="a7df6-115">Visit the Integration Services page on MSDN</span></span>](https://go.microsoft.com/fwlink/?LinkId=136655)<br /><br /> <span data-ttu-id="a7df6-116">이러한 업데이트에 대한 자동 알림을 받으려면 해당 페이지에서 제공하는 RSS 피드를 구독하세요.</span><span class="sxs-lookup"><span data-stu-id="a7df6-116">For automatic notification of these updates, subscribe to the RSS feeds available on the page.</span></span>  
+  
+  
