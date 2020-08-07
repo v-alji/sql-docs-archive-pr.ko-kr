@@ -1,0 +1,55 @@
+---
+title: 첫 페이지 또는 마지막 페이지에서 페이지 머리글 또는 바닥글 숨기기 (보고서 작성기 및 SSRS) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+ms.assetid: f87ce79b-00d7-4458-a17e-e253a20f720d
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 60c8789fd098df7347e9cc0f583426478aee06e1
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87727959"
+---
+# <a name="hide-a-page-header-or-footer-on-the-first-or-last-page-report-builder-and-ssrs"></a><span data-ttu-id="b37b2-102">첫 페이지 또는 마지막 페이지에서 페이지 머리글 또는 바닥글 숨기기(보고서 작성기 및 SSRS)</span><span class="sxs-lookup"><span data-stu-id="b37b2-102">Hide a Page Header or Footer on the First or Last Page (Report Builder and SSRS)</span></span>
+  <span data-ttu-id="b37b2-103">보고서는 각 페이지의 위쪽과 아래쪽에 각각 표시되는 페이지 머리글과 페이지 바닥글을 포함할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-103">A report can contain a page header and page footer that run along the top and bottom of each page, respectively.</span></span> <span data-ttu-id="b37b2-104">머리글 또는 바닥글을 추가한 후에는 보고서의 첫 페이지 및 마지막 페이지에서 선택적으로 머리글과 바닥글을 숨길 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-104">After you a add a header or footer, you can selectively hide it on the first and last pages of a report.</span></span>  
+  
+> [!NOTE]  
+>  [!INCLUDE[ssRBRDDup](../../includes/ssrbrddup-md.md)]  
+  
+### <a name="to-hide-a-page-header-on-the-first-or-last-page"></a><span data-ttu-id="b37b2-105">첫 페이지나 마지막 페이지에서 페이지 머리글을 숨기려면</span><span class="sxs-lookup"><span data-stu-id="b37b2-105">To hide a page header on the first or last page</span></span>  
+  
+1.  <span data-ttu-id="b37b2-106">디자인 뷰에서 보고서를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-106">Open a report in Design view.</span></span>  
+  
+2.  <span data-ttu-id="b37b2-107">페이지 머리글을 마우스 오른쪽 단추로 클릭한 다음 **머리글 속성**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-107">Right-click the page header, and then click **Header Properties**.</span></span> <span data-ttu-id="b37b2-108">**보고서 머리글 속성** 대화 상자가 열립니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-108">The **Report Header Properties** dialog box opens.</span></span>  
+  
+3.  <span data-ttu-id="b37b2-109">**이 보고서의 머리글 표시** 옵션이 선택되어 있지 않은지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-109">Verify that **Display header for this report** is not selected.</span></span>  
+  
+4.  <span data-ttu-id="b37b2-110">**인쇄 옵션** 섹션에서 각 옵션에 대한 확인란의 선택을 취소하여 보고서 첫 페이지와 마지막 페이지의 표시를 숨깁니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-110">In the **Print options** section, clear the check box for each option to hide the display on the first or last page of the report.</span></span>  
+  
+5.  [!INCLUDE[clickOK](../../includes/clickok-md.md)]  
+  
+### <a name="to-hide-a-page-footer-on-the-first-or-last-page"></a><span data-ttu-id="b37b2-111">첫 페이지나 마지막 페이지에서 페이지 바닥글을 숨기려면</span><span class="sxs-lookup"><span data-stu-id="b37b2-111">To hide a page footer on the first or last page</span></span>  
+  
+1.  <span data-ttu-id="b37b2-112">디자인 뷰에서 보고서를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-112">Open a report in Design view.</span></span>  
+  
+2.  <span data-ttu-id="b37b2-113">페이지 바닥글을 마우스 오른쪽 단추로 클릭한 다음 **바닥글 속성**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-113">Right-click the page footer, and then click **Footer Properties**.</span></span> <span data-ttu-id="b37b2-114">**보고서 바닥글 속성** 대화 상자가 열립니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-114">The **Report Footer Properties** dialog box opens.</span></span>  
+  
+3.  <span data-ttu-id="b37b2-115">**이 보고서의 바닥글 표시** 옵션이 선택되어 있지 않은지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-115">Verify that **Display footer for this report** is not selected.</span></span>  
+  
+4.  <span data-ttu-id="b37b2-116">**인쇄 옵션** 섹션에서 각 옵션에 대한 확인란의 선택을 취소하여 보고서 첫 페이지와 마지막 페이지의 표시를 숨깁니다.</span><span class="sxs-lookup"><span data-stu-id="b37b2-116">In the **Print options** section, clear the check box for each option to hide the display on the first or last page of the report.</span></span>  
+  
+5.  [!INCLUDE[clickOK](../../includes/clickok-md.md)]  
+  
+## <a name="see-also"></a><span data-ttu-id="b37b2-117">참고 항목</span><span class="sxs-lookup"><span data-stu-id="b37b2-117">See Also</span></span>  
+ <span data-ttu-id="b37b2-118">[페이지 머리글 및 바닥글&#40;보고서 작성기 및 SSRS&#41;](page-headers-and-footers-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="b37b2-118">[Page Headers and Footers &#40;Report Builder and SSRS&#41;](page-headers-and-footers-report-builder-and-ssrs.md) </span></span>  
+ <span data-ttu-id="b37b2-119">[Reporting Services의 페이지 매김&#40;보고서 작성기 및 SSRS&#41;](pagination-in-reporting-services-report-builder-and-ssrs.md) </span><span class="sxs-lookup"><span data-stu-id="b37b2-119">[Pagination in Reporting Services &#40;Report Builder  and SSRS&#41;](pagination-in-reporting-services-report-builder-and-ssrs.md) </span></span>  
+ [<span data-ttu-id="b37b2-120">페이지 머리글/바닥글 추가 또는 제거&#40;보고서 작성기 및 SSRS&#41;</span><span class="sxs-lookup"><span data-stu-id="b37b2-120">Add or Remove a Page Header or Footer &#40;Report Builder and SSRS&#41;</span></span>](add-or-remove-a-page-header-or-footer-report-builder-and-ssrs.md)  
+  
+  
